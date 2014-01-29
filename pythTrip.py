@@ -5,4 +5,4 @@ for a in xrange(0,golden):
 		c = golden - a -b ;
 		if(a**2+b**2-c**2==1):
 			print str(a*b*c);
-			#heheheheheh
+			#hehehehesfdgsxheh
