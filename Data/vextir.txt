@@ -1,0 +1,2164 @@
+
+<!DOCTYPE doctype html>
+
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta content="no" http-equiv="imagetoolbar">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="TpMWAfrudQfcTjUlwvcIZoJkvQNjXP-FBhSUXrVcaLk" name="google-site-verification">
+<meta content="92669AFF35F4263C4C1C3A0F8D944B1F" name="msvalidate.01">
+<meta content="Landsbankinn þinn" name="application-name">
+<meta content="#08273f" name="msapplication-TileColor">
+<meta content="http://www.landsbankinn.is/assets/img/logo-social.png" name="msapplication-TileImage">
+<meta content="Vextir - Landsbankinn" property="og:title">
+<meta content="" property="og:description">
+<meta content="website" property="og:type">
+<meta content="http://www.landsbankinn.is/Vextir" property="og:url">
+<meta content="Landsbankinn.is" property="og:site_name">
+<meta content="100003112871506" property="fb:admins">
+<meta content="http://www.landsbankinn.is/assets/img/logo-social.png" property="og:image">
+<meta content="is_IS" property="og:locale">
+<link href="/" rel="start" title="Forsíða">
+<link href="/veftre/" rel="index" title="Veftré">
+<link href="/disclaimer/" rel="copyright" title="Lagalegur fyrirvari">
+<link href="/uploads/iphone_logo/l_57.png" rel="apple-touch-icon">
+<link href="/uploads/iphone_logo/l_72.png" rel="apple-touch-icon" sizes="72x72">
+<link href="/uploads/iphone_logo/l_114.png" rel="apple-touch-icon" sizes="114x114">
+<!--[if ! lte IE 6]><!-->
+<!--<link href="http://assets.l.is/sites/landsbankinn/css/Bundle/global.css?v=20140117135713" rel="stylesheet" />
+-->
+<link href="//assets.l.is/sites/landsbankinn/css/Bundle/global.css?v=20130408122722ddd" rel="stylesheet">
+<link href="http://assets.l.is/css/Bundle/tables.css?v=20140117135712" rel="stylesheet"/>
+<!--<![endif]-->
+<!--[if gte IE 7]>
+<link href="http://assets.l.is/css/ie.css?v=20140117135709" rel="stylesheet" />
+<![endif]-->
+<!--[if gte IE 6 & lte IE 8]>
+<link href="http://assets.l.is/css/ie7-8.css?v=20140117135709" rel="stylesheet" />
+
+<script src="http://assets.l.is/js/libraries/html5.js?v=20140117135719"></script>
+<![endif]-->
+<!--[if lte IE 6]>
+<link href="http://assets.l.is/css/ie6.css?v=20140117135709" rel="stylesheet" />
+<![endif]-->
+<!--[if lte IE 7]>
+<script src="http://assets.l.is/js/libraries/json2.js?v=20140117135732"></script>
+<![endif]-->
+<!-- Temp .more and .back fix -->
+<style type="text/css">
+.back { background-position: 0 -550px; }
+.more { background-position: 0 -500px; }
+</style>
+<!--[if ! lte IE 6]><!-->
+<script src="http://assets.l.is/js/Bundle/core.js?v=20140117135819"></script>
+<!--<![endif]-->
+<style type="text/css">
+#main-nav .info-boxes .contact-us {
+background-color: transparent;
+}
+    .flag-en a {
+        background-position: 10px -76px;
+    }
+</style>
+<style type="text/css">
+.table-data table {margin-top:0;}
+</style>
+<meta content="" name="keywords"/>
+<meta content="" name="description"/>
+<title>Vextir - Landsbankinn</title>
+</link></link></link></link></link></link></link></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></meta></head>
+<body class="default">
+<div class="overlay-wrapper">
+<div class="search-header" id="search-header">
+<div class="search-header-top">
+<a class="search-close" href="" title="Loka"></a>
+</div>
+<div class="ui-form ui-grid search-box">
+<div class="ui-f-txt">
+<input autofocus="" class="txt" id="tags" name="q" placeholder="Leitarorð" type="search"/>
+</div>
+</div>
+</div>
+<div class="content-wrapper search-wrapper" id="search-wrapper">
+<div class="search-results">
+<div class="ui-widget" role="search">
+<h2>Leitarniðurstöður</h2>
+<div id="autocomplete-wrapper">
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var searchBox = $("#tags");        
+        var start = 20;
+        var numberOfResults = 0;
+        var datasource = [];
+        var searchTerm = "";
+
+        $("#search-wrapper").scroll(function () {                        
+            if ($(".ui-autocomplete li").length == start) {                
+                if ($("#search-wrapper").is(":visible") && (($(".search-wrapper").height() + $("#search-wrapper").scrollTop()) >= document.getElementById("autocomplete-wrapper").scrollHeight - 100)) {
+                    start = start + 20;
+                    searchBox.autocomplete("search", $("#tags").val()).focus();           
+                }                      
+            }
+        });      
+
+        $(document).click(function (event) {            
+            if (!$(event.target).is(".overlay-wrapper *", "#searchicon")) {
+                hideOverlay();
+            }
+
+            if ($(event.target).is(".search-close")) {
+                event.preventDefault();
+                hideOverlay();
+            }
+
+            function hideOverlay() {
+                $(".overlay-wrapper").hide();
+                $("#search-wrapper").hide();
+                $("html").css("overflow", "auto");
+                searchBox.val("");
+                $(".ui-autocomplete").empty();
+            }
+        });
+
+        $(window).resize(function () { 
+            searchBox.autocomplete("search", $("#tags").val()).focus();
+        });
+
+        searchBox.autocomplete({
+            appendTo: $("#autocomplete-wrapper"),
+            source: function (request, response) {                
+                if (searchTerm != request.term) {
+                    response([{ empty: true }]);
+                    searchTerm = request.term;
+                }
+
+                $.ajax({
+                    dataType: "json",                                                                             
+                    url: "/modules/search/services/search.ashx?Query=" + encodeURIComponent(request.term) + "&site=default_frontend&collection='default_collection'&start=0&NumberOfResults=" + start,
+                    type: "GET",
+                    cache: false,
+                    success: function (data) {                                                
+                        datasource = [];
+                        if (data != null) {
+                            $("#search-wrapper").show();
+                            for (var i = 0; i < data.length; i++) {
+                                datasource[i] = { label: data[i].Text, desc: data[i].ShortDescription, url: data[i].Url, filetype: data[i].FileType, empty: false };
+                            }
+                            response(datasource);
+                        }
+                        else
+                            response([{ empty: true }]);
+                    },
+                    error: function (r) {
+                        response([{ empty: true }]);
+                    }
+                });
+            },
+            open: function (event, ui) {                
+                $(".ui-menu-link:first").css("border-top", "none");
+                $("#search-wrapper").show();              
+            },
+			select: function (event, ui) {
+			    $(".loading-icon").show();
+			    global.showLoadingIcon("body");
+			    window.location.href = ui.item.url;			    
+			},
+			hideOnClose: false,
+			minLength:2,
+			close: function (event) {
+			    start = 20;			    
+			}
+        }).data("autocomplete")._renderItem = function (ul, item) {
+		    if (item.empty) {
+		        return $("<li></li>")
+				.data("item.autocomplete", item)
+				.append("<div class='search-no-res'><h3>Engar niðurstöður fundust</h3></div>")
+				.appendTo(ul);
+
+            }
+
+		    var paragraphdesc = "";
+		    var spanfile = "";
+		    if (item.filetype == "xls" || item.filetype == "doc" || item.filetype == "pdf" || item.filetype == "ppt" || item.filetype == "rss") {		        
+		        spanfile = "<div class='download'><span class='doc-type'>" + item.filetype + "</span></div>";
+		    }
+		    else
+		        paragraphdesc = "<p>" + item.desc + "</p>";
+
+		    var shortUrl = item.url.substring((item.url.indexOf('/', 8) + 1)).split('?')[0];		    
+
+		    if (spanfile === "")
+		        return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<div><h3><a href='" + item.url + "'>" + item.label + "</a></h3><p>" + item.desc + "<br/><small>" + shortUrl + "</small></p>" + spanfile + "</div>")
+                    .appendTo(ul);
+
+		    return $("<li></li>")
+				.data("item.autocomplete", item)
+				.append("<div><div class='file-wrapper'><h3><a href='" + item.url + "'>" + item.label + "</a></h3><p>" + item.desc + "<br/><small>" + shortUrl + "</small></p></div>" + spanfile + "</div>")
+				.appendTo(ul);            
+		};
+	});
+</script>
+</div>
+<div id="page-wrapper">
+<div class="normal-page" id="page">
+<header role="banner">
+<div id="header">
+<h1><a accesskey="1" href="/"><img alt="Landsbankinn - Forsíða" src="http://assets.l.is/img/logo.png"/></a></h1>
+</div>
+</header>
+<!-- Content Section -->
+<section role="main">
+<!-- Content Wrapper -->
+<div class="content-wrapper" id="content-wrapper">
+<div class="content-inner" id="content">
+<div class="page-info" id="page-info">
+<div class="row">
+<div class="span-4">
+<h1>Vextir</h1>
+</div>
+<div class="span-8 intro-text">
+</div>
+</div>
+</div>
+<!-- Main Row -->
+<form action="Vextir" enctype="multipart/form-data" id="frmMain" method="post">
+<input id="__VIEWSTATE" name="__VIEWSTATE" type="hidden" value="/wEPDwUENTM4MQ9kFgJmD2QWAmYPZBYCAgcPZBYCZg9kFgJmD2QWAmYPZBYCZg8PFgIeD1ZhbGlkYXRpb25Hcm91cGRkZGQNP2McDqX3El79YKQESgajSUzniw=="/>
+<div class="row">
+<div class="main-col span-12">
+<div class="plugin" data-tabs="{}">
+<div id="depositinterests">
+<div class="table-data table-toggle no-zebra row-hover content-box fill shadow">
+<div class="title title-details">
+<div class="ui-unit-bottom">
+<h3 class="title-alt">
+								Innlánsvextir frá 11.1.2014
+							</h3>
+</div>
+<div class="pin top right-end">
+<div class="ui-unit-bottom">
+<h4 class="title-alt">
+<a class="icon-left plus" href="javascript:;" id="toggletable"> Opna alla liði</a>
+</h4>
+</div>
+</div>
+</div>
+<table class="plugin" data-tabletoggle='{"toggleButton":"#toggletable","buttonShow":"Opna alla liði","buttonHide":"Loka öllum liðum"}' id="interesttable">
+<colgroup>
+<col width="70%"></col>
+<col width="15%"></col>
+<col width="15%"></col>
+</colgroup>
+<thead>
+<th>Vaxtaliður</th>
+<th>Vextir</th>
+<th>Eldri vextir</th>
+</thead>
+<tr class="parent plus">
+<td>
+<strong>Vaxtareikningur - 7 daga binding</strong> <br/><small>Þegar þrepi Vaxtareiknings er náð reiknast vextir þreps á alla innstæðuna.</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða á bilinu 0-199.999 
+						</td>
+<td class="right">2,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða á bilinu   200.000-999.999 
+						</td>
+<td class="right">2,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða á bilinu  1.000.000-4.999.999 
+						</td>
+<td class="right">3,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða á bilinu 5.000.000-19.999.999 
+						</td>
+<td class="right">3,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða yfir 20.000.000 
+						</td>
+<td class="right">4,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða á bilinu 0-199.999 
+						</td>
+<td class="right">2,33 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða á bilinu 200.000-999.999 
+						</td>
+<td class="right">2,33 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða á bilinu 1.000.000-4.999.999 
+						</td>
+<td class="right">3,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða á bilinu 5.000.000-19.999.999 
+						</td>
+<td class="right">3,59 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða yfir 20.000.000 
+						</td>
+<td class="right">4,17 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Vaxtareikningur Varðan 60</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða innan við 20.000.000 
+						</td>
+<td class="right">3,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innstæða yfir 20.000.000 
+						</td>
+<td class="right">4,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða innan við  20.000.000 
+						</td>
+<td class="right">3,59 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir innstæða yfir 20.000.000 
+						</td>
+<td class="right">4,17 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Landsbækur verðtryggðar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Landsbók - 12  mánaða binding <br/><small>Ekki tekið við innborgunum lengur.</small>
+</td>
+<td class="right">0,55 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Landsbók - 36  mánaða binding 
+						</td>
+<td class="right">1,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Landsbók - 48  mánaða binding 
+						</td>
+<td class="right">1,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Landsbók - 60  mánaða binding 
+						</td>
+<td class="right">1,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Grunnur, eldri reikningar stofnaðir fyrir 1.1.2003 
+						</td>
+<td class="right">1,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir Landsbóka 36 
+						</td>
+<td class="right">1,69 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir Landsbóka 48 
+						</td>
+<td class="right">1,79 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Mánaðarlegir vextir Landsbóka 60 
+						</td>
+<td class="right">1,88 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Orlofsreikningar verðtryggðir</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Orlofsreikningar 
+						</td>
+<td class="right">1,05 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Framtíðargrunnur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Framtíðargrunnur, óverðtryggður <br/><small>Bundinn til 18 ára aldurs</small>
+</td>
+<td class="right">4,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Framtíðargrunnur verðtryggður <br/><small>Bundinn til 18 ára aldurs (lágmark 3 ár)</small>
+</td>
+<td class="right">2,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Lífeyrisbækur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Lífeyrisbók óverðtryggð 
+						</td>
+<td class="right">4,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Lífeyrisbók verðtryggð 
+						</td>
+<td class="right">2,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Veltureikningar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Almennir veltureikningar fyrirtækja 
+						</td>
+<td class="right">0,85 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Einkareikningar 
+						</td>
+<td class="right">0,85 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Námu- og Klassareikningar 
+						</td>
+<td class="right">0,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Vörðureikningar 1. þrep  innst. 0-250 þús kr. 
+						</td>
+<td class="right">0,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Vörðureikningar 2. þrep  innst. yfir 250 þús kr. <br/><small>Vextir 2.þreps reiknast af innstæðu sem er umfram 1.þrep</small>
+</td>
+<td class="right">1,85 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Innlendir gjaldeyrisreikningar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í USD óbundnir 
+						</td>
+<td class="right">0,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í USD bundið til 3 mán 
+						</td>
+<td class="right">0,45 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í USD bundið til 6 mán 
+						</td>
+<td class="right">1,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í GBP óbundnir 
+						</td>
+<td class="right">0,55 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í GBP bundið til 3 mán 
+						</td>
+<td class="right">0,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í GBP bundið til 6 mán 
+						</td>
+<td class="right">1,50 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CAD óbundnir 
+						</td>
+<td class="right">1,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CAD bundið til 3 mán 
+						</td>
+<td class="right">1,45 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CAD bundið til 6 mán 
+						</td>
+<td class="right">1,95 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í DKK óbundnir 
+						</td>
+<td class="right">0,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í DKK bundið til 3 mán 
+						</td>
+<td class="right">0,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í DKK  bundið til 6 mán 
+						</td>
+<td class="right">0,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í NOK óbundnir 
+						</td>
+<td class="right">1,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í NOK bundið til 3 mán 
+						</td>
+<td class="right">1,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í NOK bundið til 6 mán 
+						</td>
+<td class="right">2,60 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í SEK  óbundnir 
+						</td>
+<td class="right">1,00 %</td>
+<td class="right">1,15%</td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í SEK bundið til 3 mán 
+						</td>
+<td class="right">1,25 %</td>
+<td class="right">1,40%</td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í SEK bundið til 6 mán 
+						</td>
+<td class="right">1,50 %</td>
+<td class="right">1,65%</td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CHF óbundnir 
+						</td>
+<td class="right">0,05 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CHF bundið til 3 mán 
+						</td>
+<td class="right">0,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í CHF bundið til 6 mán 
+						</td>
+<td class="right">0,55 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í JPY óbundnir 
+						</td>
+<td class="right">0,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í JPY bundið til 3 mán 
+						</td>
+<td class="right">0,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í JPY bundið til 6 mán 
+						</td>
+<td class="right">0,45 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í EUR óbundnir 
+						</td>
+<td class="right">0,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í EUR bundið til 3 mán 
+						</td>
+<td class="right">0,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Innistæður í EUR bundið til 6 mán 
+						</td>
+<td class="right">1,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Sparisjóðsbækur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Almennar sparisjóðsbækur 
+						</td>
+<td class="right">0,85 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Kjörbækur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörbók Grunnþrep <br/><small>Reiknast á allar innborganir sem ná ekki 30 dögum.</small>
+</td>
+<td class="right">0,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörbók 1. þrep <br/><small>Reiknast á allar innborganir sem ná 30 dögum.</small>
+</td>
+<td class="right">1,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörbók 2. þrep <br/><small>Reiknast á allar innborganir sem ná 180 dögum.</small>
+</td>
+<td class="right">1,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Sparireikningar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sparireikningur 3 <br/><small>Bundinn til 3 mánaða.</small>
+</td>
+<td class="right">3,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sparireikningur 12 <br/><small>Bundinn til 12 mánaða</small>
+</td>
+<td class="right">3,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sparireikningur 24 <br/><small>Bundinn til 24ra mánaða (1% úttektargjald á úttekna fjárhæð ef tekið er út áður en binditíma lýkur)</small>
+</td>
+<td class="right">4,45 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sparivelta <br/><small>Ekki heimilt að stofna nýja reikninga</small>
+</td>
+<td class="right">1,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Fastvaxtareikningur</strong> <br/><small>Lágmarksupphæð kr.500 þús. Úttektargjald 2% á úttekna fjárhæð ef tekið er út aður en binditíma lýkur.</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 3 mánaða binding 
+						</td>
+<td class="right">4,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 6 mánaða binding 
+						</td>
+<td class="right">4,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 12 mánaða binding 
+						</td>
+<td class="right">5,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 24 mánaða binding 
+						</td>
+<td class="right">5,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 36 mánaða binding 
+						</td>
+<td class="right">6,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fastvaxtareikningur - 60 mánaða binding 
+						</td>
+<td class="right">6,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Fasteignagrunnur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fasteignagrunnur, óverðtryggður 
+						</td>
+<td class="right">4,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fasteignagrunnur, verðtryggður 
+						</td>
+<td class="right">2,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>VSK reikningur</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							VSK reikningur 
+						</td>
+<td class="right">3,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Sérstakar verðbætur</strong> <br/><small>Fyrir alla verðtryggða reikninga.</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sérstakar verðbætur innan mánaðar (verðtryggð innlán) á ársgrundvelli 
+						</td>
+<td class="right">6,34 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Sérstakar verðbætur innan mánaðar (verðtryggð innlán) á mánuði 
+						</td>
+<td class="right">0,53 %</td>
+<td class="right"></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="loaninterest">
+<div class="table-data table-toggle no-zebra row-hover content-box fill shadow">
+<div class="title title-details">
+<div class="ui-unit-bottom">
+<h3 class="title-alt">
+								Útlánsvextir frá 11.1.2014
+							</h3>
+</div>
+<div class="pin top right-end">
+<div class="ui-unit-bottom">
+<h4 class="title-alt">
+<a class="icon-left plus" href="javascript:;" id="toggletableOut"> Opna alla liði</a>
+</h4>
+</div>
+</div>
+</div>
+<table class="plugin" data-tabletoggle='{"toggleButton":"#toggletableOut","buttonShow":"Opna alla liði","buttonHide":"Loka öllum liðum"}' id="outinteresttable">
+<colgroup>
+<col width="70%"></col>
+<col width="15%"></col>
+<col width="15%"></col>
+</colgroup>
+<thead>
+<th>Vaxtaliður</th>
+<th>Vextir</th>
+<th>Eldri vextir</th>
+</thead>
+<tr class="parent plus">
+<td>
+<strong>Víxillán</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvextir án álags. 
+						</td>
+<td class="right">8,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							1. Flokkur kjörvextir 
+						</td>
+<td class="right">9,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							2. Flokkur kjörvextir 
+						</td>
+<td class="right">10,20 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							3. Flokkur kjörvextir 
+						</td>
+<td class="right">11,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							4. Flokkur kjörvextir 
+						</td>
+<td class="right">11,85 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							5. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							6. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							7. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							8. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							9. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Óverðtryggð skuldabréfalán</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvextir án álags. 
+						</td>
+<td class="right">7,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							1. Flokkur kjörvextir 
+						</td>
+<td class="right">8,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							2. Flokkur kjörvextir 
+						</td>
+<td class="right">9,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							3. Flokkur kjörvextir 
+						</td>
+<td class="right">10,00 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							4. Flokkur kjörvextir 
+						</td>
+<td class="right">10,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							5. Flokkur kjörvextir 
+						</td>
+<td class="right">11,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							6. Flokkur kjörvextir 
+						</td>
+<td class="right">11,90 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							7. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							8. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							9. Flokkur kjörvextir 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Eldri lán án kjörvaxta 
+						</td>
+<td class="right">10,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Almenn ávöxtunarkrafa viðskiptaskuldabréfa 
+						</td>
+<td class="right">12,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - breytilegir vextir, lægstu vextir 
+						</td>
+<td class="right">6,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - breytilegir vextir, viðbótarlán (70-85%) 
+						</td>
+<td class="right">7,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - fastir vextir til 36 mánaða, lægstu vextir 
+						</td>
+<td class="right">7,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - fastir vextir til 36 mánaða, viðbótarlán (70-85%) 
+						</td>
+<td class="right">8,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - fastir vextir til 60 mánaða, lægstu vextir 
+						</td>
+<td class="right">7,60 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Óverðtryggð íbúðalán - fastir vextir til 60 mánaða, viðbótarlán (70-85%) 
+						</td>
+<td class="right">8,60 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Tölvukaupalán námsmanna 
+						</td>
+<td class="right">7,10 %</td>
+<td class="right">0,00%</td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Verðtryggð skuldabréfalán</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvextir án álags. 
+						</td>
+<td class="right">4,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							1. Flokkur kjörvextir 
+						</td>
+<td class="right">5,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							2. Flokkur kjörvextir 
+						</td>
+<td class="right">6,15 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							3. Flokkur kjörvextir 
+						</td>
+<td class="right">7,05 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							4. Flokkur kjörvextir 
+						</td>
+<td class="right">7,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							5. Flokkur kjörvextir 
+						</td>
+<td class="right">8,45 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							6. Flokkur kjörvextir 
+						</td>
+<td class="right">8,95 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							7. Flokkur kjörvextir 
+						</td>
+<td class="right">9,35 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							8. Flokkur kjörvextir 
+						</td>
+<td class="right">9,60 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							9. Flokkur kjörvextir 
+						</td>
+<td class="right">9,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Eldri lán án kjörvaxta 
+						</td>
+<td class="right">7,30 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Almenn ávöxtunarkrafa viðskiptaskuldabréfa 
+						</td>
+<td class="right">9,75 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Verðtryggð íbúðalán - breytilegir vextir, lægstu vextir 
+						</td>
+<td class="right">3,50 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Verðtryggð íbúðalán - breytilegir vextir, viðbótarlán (70-85%) 
+						</td>
+<td class="right">4,50 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Yfirdráttarlán og reikningslán</strong> <br/><small>Vextir skuldfærast mánaðarlega</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Yfirdráttarlán og reikningslán fyrirtækja 
+						</td>
+<td class="right">12,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Nýsköpunarlán 
+						</td>
+<td class="right">9,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Yfirdráttarlán einstaklinga (Einkareikningar) 
+						</td>
+<td class="right">12,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Yfirdráttarlán Vörðufélaga, lægstu vextir 
+						</td>
+<td class="right">12,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Yfirdráttarlán Vörðufélaga, hæstu vextir 
+						</td>
+<td class="right">12,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Lækkaðu yfirdráttinn 
+						</td>
+<td class="right">9,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Metan-lán 
+						</td>
+<td class="right">9,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Náman vegna LÍN 
+						</td>
+<td class="right">7,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Náman, almennir reikningar 
+						</td>
+<td class="right">9,05 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Náman, tölvukaupalán (ekki veitt ný lán í formi reikningslána) 
+						</td>
+<td class="right">9,10 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Kreditkort, Visa og Mastercard</strong> <br/><small>Vextir skuldfærast mánaðarlega</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fjölgreiðslur og veltikort 
+						</td>
+<td class="right">12,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Fjölgreiðslur og veltikort fyrir vörðufélaga 
+						</td>
+<td class="right">12,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Dráttarvextir</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Dráttarvextir, skv. ákvörðun Seðlabanka Íslands 
+						</td>
+<td class="right">13,00 %</td>
+<td class="right"></td>
+</tr>
+<tr class="parent plus">
+<td>
+<strong>Bíla- og tækjafjármögnun</strong> <br/><small>Lán með kjörvöxtum eru veitt með álagi, sem er breytilegt eftir lántakendum og tryggingum, nú allt að 5,00% (500 punktar).</small>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+<strong>Óverðtryggð lán og samningar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvextir - Breytilegir vextir 
+						</td>
+<td class="right">7,25 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvaxtaflokkur V (vörðufélagar) 
+						</td>
+<td class="right">9,40 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvaxtaflokkur M (almenn kjör) 
+						</td>
+<td class="right">9,65 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							F36 - Fastir vextir í 3 ár 
+						</td>
+<td class="right">10,05 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+<strong>Verðtryggð lán og samningar</strong>
+</td>
+<td class="right"></td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvextir - Breytilegir vextir 
+						</td>
+<td class="right">5,70 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvaxtaflokkur V (vörðufélagar) 
+						</td>
+<td class="right">7,80 %</td>
+<td class="right"></td>
+</tr>
+<tr class="child">
+<td style="padding-left:30px;">
+							Kjörvaxtaflokkur M (almenn kjör) 
+						</td>
+<td class="right">8,05 %</td>
+<td class="right"></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<span id="ctl27_ErrorMsg"></span>
+<h2>Nýjasta vaxtatafla í prentvænni útgáfu </h2>
+<p><a class="pdf" href="/Uploads/Documents/UmLandsbankann/vaxtaakvordun_140111.pdf" target="_blank" title="Vextir Landsbankans">Vaxtatafla Landsbankans</a>  - Gildir frá 11. janúar 2014</p>
+							Vaxtatafla Landsbankans er birt með fyrirvara um innsláttarvillur og eru ákvæði hennar breytanleg án fyrirvara.
+						</div>
+<!-- /Main column -->
+<!-- HAS RIGHT COLUMN == 'false' -->
+</div>
+<!-- /Main Row -->
+<div class="row">
+<div class="span-12"></div>
+</div>
+</form>
+</div>
+</div>
+<!-- /Content Wrapper -->
+</section>
+<!-- /Content Section -->
+<!-- Main nav, search etc. -->
+<section>
+<a class="nav-menu" data-plugin="toggleState: 'show-menu'" href="#main-nav"></a>
+<a class="nav-ob" data-plugin="toggleState: 'show-ob'" href="#ob-nav"></a>
+<nav role="navigation">
+<div id="main-nav">
+<div class="ui-grid" id="global-nav">
+<div class="ui-u sites plugin" data-hoverhelper='{ "css": ["backgroundColor"] }'>
+<ul class="ui-tabs"><li class="sel " data-background-color="#50A7B9"><a href="http://www.landsbankinn.is">Þjónusta</a></li><li data-background-color="#ff7c3d"><a href="http://bankinn.landsbankinn.is">Bankinn</a></li><li data-background-color="#64a337"><a href="http://umraedan.landsbankinn.is">Umræðan</a></li></ul>
+<div class="hover-helper"></div>
+</div>
+<div class="ui-u english">
+<a href="http://www.landsbankinn.com">English</a>
+</div>
+<div class="onlinebanks ui-dropdown-menu" id="login">
+<a class="menu-link" href="javascript:;">Netbankar</a>
+<div class="ui-dropdown">
+<div class="hover-helper"></div>
+<ul>
+<li><a href="https://www.einkabanki.is/Shell/Login.aspx">Einstaklingar</a></li>
+<li><a href="https://www.fbl.is/Shell/Login.aspx">Fyrirtæki</a></li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="nav"><li class="einstaklingar has-dropdown" data-mega="einstaklingar"><a href="/einstaklingar/">Einstaklingar</a><ul class="ui-list"><li><a href="/einstaklingar/">Yfirlit</a></li><li><a class="vildarthjonusta" href="/einstaklingar/vildarthjonusta/">Vildarþjónustur</a></li><li class="parent "><a class="sparnadurogfjarfestingar" href="/einstaklingar/sparnadurogfjarfestingar/">Sparnaður og fjárfestingar</a></li><li class="parent "><a class="eignastyring" href="/einstaklingar/eignastyring/">Eignastýring</a></li><li><a class="lan-og-fjarmognun" href="/einstaklingar/lan-og-fjarmognun/">Lán og fjármögnun</a></li><li><a class="greidslukort" href="/einstaklingar/greidslukort/">Greiðslukort</a></li><li><a class="lifeyrissparnadur" href="/einstaklingar/lifeyrissparnadur/">Lífeyrissparnaður</a></li><li class="parent "><a class="tryggingar" href="/einstaklingar/tryggingar/">Tryggingar</a></li><li class="parent "><a class="lausnirfyrirheimili" href="/einstaklingar/lausnirfyrirheimili/">Lausnir fyrir heimili</a></li><li><a class="afgreidslaogthjonusta" href="/einstaklingar/afgreidslaogthjonusta/">Afgreiðsla og þjónusta</a></li><li><a class="umbodsmadurvidskiptavina" href="/einstaklingar/umbodsmadurvidskiptavina/">Umboðsmaður viðskiptavina</a></li><li><a class="umsoknir" href="/einstaklingar/umsoknir/">Umsóknir</a></li><li><a class="skilmalar" href="/einstaklingar/skilmalar/">Skilmálar</a></li><li><a class="reiknivelar" href="/einstaklingar/reiknivelar/">Reiknivélar</a></li></ul></li><li class="fyrirtaeki has-dropdown" data-mega="fyrirtaeki"><a href="/fyrirtaeki/">Fyrirtæki</a><ul class="ui-list"><li><a href="/fyrirtaeki/">Yfirlit</a></li><li><a class="fjarmognun" href="/fyrirtaeki/fjarmognun/">Fjármögnun</a></li><li class="parent "><a class="avoxtun-fjarmuna" href="/fyrirtaeki/avoxtun-fjarmuna/">Ávöxtun fjármuna</a></li><li><a class="rafraenar-lausnir" href="/fyrirtaeki/rafraenar-lausnir/">Rafrænar lausnir</a></li><li class="parent "><a class="nyskopun" href="/fyrirtaeki/nyskopun/">Nýsköpun</a></li><li class="parent "><a class="kortalausnir" href="/fyrirtaeki/kortalausnir/">Kortalausnir</a></li><li class="parent "><a class="gjaldeyrisvidskipti" href="/fyrirtaeki/gjaldeyrisvidskipti/">Gjaldeyrisviðskipti</a></li><li><a class="lifeyrissplaunagreidendur" href="/fyrirtaeki/lifeyrissplaunagreidendur/">Lífeyrissparnaður</a></li><li><a class="tryggingar" href="/fyrirtaeki/tryggingar/">Tryggingar</a></li><li><a class="eignastyring" href="/fyrirtaeki/eignastyring/">Eignastýring</a></li><li><a class="fyrirtaekjaradgjof" href="/fyrirtaeki/fyrirtaekjaradgjof/">Fyrirtækjaráðgjöf</a></li><li><a class="markadsvidskipti" href="/fyrirtaeki/markadsvidskipti/">Markaðsviðskipti</a></li><li><a class="fyrirtaekjathjonustautibua" href="/fyrirtaeki/fyrirtaekjathjonustautibua/">Þjónusta útibúa</a></li><li><a class="husfelagathjonusta" href="/fyrirtaeki/husfelagathjonusta/">Húsfélagaþjónusta</a></li><li class="parent "><a class="abyrgdir" href="/fyrirtaeki/abyrgdir/">Ábyrgðir</a></li><li><a class="reikningamidlun" href="/fyrirtaeki/reikningamidlun/">Reikningamiðlun</a></li><li class="parent "><a class="lausnirfyrirfyrirtaeki" href="/fyrirtaeki/lausnirfyrirfyrirtaeki/">Lausnir fyrir fyrirtæki</a></li><li><a class="umsoknir-og-skilagreinar" href="/fyrirtaeki/umsoknir-og-skilagreinar/">Umsóknir og skilagreinar</a></li><li><a class="reiknivelar" href="/fyrirtaeki/reiknivelar/">Reiknivélar</a></li><li><a class="skilmalar" href="/fyrirtaeki/skilmalar/">Skilmálar</a></li><li><a class="umbodsmadur-vidskiptavina" href="/fyrirtaeki/umbodsmadur-vidskiptavina/">Umboðsmaður viðskiptavina</a></li><li><a class="fyrirtaekjaskra" href="/fyrirtaeki/fyrirtaekjaskra/">Fyrirtækjaskrá</a></li><li class="parent "><a class="unconference" href="/fyrirtaeki/unconference/">unConference</a></li><li><a class="thjonusta" href="/fyrirtaeki/thjonusta/">Þjónusta</a></li><li class="parent "><a class="sjavarutvegur" href="/fyrirtaeki/sjavarutvegur/">Sjávarútvegur</a></li><li><a class="fyrirtaekjamidstod" href="/fyrirtaeki/fyrirtaekjamidstod/">Fyrirtækjamiðstöð</a></li></ul></li><li class="markadir has-dropdown" data-mega="markadir"><a href="/markadir/">Markaðir</a><ul class="ui-list"><li><a href="/markadir/">Yfirlit</a></li><li><a class="hlutabref" href="/markadir/hlutabref/">Hlutabréf</a></li><li><a class="skuldabref" href="/markadir/skuldabref/">Skuldabréf</a></li><li><a class="gjaldmidlar" href="/markadir/gjaldmidlar/">Gjaldmiðlar</a></li><li><a class="sjodir" href="/markadir/sjodir/">Sjóðir</a></li><li><a class="visitolur" href="/markadir/visitolur/">Vísitölur</a></li><li><a class="frettir" href="/markadir/frettir/">Fréttir</a></li><li><a class="utgafa" href="/markadir/utgafa/">Útgáfa</a></li><li><a class="thjonusta" href="/markadir/thjonusta/">Þjónusta</a></li></ul></li></ul>
+<div class="m-english flag-en">
+<a href="http://www.landsbankinn.com">English</a>
+</div>
+<ul class="nav info-boxes">
+<li><a class="contact-us plugin" data-dialog="{}" href="/hafdu-samband/">Hafðu samband</a></li>
+<li><a class="search-icon" href="" id="searchicon">Leita</a></li>
+</ul>
+</div>
+<div class="only-mobile" id="ob-nav">
+<ul class="nav">
+<li>
+<h3>Einstaklingar</h3>
+<ul class="ui-list">
+<li><a class="icon-nav icon-nav-mobile" href="https://m.einkabanki.is/shell/login.aspx?culture=is-IS">Farsímabanki</a></li>
+<li><a class="icon-nav icon-nav-desktop" href="https://www.einkabanki.is/Shell/Login.aspx?culture=is-IS">Netbanki einstaklinga</a></li>
+</ul>
+<h3>Fyrirtæki</h3>
+<ul class="ui-list">
+<li><a class="icon-nav icon-nav-desktop" href="https://www.fbl.is/Shell/Login.aspx">Netbanki fyrirtækja</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!--[if ! lte IE 6]><!-->
+<div class="mega-dropdown" id="md">
+<div class="mega-inner">
+<div class="einstaklingar content-box">
+<a class="overview" href="/einstaklingar/">Yfirlit</a>
+<ul class="ui-list row">
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/sparnadurogfjarfestingar/">Sparnaður og fjárfestingar</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/veldu-sparnadarleid/">Veldu sparnaðarleið</a>
+</li>
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/bankareikningar/">Bankareikningar</a>
+</li>
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/sjodir/">Sjóðir</a>
+</li>
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/skuldabref/">Skuldabréf</a>
+</li>
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/hlutabref/">Hlutabréf</a>
+</li>
+<li>
+<a href="/einstaklingar/sparnadurogfjarfestingar/sparnadur-i-stuttu-mali/">Sparnaður í stuttu máli</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/lan-og-fjarmognun/">Lán og fjármögnun</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/lan-og-fjarmognun/fasteignalan/">Fasteignalán</a>
+</li>
+<li>
+<a href="/einstaklingar/lan-og-fjarmognun/framkvaemdalan/">Framkvæmdalán</a>
+</li>
+<li>
+<a href="/einstaklingar/lan-og-fjarmognun/bilafjarmognun/">Bílafjármögnun</a>
+</li>
+<li>
+<a href="/einstaklingar/lan-og-fjarmognun/skammtimalan/">Skammtímalán</a>
+</li>
+<li>
+<a href="/einstaklingar/reiknivelar/">Reiknivélar</a>
+</li>
+<li>
+<a href="/einstaklingar/lausnirfyrirheimili/endurutreikningur-gengistryggdra-lana/">Endurútreikningur lána</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/greidslukort/">Greiðslukort</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/greidslukort/debetkort/">Debetkort</a>
+</li>
+<li>
+<a href="/einstaklingar/greidslukort/kreditkort/">Kreditkort</a>
+</li>
+<li>
+<a href="/einstaklingar/greidslukort/gjafakort/">Gjafakort</a>
+</li>
+<li>
+<a href="/einstaklingar/greidslukort/fermingarkort/">Fermingarkort</a>
+</li>
+<li>
+<a href="/einstaklingar/greidslukort/sjalfvirkargreidslur/">Sjálfvirkar greiðslur</a>
+</li>
+<li>
+<a href="/einstaklingar/greidslukort/pinnid-a-minnid/">Pinnið á minnið</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3 last-child">
+<h3 class="title" style="">
+<a href="/einstaklingar/lifeyrissparnadur/">Lífeyrissparnaður</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/vidbotarlifeyrissparnadur/">Viðbótarlífeyrir</a>
+</li>
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/logbundinnlifeyrissparnadur/">Lögbundinn lífeyrir</a>
+</li>
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/islenskilifeyrissjodurinn/">Íslenski lífeyrissjóðurinn</a>
+</li>
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/lifeyrissjodirivorslu/tannlaeknafelagislands/">Lífeyrissj. Tannlæknafélags Íslands</a>
+</li>
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/umsoknirogskilagreinar/">Umsóknir og skilagreinar</a>
+</li>
+<li>
+<a href="/einstaklingar/lifeyrissparnadur/lifeyrissparnadur-i-stuttu-mali/">Lífeyrissparnaður í stuttu máli</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="ui-list row">
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/eignastyring/">Eignastýring</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/eignastyring/radgjof/">Verðbréfa- og lífeyrisráðgjöf</a>
+</li>
+<li>
+<a href="/einstaklingar/eignastyring/einkabankathjonusta/">Einkabankaþjónusta</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/tryggingar/">Tryggingar</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/tryggingar/lif-ogsjukdomatrygging/">Líf- og sjúkdómatrygging</a>
+</li>
+<li>
+<a href="/einstaklingar/tryggingar/skadatryggingar/">Skaðatryggingar</a>
+</li>
+<li>
+<a href="/einstaklingar/tryggingar/reiknadudaemid/">Reiknaðu dæmið</a>
+</li>
+<li>
+<a href="/einstaklingar/tryggingar/radgjafar/">Ráðgjöf</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/einstaklingar/afgreidslaogthjonusta/">Afgreiðsla og þjónusta</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/netbanki/">Netbanki</a>
+</li>
+<li>
+<a href="/utibu/">Útibú</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/hradbankar/">Hraðbankar</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/thjonustuver-4104000/">Þjónustuver</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/greidsluthjonusta/">Greiðsluþjónusta</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/husfelagathjonusta/">Húsfélagaþjónusta</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/pappirslaus-vidskipti/">Pappírslaus viðskipti</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3 last-child">
+<h3 class="title" style="">
+<a href="/einstaklingar/">Annað</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/einstaklingar/umsoknir/">Umsóknir</a>
+</li>
+<li>
+<a href="/einstaklingar/skilmalar/">Skilmálar</a>
+</li>
+<li>
+<a href="/einstaklingar/reiknivelar/">Reiknivélar</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/fjarmalafraedsla/">Fjármálafræðsla</a>
+</li>
+<li>
+<a href="/einstaklingar/afgreidslaogthjonusta/fjarmalafraedsla/raunveruleikur/">Raunveruleikurinn</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="ui-list row">
+<li class="mega-list span-2 bg">
+<h3 class="title" style="border-top: 5px solid #f18d59;">
+<a href="/einstaklingar/lan-og-fjarmognun/bilafjarmognun/">Bílafjármögnun</a>
+</h3>
+<a class="img" href="/einstaklingar/lan-og-fjarmognun/bilafjarmognun/" style="background: url(/lisalib/getfile.aspx?itemid=591ccdcc-44a0-4fe2-a3ac-26bd585000eb);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="border-top: 5px solid #333333;">
+<a href="/einstaklingar/vildarthjonusta/vardan/">Varðan</a>
+</h3>
+<a class="img" href="/einstaklingar/vildarthjonusta/vardan/" style="background: url(/lisalib/getfile.aspx?itemid=382a8527-2df9-4b32-9c9b-90094b55476e);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="border-top: 5px solid #3badbb;">
+<a href="/einstaklingar/vildarthjonusta/naman/">Náman</a>
+</h3>
+<a class="img" href="/einstaklingar/vildarthjonusta/naman/" style="background: url(/lisalib/getfile.aspx?itemid=602de08c-cf60-11e2-ac9b-0050568800ef);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="border-top: 5px solid #3a718d;">
+<a href="/einstaklingar/vildarthjonusta/klassi/">Klassi</a>
+</h3>
+<a class="img" href="/einstaklingar/vildarthjonusta/klassi/" style="background: url(/lisalib/getfile.aspx?itemid=5fe8e524-e696-4806-936a-fe7f61eccb56);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="border-top: 5px solid #fac09d;">
+<a href="/einstaklingar/vildarthjonusta/sprotarnir/">Sprotarnir</a>
+</h3>
+<a class="img" href="/einstaklingar/vildarthjonusta/sprotarnir/" style="background: url(/lisalib/getfile.aspx?itemid=d6573b81-c2d6-4d25-835d-cc2b244293f2);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg last-child">
+<h3 class="title" style="border-top: 5px solid #95c7d2;">
+<a href="/einstaklingar/vildarthjonusta/aukakronur/">Aukakrónur</a>
+</h3>
+<a class="img" href="/einstaklingar/vildarthjonusta/aukakronur/" style="background: url(/lisalib/getfile.aspx?itemid=76ff284c-57e0-4d38-ab5f-2e948adadae5);height:119px;"></a>
+</li>
+</ul>
+</div>
+<div class="fyrirtaeki content-box">
+<a class="overview" href="/fyrirtaeki/">Yfirlit</a>
+<ul class="ui-list row">
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/fjarmognun/">Lán og fjármögnun</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/fjarmognun/rekstrarlan/">Rekstrarlán</a>
+</li>
+<li>
+<a href="/fyrirtaeki/fjarmognun/fjarfestingarlan/">Fjárfestingarlán</a>
+</li>
+<li>
+<a href="/fyrirtaeki/fjarmognun/bila-og-taekjafjarmognun/">Fjármögnun bíla og tækja</a>
+</li>
+<li>
+<a href="/fyrirtaeki/fjarmognun/fjarmognun-a-markadi/">Fjármögnun á markaði</a>
+</li>
+<li>
+<a href="/fyrirtaeki/lausnirfyrirfyrirtaeki/">Lausnir fyrir fyrirtæki</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/avoxtun-fjarmuna/">Ávöxtun fjármuna</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/avoxtun-fjarmuna/bankareikningar/">Bankareikningar</a>
+</li>
+<li>
+<a href="/fyrirtaeki/avoxtun-fjarmuna/sjodir/">Sjóðir</a>
+</li>
+<li>
+<a href="/fyrirtaeki/avoxtun-fjarmuna/skuldabref/">Skuldabréf</a>
+</li>
+<li>
+<a href="/fyrirtaeki/avoxtun-fjarmuna/hlutabref/">Hlutabréf</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/rafraenar-lausnir/">Rafrænar lausnir</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/rafraenar-lausnir/netbanki/">Netbanki</a>
+</li>
+<li>
+<a href="/fyrirtaeki/rafraenar-lausnir/b2b/">B2B</a>
+</li>
+<li>
+<a href="/fyrirtaeki/rafraenar-lausnir/innheimtuthjonusta/">Innheimtuþjónusta</a>
+</li>
+<li>
+<a href="/fyrirtaeki/reikningamidlun/">Reikningamiðlun</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3 last-child">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/nyskopun/">Nýsköpunarþjónusta</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/nyskopun/studningsumhverfid/">Stuðningsumhverfið</a>
+</li>
+<li>
+<a href="/fyrirtaeki/nyskopun/myndbond/">Myndbönd</a>
+</li>
+<li>
+<a href="/fyrirtaeki/nyskopun/frumkvodlar/">Frumkvöðlar</a>
+</li>
+<li>
+<a href="/fyrirtaeki/unconference/">unConference</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="ui-list row">
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/kortalausnir/">Kortalausnir</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/kortalausnir/innkaupakort/">Innkaupakort</a>
+</li>
+<li>
+<a href="/fyrirtaeki/kortalausnir/vidskiptakort/">Viðskiptakort</a>
+</li>
+<li>
+<a href="/fyrirtaeki/kortalausnir/inneignarkort/">Inneignarkort</a>
+</li>
+<li>
+<a href="/fyrirtaeki/kortalausnir/gjafakort/">Gjafakort</a>
+</li>
+<li>
+<a href="/fyrirtaeki/kortalausnir/faersluvefur/">Færsluvefur</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/markadsvidskipti/">Markaðsviðskipti</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/gjaldeyrisvidskipti/">Gjaldeyrisviðskipti</a>
+</li>
+<li>
+<a href="/fyrirtaeki/markadsvidskipti/">Markaðsviðskipti</a>
+</li>
+<li>
+<a href="/fyrirtaeki/eignastyring/">Eignastýring lögaðila</a>
+</li>
+<li>
+<a href="/fyrirtaeki/fyrirtaekjaradgjof/">Fyrirtækjaráðgjöf</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/lifeyrissplaunagreidendur/">Lífeyrir og tryggingar</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/lifeyrissplaunagreidendur/">Lífeyrissparnaður</a>
+</li>
+<li>
+<a href="/fyrirtaeki/tryggingar/">Tryggingar</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-3 last-child">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/thjonusta/">Þjónusta</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/fyrirtaeki/husfelagathjonusta/">Húsfélagaþjónusta</a>
+</li>
+<li>
+<a href="/fyrirtaeki/fyrirtaekjathjonustautibua/">Þjónusta útibúa</a>
+</li>
+<li>
+<a href="/fyrirtaeki/abyrgdir/">Ábyrgðir</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="ui-list row">
+<li class="mega-list span-2 bg">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/reiknivelar/">Reiknivélar</a>
+</h3>
+<a class="img" href="/fyrirtaeki/reiknivelar/" style="background: url(/lisalib/getfile.aspx?itemid=d7586a3f-099d-11e3-8756-0050568800ef);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/umsoknir-og-skilagreinar/">Umsóknir</a>
+</h3>
+<a class="img" href="/fyrirtaeki/umsoknir-og-skilagreinar/" style="background: url(/lisalib/getfile.aspx?itemid=d7586a40-099d-11e3-8756-0050568800ef);height:119px;"></a>
+</li>
+<li class="mega-list span-2 bg">
+<h3 class="title" style="">
+<a href="/fyrirtaeki/fyrirtaekjaskra/">Fyrirtækjaskrá</a>
+</h3>
+<a class="img" href="/fyrirtaeki/fyrirtaekjaskra/" style="background: url(/lisalib/getfile.aspx?itemid=d7586a3e-099d-11e3-8756-0050568800ef);height:119px;"></a>
+</li>
+<li class="mega-list span-3 bg">
+<h3 class="title" style="">
+<a href="/vextir/">Vextir</a>
+</h3>
+<a class="img" href="/vextir/" style="background: url(/lisalib/getfile.aspx?itemid=d7586a42-099d-11e3-8756-0050568800ef);height:119px;"></a>
+</li>
+<li class="mega-list span-3 bg last-child">
+<h3 class="title" style="">
+<a href="/verdskra/">Verðskrá</a>
+</h3>
+<a class="img" href="/verdskra/" style="background: url(/lisalib/getfile.aspx?itemid=d7586a41-099d-11e3-8756-0050568800ef);height:119px;"></a>
+</li>
+</ul>
+</div>
+<div class="markadir content-box">
+<a class="overview" href="/markadir/">Yfirlit</a>
+<ul class="ui-list row">
+<li class="mega-list span-4">
+<h3 class="title" style="">
+<a href="/markadir/">Verðbréf</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/hlutabref/">Hlutabréf</a>
+</li>
+<li>
+<a href="/markadir/skuldabref/">Skuldabréf</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-4">
+<h3 class="title" style="">
+<a href="/markadir/gjaldmidlar/">Gjaldmiðlar</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/gjaldmidlar/">Gengi gjaldmiðla</a>
+</li>
+<li>
+<a href="/markadir/gjaldmidlar/gengisthroun/">Gengisþróun</a>
+</li>
+<li>
+<a href="/markadir/gjaldmidlar/krossar/">Krossar</a>
+</li>
+<li>
+<a href="/markadir/gjaldmidlar/langtimavextir/">Langtímavextir</a>
+</li>
+<li>
+<a href="/markadir/gjaldmidlar/xml-gengi/">XML gengi</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-4 last-child">
+<h3 class="title" style="">
+<a href="/markadir/sjodir/">Sjóðir</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/sjodir/einblodungar/">Einblöðungar</a>
+</li>
+<li>
+<a href="/markadir/sjodir/samanburdur-throunar/">Samanburður þróunar</a>
+</li>
+<li>
+<a href="/markadir/sjodir/gengisjodaumaramot/">Gengi sjóða um áramót</a>
+</li>
+<li>
+<a href="/markadir/sjodir/gengisjodavidslit/">Gengi sjóða við slit</a>
+</li>
+<li>
+<a href="/markadir/sjodir/ahaettuthaettir/">Áhættuþættir</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="ui-list row">
+<li class="mega-list span-4">
+<h3 class="title" style="">
+<a href="/markadir/visitolur/">Vísitölur</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/visitolur/samanburdur-throunar/">Samanburður þróunar</a>
+</li>
+<li>
+<a href="/markadir/visitolur/visitalaneysluverds/">Vísitala neysluverðs</a>
+</li>
+<li>
+<a href="/markadir/visitolur/greidslujofnunarvisitala/">Greiðslujöfnunarvísitala</a>
+</li>
+<li>
+<a href="/markadir/visitolur/">Fleiri vísitölur</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-4">
+<h3 class="title" style="">
+<a href="/markadir/utgafa/">Útgáfa</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/utgafa/">Hagfræðideild</a>
+</li>
+<li>
+<a href="/markadir/utgafa/dagbok-eignastyringar/">Dagbók Eignastýringar</a>
+</li>
+</ul>
+</li>
+<li class="mega-list span-4 last-child">
+<h3 class="title" style="">
+<a href="/markadir/thjonusta/">Þjónusta</a>
+</h3>
+<ul class="ui-list">
+<li>
+<a href="/markadir/thjonusta/markadsvidskipti/">Markaðsviðskipti</a>
+</li>
+<li>
+<a href="/markadir/thjonusta/fyrirtaekjaradgjof/">Fyrirtækjaráðgjöf</a>
+</li>
+<li>
+<a href="/markadir/thjonusta/eignastyring-logadila/">Eignastýring lögaðila</a>
+</li>
+<li>
+<a href="/markadir/thjonusta/lausafjarstyring/">Lausafjárstýring</a>
+</li>
+<li>
+<a href="/markadir/thjonusta/vidskiptavakt/">Viðskiptavakt</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!--<![endif]-->
+</nav>
+<!-- GPS -->
+<nav role="navigation">
+<div id="gps"><ul><li><a href="/">Forsíða</a><span class="nav-toggle"></span><ul><li><a href="/einstaklingar/">Einstaklingar</a><span class="nav-toggle"></span></li><li><a href="/fyrirtaeki/">Fyrirtæki</a><span class="nav-toggle"></span></li><li><a href="/markadir/">Markaðir</a><span class="nav-toggle"></span></li><li><a href="/frettir/">Fréttir</a></li><li><a href="/hafdu-samband/">Hafðu samband</a><span class="nav-toggle"></span></li><li><a href="/rss/">RSS</a></li><li><a href="/vefur-landsbankans/">Vefur Landsbankans</a><span class="nav-toggle"></span></li><li><a href="/urlausn-mala/">Úrlausn mála</a><span class="nav-toggle"></span></li><li><a href="/algengar-spurningar/">Algengar spurningar</a></li></ul></li></ul></div>
+</nav>
+<!-- /GPS -->
+</section>
+<!-- /Main nav, search etc. -->
+<footer class="content-wrapper footer-sub only-desktop" role="contentinfo">
+<div class="content-inner">
+<hr/>
+<section class="row">
+<div class="span-9">
+<h2 class="header-plain"><a class="plugin" data-dialog="{}" href="/hafdu-samband/">Hafðu samband</a> - <a href="tel:4104000">410 4000</a> - <a href="mailto:info@landsbankinn.is">info@landsbankinn.is</a></h2>
+<p><a href="http://www.landsbankinn.is/einstaklingar/afgreidslaogthjonusta/thjonustuver-4104000/">Þjónustuverið</a> er opið virka daga 9-17. <a href="http://www.landsbankinn.is/utibu/">Afgreiðslutími útibúa</a>. <a href="http://www.landsbankinn.is/einstaklingar/afgreidslaogthjonusta/hradbankar/">Hraðbankar</a>.</p>
+</div>
+<div class="span-3 icon-box chart">
+<h2 class="header-plain">Kynntu þér</h2>
+<p><a href="http://www.landsbankinn.is/vextir">vexti</a> og <a href="http://www.landsbankinn.is/verdskra">verðskrá</a>.</p>
+</div>
+</section>
+</div>
+</footer>
+<footer class="only-mobile">
+<div class="service-desk">
+<div><a href="http://www.landsbankinn.is/einstaklingar/afgreidslaogthjonusta/thjonustuver-4104000/">Þjónustuver</a> <a href="tel:+3544104000">410 4000</a></div>
+<div>Opið virka daga 9-17</div>
+<div><a href="mailto:info@landsbankinn.is">info@landsbankinn.is</a></div>
+</div>
+<p>
+<span class="divide-txt">
+<a href="http://www.landsbankinn.is/utibu/">Útibú og afgreiðslur</a>
+<a href="http://www.landsbankinn.is/einstaklingar/afgreidslaogthjonusta/hradbankar/">Hraðbankar</a>
+</span>
+<span class="divide-txt">
+<a href="http://www.landsbankinn.is/vextir/">Vextir</a>
+<a href="http://www.landsbankinn.is/verdskra/">Verðskrá</a>
+</span>
+</p>
+</footer>
+<address><p>
+<span><strong>Landsbankinn hf.</strong> </span>
+<span class="only-desktop">
+<span itemprop="streetAddress">Austurstræti 11</span>,
+<span itemprop="postalCode">155</span>
+<span itemprop="addressLocality">Reykjavík</span>,
+</span>
+<span>Kt. 471008-0280</span>
+<span class="only-mobile swift">Swift: NBIIISRE</span>
+</p>
+<p class="divide-txt">
+<span class="only-desktop">Swift: NBIIISRE</span>
+<a href="http://www.landsbankinn.is/fyrirvari/">Lagalegur fyrirvari</a>
+<a class="only-desktop" href="http://www.landsbankinn.is/einstaklingar/umbodsmadurvidskiptavina/">Umboðsmaður viðskiptavina</a>
+<a class="only-desktop" href="http://bankinn.landsbankinn.is/mannaudur/fyrirtaekid/starfsfolk/">Starfsfólk</a>
+</p></address>
+</div>
+</div>
+<!--[if ! lte IE 6]><!-->
+<script src="http://assets.l.is/sites/landsbankinn/js/Bundle/global.js?v=20140117135819"></script>
+<script src="/services/globalmethods.ashx" type="text/javascript"></script>
+<script src="/services/pagemethods.ashx?u=%2fVextir" type="text/javascript"></script>
+<script src="http://assets.l.is/js/plugins/lb/jquery.lb.tabletoggle.js"></script>
+<!--M00190-->
+<script src="http://assets.l.is/js/Bundle/loadplugins.js?v=20140117135819"></script>
+<!--<![endif]-->
+<div id="contact-man">
+<div class="contact-us-html" id="contact-us-wrapper"></div>
+</div>
+<script>
+        $(function() {
+            $('.lightbox').lightbox();
+            $("#searchicon").bind("click", function(e) { e.preventDefault(); e.stopPropagation(); $(".overlay-wrapper").show(); $("html").css("overflow", "hidden"); $("#tags").focus(); });
+        });
+    </script>
+<script>
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1511085-4']);
+_gaq.push(['_setDomainName', '.landsbankinn.is']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+window.onerror = function(message, file, line) { 
+    var sFormattedMessage = '[' + file + ' (' + line + ')] ' + message; 
+    _gaq.push(['_trackEvent', 'Exceptions', 'Application', sFormattedMessage, null, true]);
+};
+/* ]]> */
+</script>
+<!--[if ! lte IE 6]><!-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) {return;}
+	  js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/is_IS/all.js#xfbml=1&status=0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+<!--<![endif]-->
+</body>
+</html>
