@@ -1,0 +1,19 @@
+ath vinn meğ árlega vexti
+nafn,lagmarksupphaed,bundinn timi i manudum,vextir%,verdtryggdur(0 eda 1)
+Vaxtareikningur1,0,0.23,2.35,0
+Vaxtareikningur2,200000,0.23,2.35,0
+Vaxtareikningur3,1000000,0.23,3.35,0
+Vaxtareikningur4,5000000,0.23,3.65,0
+Vaxtareikningur5,20000000,0.23,4.25,0
+Landsbók1,0,36,1.7,1
+Landsbók2,0,48,1.8,1
+Landsbók3,0,60,1.9,1
+Sparireikningur1,0,3,3.35,0
+Sparireikningur2,0,12,3.65,0
+Sparireikningur3,0,24,4.45,0
+Fastvaxtareikningur1,500000,3,4.75,0
+Fastvaxtareikningur2,500000,6,4.90,0
+Fastvaxtareikningur3,500000,12,5.20,0
+Fastvaxtareikningur4,500000,24,5.35,0
+Fastvaxtareikningur5,500000,36,6.30,0
+Fastvaxtareikningur6,500000,60,6.40,0
