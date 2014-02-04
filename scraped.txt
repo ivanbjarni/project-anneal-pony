@@ -1,0 +1,351 @@
+****************************
+Vaxtareikningur - 7 daga binding
+---------
+Innstæða á bilinu 0-199.999
+2.35
+Innstæða á bilinu   200.000-999.999
+2.35
+Innstæða á bilinu  1.000.000-4.999.999
+3.35
+Innstæða á bilinu 5.000.000-19.999.999
+3.65
+Innstæða yfir 20.000.000
+4.25
+Mánaðarlegir vextir innstæða á bilinu 0-199.999
+2.33
+Mánaðarlegir vextir innstæða á bilinu 200.000-999.999
+2.33
+Mánaðarlegir vextir innstæða á bilinu 1.000.000-4.999.999
+3.30
+Mánaðarlegir vextir innstæða á bilinu 5.000.000-19.999.999
+3.59
+Mánaðarlegir vextir innstæða yfir 20.000.000
+4.17
+****************************
+Vaxtareikningur Varðan 60
+---------
+Innstæða innan við 20.000.000
+3.65
+Innstæða yfir 20.000.000
+4.25
+Mánaðarlegir vextir innstæða innan við  20.000.000
+3.59
+Mánaðarlegir vextir innstæða yfir 20.000.000
+4.17
+****************************
+Landsbækur verðtryggðar
+---------
+Landsbók - 12  mánaða binding Ekki tekið við innborgunum lengur.
+0.55
+Landsbók - 36  mánaða binding
+1.70
+Landsbók - 48  mánaða binding
+1.80
+Landsbók - 60  mánaða binding
+1.90
+Grunnur, eldri reikningar stofnaðir fyrir 1.1.2003
+1.90
+Mánaðarlegir vextir Landsbóka 36
+1.69
+Mánaðarlegir vextir Landsbóka 48
+1.79
+Mánaðarlegir vextir Landsbóka 60
+1.88
+****************************
+Orlofsreikningar verðtryggðir
+---------
+Orlofsreikningar
+1.05
+****************************
+Framtíðargrunnur
+---------
+Framtíðargrunnur, óverðtryggður Bundinn til 18 ára aldurs
+4.25
+Framtíðargrunnur verðtryggður Bundinn til 18 ára aldurs (lágmark 3 ár)
+2.10
+****************************
+Lífeyrisbækur
+---------
+Lífeyrisbók óverðtryggð
+4.25
+Lífeyrisbók verðtryggð
+2.10
+****************************
+Veltureikningar
+---------
+Almennir veltureikningar fyrirtækja
+0.85
+Einkareikningar
+0.85
+Námu- og Klassareikningar
+0.90
+Vörðureikningar 1. þrep  innst. 0-250 þús kr.
+0.90
+Vörðureikningar 2. þrep  innst. yfir 250 þús kr. Vextir 2.þreps reiknast af innstæðu sem er umfram 1.þrep
+1.85
+****************************
+Innlendir gjaldeyrisreikningar
+---------
+Innistæður í USD óbundnir
+0.20
+Innistæður í USD bundið til 3 mán
+0.45
+Innistæður í USD bundið til 6 mán
+1.15
+Innistæður í GBP óbundnir
+0.55
+Innistæður í GBP bundið til 3 mán
+0.80
+Innistæður í GBP bundið til 6 mán
+1.50
+Innistæður í CAD óbundnir
+1.20
+Innistæður í CAD bundið til 3 mán
+1.45
+Innistæður í CAD bundið til 6 mán
+1.95
+Innistæður í DKK óbundnir
+0.15
+Innistæður í DKK bundið til 3 mán
+0.40
+Innistæður í DKK  bundið til 6 mán
+0.65
+Innistæður í NOK óbundnir
+1.65
+Innistæður í NOK bundið til 3 mán
+1.90
+Innistæður í NOK bundið til 6 mán
+2.60
+Innistæður í SEK  óbundnir
+1.00
+Innistæður í SEK bundið til 3 mán
+1.25
+Innistæður í SEK bundið til 6 mán
+1.50
+Innistæður í CHF óbundnir
+0.05
+Innistæður í CHF bundið til 3 mán
+0.30
+Innistæður í CHF bundið til 6 mán
+0.55
+Innistæður í JPY óbundnir
+0.15
+Innistæður í JPY bundið til 3 mán
+0.20
+Innistæður í JPY bundið til 6 mán
+0.45
+Innistæður í EUR óbundnir
+0.15
+Innistæður í EUR bundið til 3 mán
+0.40
+Innistæður í EUR bundið til 6 mán
+1.25
+****************************
+Sparisjóðsbækur
+---------
+Almennar sparisjóðsbækur
+0.85
+****************************
+Kjörbækur
+---------
+Kjörbók Grunnþrep Reiknast á allar innborganir sem ná ekki 30 dögum.
+0.70
+Kjörbók 1. þrep Reiknast á allar innborganir sem ná 30 dögum.
+1.40
+Kjörbók 2. þrep Reiknast á allar innborganir sem ná 180 dögum.
+1.80
+****************************
+Sparireikningar
+---------
+Sparireikningur 3 Bundinn til 3 mánaða.
+3.35
+Sparireikningur 12 Bundinn til 12 mánaða
+3.65
+Sparireikningur 24 Bundinn til 24ra mánaða (1% úttektargjald á úttekna fjárhæð ef tekið er út áður en binditíma lýkur)
+4.45
+Sparivelta Ekki heimilt að stofna nýja reikninga
+1.40
+****************************
+Fastvaxtareikningur
+---------
+Fastvaxtareikningur - 3 mánaða binding
+4.75
+Fastvaxtareikningur - 6 mánaða binding
+4.90
+Fastvaxtareikningur - 12 mánaða binding
+5.20
+Fastvaxtareikningur - 24 mánaða binding
+5.35
+Fastvaxtareikningur - 36 mánaða binding
+6.30
+Fastvaxtareikningur - 60 mánaða binding
+6.40
+****************************
+Fasteignagrunnur
+---------
+Fasteignagrunnur, óverðtryggður
+4.25
+Fasteignagrunnur, verðtryggður
+2.10
+****************************
+VSK reikningur
+---------
+VSK reikningur
+3.35
+****************************
+Sérstakar verðbætur
+---------
+Sérstakar verðbætur innan mánaðar (verðtryggð innlán) á ársgrundvelli
+6.34
+Sérstakar verðbætur innan mánaðar (verðtryggð innlán) á mánuði
+0.53
+****************************
+Víxillán
+---------
+Kjörvextir án álags.
+8.20
+1. Flokkur kjörvextir
+9.20
+2. Flokkur kjörvextir
+10.20
+3. Flokkur kjörvextir
+11.10
+4. Flokkur kjörvextir
+11.85
+5. Flokkur kjörvextir
+12.40
+6. Flokkur kjörvextir
+12.40
+7. Flokkur kjörvextir
+12.40
+8. Flokkur kjörvextir
+12.40
+9. Flokkur kjörvextir
+12.40
+****************************
+Óverðtryggð skuldabréfalán
+---------
+Kjörvextir án álags.
+7.10
+1. Flokkur kjörvextir
+8.10
+2. Flokkur kjörvextir
+9.10
+3. Flokkur kjörvextir
+10.00
+4. Flokkur kjörvextir
+10.75
+5. Flokkur kjörvextir
+11.40
+6. Flokkur kjörvextir
+11.90
+7. Flokkur kjörvextir
+12.40
+8. Flokkur kjörvextir
+12.40
+9. Flokkur kjörvextir
+12.40
+Eldri lán án kjörvaxta
+10.70
+Almenn ávöxtunarkrafa viðskiptaskuldabréfa
+12.40
+Óverðtryggð íbúðalán - breytilegir vextir, lægstu vextir
+6.75
+Óverðtryggð íbúðalán - breytilegir vextir, viðbótarlán (70-85%)
+7.75
+Óverðtryggð íbúðalán - fastir vextir til 36 mánaða, lægstu vextir
+7.30
+Óverðtryggð íbúðalán - fastir vextir til 36 mánaða, viðbótarlán (70-85%)
+8.30
+Óverðtryggð íbúðalán - fastir vextir til 60 mánaða, lægstu vextir
+7.60
+Óverðtryggð íbúðalán - fastir vextir til 60 mánaða, viðbótarlán (70-85%)
+8.60
+Tölvukaupalán námsmanna
+7.10
+****************************
+Verðtryggð skuldabréfalán
+---------
+Kjörvextir án álags.
+4.15
+1. Flokkur kjörvextir
+5.15
+2. Flokkur kjörvextir
+6.15
+3. Flokkur kjörvextir
+7.05
+4. Flokkur kjörvextir
+7.80
+5. Flokkur kjörvextir
+8.45
+6. Flokkur kjörvextir
+8.95
+7. Flokkur kjörvextir
+9.35
+8. Flokkur kjörvextir
+9.60
+9. Flokkur kjörvextir
+9.75
+Eldri lán án kjörvaxta
+7.30
+Almenn ávöxtunarkrafa viðskiptaskuldabréfa
+9.75
+Verðtryggð íbúðalán - breytilegir vextir, lægstu vextir
+3.50
+Verðtryggð íbúðalán - breytilegir vextir, viðbótarlán (70-85%)
+4.50
+****************************
+Yfirdráttarlán og reikningslán
+---------
+Yfirdráttarlán og reikningslán fyrirtækja
+12.80
+Nýsköpunarlán
+9.10
+Yfirdráttarlán einstaklinga (Einkareikningar)
+12.80
+Yfirdráttarlán Vörðufélaga, lægstu vextir
+12.10
+Yfirdráttarlán Vörðufélaga, hæstu vextir
+12.70
+Lækkaðu yfirdráttinn
+9.10
+Metan-lán
+9.10
+Náman vegna LÍN
+7.10
+Náman, almennir reikningar
+9.05
+Náman, tölvukaupalán (ekki veitt ný lán í formi reikningslána)
+9.10
+****************************
+Kreditkort, Visa og Mastercard
+---------
+Fjölgreiðslur og veltikort
+12.80
+Fjölgreiðslur og veltikort fyrir vörðufélaga
+12.70
+****************************
+Dráttarvextir
+---------
+Dráttarvextir, skv. ákvörðun Seðlabanka Íslands
+13.00
+****************************
+Bíla- og tækjafjármögnun - Óverðtryggð lán og samningar
+---------
+Kjörvextir - Breytilegir vextir
+7.25
+Kjörvaxtaflokkur V (vörðufélagar)
+9.40
+Kjörvaxtaflokkur M (almenn kjör)
+9.65
+F36 - Fastir vextir í 3 ár
+10.05
+****************************
+Bíla- og tækjafjármögnun - Verðtryggð lán og samningar
+---------
+Kjörvextir - Breytilegir vextir
+5.70
+Kjörvaxtaflokkur V (vörðufélagar)
+7.80
+Kjörvaxtaflokkur M (almenn kjör)
+8.05
