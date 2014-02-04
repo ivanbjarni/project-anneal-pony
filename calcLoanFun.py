@@ -13,11 +13,13 @@ class Loan:
 		self.infl = infl 
 		self.numberOfP = numberOfPayments
 
+# returns the profit of putting your payment on the loan instead of keeping it
 def calcProfitPerTime(loan, payment, inflation):
 	if(loan.infl):
 		return (inflation + loan.interest) * payment
 	return loan.interest * payment
 
+# returns the best loan to put your payment on
 def calcBestLoan(loans, inflation):
 	temp = 0
 	Max = 0
@@ -59,9 +61,7 @@ def calcLoan(balance, interest, payment, inflation, time):
 		balance = balance*(1+interest+inflation) 
 		return balance
 
-def calcInterest(balance,interest, inflation, time): 
-	return balance * (1+interest+ inflation)**time
-
+# returns the median of a list li
 def median(li):
 	s = 0
 	c = 0
