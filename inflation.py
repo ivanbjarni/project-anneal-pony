@@ -5,7 +5,6 @@
 #Eftir: x er listi vísitalna í öfugri lesröð(1. janúar er fremstur)
 def readInflation(files):
         f = open(files,'r')
-       # strings = f.read()
         listi = []
         
         done = False
@@ -15,13 +14,13 @@ def readInflation(files):
                         listi.append(s)
                 else:
                         done = True
-        #for item in listi:
-         #       print item
         rightlisti = []
         for item in listi:
                 rightlisti.insert(0,item)
                 
         return rightlisti
+
+
 #Notkun:x = getInflationCoefficient(months)
 #Fyrir: months er fjöldi mánaða sem við ætlum að nota
 #Eftir: x er verðbólguspá reiknuð með  vísitölum months marga mánuði aftur í
