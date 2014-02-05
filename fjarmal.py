@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from wxgui import *
+from wxgui2 import *
 from calcLoanFun import *
 
 loans = []
@@ -18,6 +18,9 @@ def calcBestWayToPayLoan(payment, time):
 		return
 	while(time>0):
 		l = calcBestLoan(loans, infl)
+		if(l==-1):
+			print "Þú ert orðinn skuldlaus!!"
+			return
 		temp = calcTimeToPayLoan(l[0], infl, payment)
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
@@ -51,3 +54,6 @@ def validateStringToNumber(string):
 		return float(string) if '.' in string else int(string)
 	except ValueError:
 		return -1;
+
+if __name__ == '__main__':
+    initGui()

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# gotoclass.py
+from fjarmal import *
 import wx
 
 class PageOne(wx.Panel):
@@ -98,7 +100,7 @@ class PageOne(wx.Panel):
 		st6 = wx.StaticText(self, label='Núverandi Lán:'.decode('utf-8'))
 		st6.SetFont(font)
 		hbox6.Add(st6, flag=wx.RIGHT, border=8)
-		loans = wx.ComboBox(self)
+		loans = wx.ComboBox(self, style = wx.CB_READONLY)
 		hbox6.Add(loans)
 		vbox.Add(hbox6, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
@@ -126,7 +128,12 @@ class MainFrame(wx.Frame):
 		sizer.Add(nb, 1, wx.EXPAND)
 		mainPanel.SetSizer(sizer)
 
-if __name__ == '__main__':
-    app = wx.App()
-    MainFrame().Show()
-    app.MainLoop()
+#if __name__ == '__main__':
+#    app = wx.App()
+#    MainFrame().Show()
+#    app.MainLoop()
+
+def initGui():
+	app = wx.App()
+	MainFrame().Show()
+	app.MainLoop()
