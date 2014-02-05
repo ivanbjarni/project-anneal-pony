@@ -2,20 +2,18 @@
 # -*- coding: utf-8 -*-
 
 # gotoclass.py
-
+from fjarmal import *
 import wx
 
 class Example(wx.Frame):
   
-    def __init__(self, parent, title):
-        super(Example, self).__init__(parent, title=title, 
-            size=(600, 450))
-            
-        self.InitUI()
-        self.Centre()
-        self.Show()     
+	def __init__(self, parent, title):
+		super(Example, self).__init__(parent, title=title, size=(600, 450))
+		self.InitUI()
+		self.Centre()
+		self.Show()     
         
-    def InitUI(self):
+	def InitUI(self):
     
 		panel = wx.Panel(self)
 
@@ -28,8 +26,8 @@ class Example(wx.Frame):
 		st1 = wx.StaticText(panel, label='Mánaðarleg greiðsla:'.decode('utf-8'))
 		st1.SetFont(font)
 		hbox1.Add(st1, flag=wx.RIGHT, border=8)
-		tc = wx.TextCtrl(panel)
-		hbox1.Add(tc, proportion=1)
+		payment = wx.TextCtrl(panel)
+		hbox1.Add(payment, proportion=1)
 		vbox.Add(hbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		vbox.Add((-1, 10))
@@ -93,6 +91,8 @@ class Example(wx.Frame):
 		addloanbtn = wx.Button(panel, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		hbox5.Add(addloanbtn)
 		vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
+		# Event listener for button
+		addloanbtn.Bind(wx.EVT_BUTTON, lambda event: makeLoan(loannop, loaninfl, loanname, loanamount, loaninterest, loans) )
 
 		hbox6 = wx.BoxSizer(wx.HORIZONTAL)
 		st6 = wx.StaticText(panel, label='Núverandi Lán:'.decode('utf-8'))
@@ -103,7 +103,6 @@ class Example(wx.Frame):
 		vbox.Add(hbox6, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
 		panel.SetSizer(vbox)
-
 
 if __name__ == '__main__':
   
