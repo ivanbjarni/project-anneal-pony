@@ -44,6 +44,8 @@ class Example(wx.Frame):
 		calcbtn = wx.Button(panel, label='Reikna', size=(70, 30))
 		hbox11.Add(calcbtn, flag=wx.LEFT|wx.BOTTOM, border=5)
 		vbox.Add(hbox11, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
+		calcbtn.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( payment, time ) )
+
 
 		vbox.Add((-1, 50))
 
