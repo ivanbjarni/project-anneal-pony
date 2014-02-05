@@ -23,12 +23,21 @@ class PageOne(wx.Panel):
 		vbox.Add(hbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
-		st12 = wx.StaticText(self, label='Tími:'.decode('utf-8'))
+		st12 = wx.StaticText(self, label='Hversu lengi:'.decode('utf-8'))
 		st12.SetFont(font)
 		hbox12.Add(st12, flag=wx.RIGHT, border=8)
 		time = wx.TextCtrl(self)
 		hbox12.Add(time, proportion=1)
 		vbox.Add(hbox12, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+
+		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
+		st13 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
+		st13.SetFont(font)
+		hbox13.Add(st13, flag=wx.RIGHT, border=8)
+		infltime = wx.ComboBox(self, style = wx.CB_READONLY, choices= ["Síðasta mánuð".decode('utf-8'),"Síðustu 2 mánuði".decode('utf-8'),"Síðasta hálfa árið".decode('utf-8'),"Síðasta árið".decode('utf-8'), "Síðustu 2 ár".decode('utf-8')])
+		infltime.SetSelection(1)
+		hbox13.Add(infltime, proportion=1)
+		vbox.Add(hbox13, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		vbox.Add((-1, 10))
 
@@ -36,7 +45,7 @@ class PageOne(wx.Panel):
 		calcbtn = wx.Button(self, label='Reikna', size=(70, 30))
 		hbox11.Add(calcbtn, flag=wx.LEFT|wx.BOTTOM, border=5)
 		vbox.Add(hbox11, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
-		calcbtn.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( payment, time ) )
+		calcbtn.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( payment, time, infltime ) )
 
 
 		vbox.Add((-1, 50))
@@ -72,7 +81,7 @@ class PageOne(wx.Panel):
 		vbox.Add(hbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		st5 = wx.StaticText(self, label='fjöldi greiðsla'.decode('utf-8'))
+		st5 = wx.StaticText(self, label='Fjöldi greiðslna'.decode('utf-8'))
 		st5.SetFont(font)
 		hbox5.Add(st5, flag=wx.RIGHT, border=8)
 		loannop = wx.TextCtrl(self)
@@ -113,7 +122,7 @@ class PageOne(wx.Panel):
 
 class MainFrame(wx.Frame):
     def __init__(self):
-		wx.Frame.__init__(self, None, title="Moneyspender 3000", size=(600, 450))
+		wx.Frame.__init__(self, None, title="Moneyspender 3000", size=(640, 500))
 
 		mainPanel = wx.Panel(self)
 		nb = wx.Notebook(mainPanel)

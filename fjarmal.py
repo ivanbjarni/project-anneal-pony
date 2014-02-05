@@ -3,23 +3,32 @@
 
 from wxgui2 import *
 from calcLoanFun import *
+from inflation import *
+import copy
 
 loans = []
 # For the gui combobox
 loansName = []
 
-def calcBestWayToPayLoan(payment, time):
+def calcBestWayToPayLoan(payment, time, inflt):
 	profit = []
-	infl = 0
+	infltim = infltime(inflt.GetCurrentSelection())
+	infl = getInflationCoefficient(infltim)
 	payment = validateStringToNumber(payment.GetValue())
 	time = validateStringToNumber(time.GetValue())
 	if( time == -1 or payment == -1 ):
 		print "villa"
 		return
+	global loans
+	keeploans = []
+	for a in loans:
+		keeploans.append(copy.deepcopy(a))
 	while(time>0):
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
-			print "Þú ert orðinn skuldlaus!!"
+			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
+			for a in keeploans:
+				loans.append(copy.deepcopy(a))
 			return
 		temp = calcTimeToPayLoan(l[0], infl, payment)
 		time -= temp[1]
@@ -29,11 +38,14 @@ def calcBestWayToPayLoan(payment, time):
 		if(time < 0):
 			temp[1] += time
 		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")
-		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)).decode("utf-8")
+		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
+	for a in keeploans:
+		loans.append(copy.deepcopy(a))
 
 
 
 def makeLoan(nop, infl, name, amount, interests, loansComboBox):	
+	global loans
 	name = name.GetValue()
 	interests = validateStringToNumber(interests.GetValue())
 	numberOfP = validateStringToNumber(nop.GetValue())
