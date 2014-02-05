@@ -7,9 +7,11 @@ from inflation import *
 import copy
 
 loans = []
-# For the gui combobox
+# fylki til að halada utan um lán
 loansName = []
 
+# Reikna bestu leið til að borga lán, og skrifa það í console
+# tekur inn 2 textabox og eitt combobox
 def calcBestWayToPayLoan(payment, time, inflt):
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
@@ -43,7 +45,7 @@ def calcBestWayToPayLoan(payment, time, inflt):
 		loans.append(copy.deepcopy(a))
 
 
-
+#Býr til lán og bætir því í núverandi lán boxið
 def makeLoan(nop, infl, name, amount, interests, loansComboBox):	
 	global loans
 	name = name.GetValue()
@@ -60,7 +62,8 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	loansComboBox.SetItems(loansName)
 
 
-
+#Athuga hvort strengur er tala og
+#skilar tölunni ef strengurinn er tala en annars -1
 def validateStringToNumber(string):
 	try:
 		return float(string) if '.' in string else int(string)
