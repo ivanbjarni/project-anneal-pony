@@ -1,8 +1,8 @@
-Vaxtareikningur1,0,199999,0.23,2.35,0,1,2
-Vaxtareikningur2,200000,999999,0.23,2.35,0,2,3
-Vaxtareikningur3,1000000,4999999,0.23,3.35,0,3,4
-Vaxtareikningur4,5000000,19999999,0.23,3.65,0,4,5
-Vaxtareikningur5,20000000,-1,0.23,4.25,0,5,-1
+Vaxtareikningur1,0,199999,0,2.35,0,1,2
+Vaxtareikningur2,200000,999999,0,2.35,0,2,3
+Vaxtareikningur3,1000000,4999999,0,3.35,0,3,4
+Vaxtareikningur4,5000000,19999999,0,3.65,0,4,5
+Vaxtareikningur5,20000000,-1,0,4.25,0,5,-1
 Landsbok1,0,-1,36,1.7,1,6,-1
 Landsbok2,0,-1,48,1.8,1,7,-1
 Landsbok3,0,-1,60,1.9,1,8,-1
