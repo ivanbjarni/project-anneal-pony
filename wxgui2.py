@@ -72,7 +72,7 @@ class PageOne(wx.Panel):
 		vbox.Add(hbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		st5 = wx.StaticText(self, label='fjöldi greiðsla'.decode('utf-8'))
+		st5 = wx.StaticText(self, label='Fjöldi greiðslna'.decode('utf-8'))
 		st5.SetFont(font)
 		hbox5.Add(st5, flag=wx.RIGHT, border=8)
 		loannop = wx.TextCtrl(self)
@@ -107,32 +107,21 @@ class PageOne(wx.Panel):
 		self.SetSizer(vbox)
 
 
-#class PageTwo(wx.Panel):
-#	def __init__(self, parent):
-
-
 class MainFrame(wx.Frame):
     def __init__(self):
-		wx.Frame.__init__(self, None, title="Moneyspender 3000", size=(600, 450))
+		wx.Frame.__init__(self, None, title="Moneyspender 3000", size=(600, 500))
 
 		mainPanel = wx.Panel(self)
 		nb = wx.Notebook(mainPanel)
 
 		page1 = PageOne(nb)
-		#page2 = PageTwo(nb)
 
-		nb.AddPage(page1, "Loan Stuff")
-		#nb.AddPage(page2, "MegaLoan Stuff")
-
+		nb.AddPage(page1, 'Lán'.decode('utf-8'))
 		sizer = wx.BoxSizer()
 		sizer.Add(nb, 1, wx.EXPAND)
 		mainPanel.SetSizer(sizer)
 
-#if __name__ == '__main__':
-#    app = wx.App()
-#    MainFrame().Show()
-#    app.MainLoop()
-
+#Setur upp Notendaviðmót
 def initGui():
 	app = wx.App()
 	MainFrame().Show()
