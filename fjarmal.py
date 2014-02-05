@@ -5,7 +5,7 @@ from wxgui import *
 from calcLoanFun import *
 
 loans = []
-# For the focking gui shit
+# For the gui combobox
 loansName = []
 
 def calcBestWayToPayLoan(payment, time):
@@ -23,8 +23,11 @@ def calcBestWayToPayLoan(payment, time):
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)
 		loans[l[1]].numberOfP=0
-		print ("Borgaðu "+str(payment)+" á "+str(time)+" mánuði/ári af "+str(l[0].name)).decode("utf-8")
-		print ("Mánaðarlegur/árlegur hagnaður af því er"+str(p)).decode("utf-8")
+		if(time < 0):
+			temp[1] += time
+		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")
+		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)).decode("utf-8")
+
 
 
 def makeLoan(nop, infl, name, amount, interests, loansComboBox):	
@@ -36,7 +39,7 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	if(interests==-1 or numberOfP==-1 or infl==-1 or balance==-1 ):
 		print "villa"
 		return
-	loan = Loan(name, balance, interests, infl, numberOfP)
+	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
 	loansName.append(loan.name)
 	loans.append(loan)
 	loansComboBox.SetItems(loansName)
