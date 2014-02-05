@@ -29,20 +29,22 @@ def calcBestLoan(loans, inflation):
 			temp = inflation
 		else:
 			temp = 0
-		if (loans[i].interest + temp>Max):
+		if (loans[i].interest + temp>Max and loans[i].numberOfP > 0):
 			Max = loans[i].interest + temp
 			index = i
-	return loans[index]
+	return [loans[index],index]
 
 # returns [leftover, time] the time it takes to pay the loan with a extra payment and the money you have left
 def calcTimeToPayLoan(loan, inflation, payment):
 	temp = loan
 	time = 0
 	while(temp.balance > payment):
-		if(loan.infl):
+		if(temp.infl):
 			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + inflation + temp.interest)
+			temp.numberOfP -= 1
 		else:
 			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + temp.interest)
+			temp.numberOfP -= 1
 		time = time + 1
 	leftover = payment - temp.balance
 	time = temp.balance/payment + time
