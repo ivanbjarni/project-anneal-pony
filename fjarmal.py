@@ -60,7 +60,7 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	loansName.append(loan.name)
 	loans.append(loan)
 	loansComboBox.SetItems(loansName)
-	print "Bætti Láni inn"
+	print "Bætti Láni inn".decode("utf-8")
 
 
 #Athuga hvort strengur er tala og
