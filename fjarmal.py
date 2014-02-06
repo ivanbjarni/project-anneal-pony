@@ -15,7 +15,7 @@ loansName = []
 def calcBestWayToPayLoan(payment, time, inflt):
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
-	infl = getInflationCoefficient(infltim)
+	infl = getInflationCoefficient(infltim)/100
 	payment = validateStringToNumber(payment.GetValue())
 	time = validateStringToNumber(time.GetValue())
 	if( time == -1 or payment == -1 ):
@@ -60,6 +60,7 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	loansName.append(loan.name)
 	loans.append(loan)
 	loansComboBox.SetItems(loansName)
+	print "Bætti Láni inn"
 
 
 #Athuga hvort strengur er tala og
