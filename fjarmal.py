@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from wxgui2 import *
+from wxgui3 import *
 from calcLoanFun import *
 from inflation import *
 import copy
