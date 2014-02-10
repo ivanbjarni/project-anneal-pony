@@ -242,16 +242,16 @@ class PageFour(wx.Panel):
 		st1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
 		st1.SetFont(font)
 		hbox1.Add(st1, flag=wx.RIGHT, border=8)
-		accpayment = wx.TextCtrl(self)
-		hbox1.Add(accpayment, proportion=1)
+		accpayment1 = wx.TextCtrl(self)
+		hbox1.Add(accpayment1, proportion=1)
 		vbox.Add(hbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
-		st12 = wx.StaticText(self, label='Hvað viltu spara:'.decode('utf-8'))
+		st12 = wx.StaticText(self, label='Hvað viltu spara mikið:'.decode('utf-8'))
 		st12.SetFont(font)
 		hbox12.Add(st12, flag=wx.RIGHT, border=8)
-		acctime = wx.TextCtrl(self)
-		hbox12.Add(acctime, proportion=1)
+		accamount = wx.TextCtrl(self)
+		hbox12.Add(accamount, proportion=1)
 		vbox.Add(hbox12, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
 		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
@@ -273,6 +273,49 @@ class PageFour(wx.Panel):
 
 		self.SetSizer(vbox)
 
+class PageFive(wx.Panel):
+    def __init__(self, parent):
+		wx.Panel.__init__(self, parent)
+
+		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
+		font.SetPointSize(9)
+
+		vbox = wx.BoxSizer(wx.VERTICAL)
+
+		hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+		st1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
+		st1.SetFont(font)
+		hbox1.Add(st1, flag=wx.RIGHT, border=8)
+		accpayment2 = wx.TextCtrl(self)
+		hbox1.Add(accpayment2, proportion=1)
+		vbox.Add(hbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+
+		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
+		st12 = wx.StaticText(self, label='Hvað viltu spara lengi:'.decode('utf-8'))
+		st12.SetFont(font)
+		hbox12.Add(st12, flag=wx.RIGHT, border=8)
+		acctime2 = wx.TextCtrl(self)
+		hbox12.Add(acctime2, proportion=1)
+		vbox.Add(hbox12, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+
+		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
+		st13 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
+		st13.SetFont(font)
+		hbox13.Add(st13, flag=wx.RIGHT, border=8)
+		accinfltime2 = wx.ComboBox(self, style = wx.CB_READONLY, choices= ["Síðasta mánuð".decode('utf-8'),"Síðustu 2 mánuði".decode('utf-8'),"Síðasta hálfa árið".decode('utf-8'),"Síðasta árið".decode('utf-8'), "Síðustu 2 ár".decode('utf-8')])
+		accinfltime2.SetSelection(1)
+		hbox13.Add(accinfltime2, proportion=1)
+		vbox.Add(hbox13, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+
+		vbox.Add((-1, 10))
+
+		hbox11 = wx.BoxSizer(wx.HORIZONTAL)
+		calcbtn = wx.Button(self, label='Reikna', size=(70, 30))
+		hbox11.Add(calcbtn, flag=wx.LEFT|wx.BOTTOM, border=5)
+		vbox.Add(hbox11, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
+		calcbtn.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( payment, time, infltime ) )
+
+		self.SetSizer(vbox)
 
 class MainFrame(wx.Frame):
     def __init__(self):
@@ -285,11 +328,13 @@ class MainFrame(wx.Frame):
 		page2 = PageTwo(nb)
 		page3 = PageThree(nb)
 		page4 = PageFour(nb)
+		page5 = PageFive(nb)
 
 		nb.AddPage(page1, "Bæta við lánum".decode('utf-8'))
 		nb.AddPage(page2, "Reikna Lán".decode('utf-8'))
 		nb.AddPage(page3, "Bæta við reikningum".decode('utf-8'))
-		nb.AddPage(page4, "Reikna Sparnað".decode('utf-8'))
+		nb.AddPage(page4, "Reikna Sparnað 1".decode('utf-8'))
+		nb.AddPage(page5, "Reikna Sparnað 2".decode('utf-8'))
 
 		sizer = wx.BoxSizer()
 		sizer.Add(nb, 1, wx.EXPAND)
