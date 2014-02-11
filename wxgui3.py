@@ -311,3 +311,4 @@ def initGui():
 	app = wx.App()
 	MainFrame().Show()
 	app.MainLoop()
+	
