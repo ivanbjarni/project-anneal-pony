@@ -9,88 +9,82 @@ class PageOne(wx.Panel):
     def __init__(self, parent):
 		wx.Panel.__init__(self, parent)
 
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
-
 		vbox = wx.BoxSizer(wx.VERTICAL)
 
-		hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-		st2 = wx.StaticText(self, label='Lán:'.decode('utf-8'))
-		st2.SetFont(font)
-		hbox2.Add(st2, flag=wx.RIGHT, border=8)
-		vbox.Add(hbox2, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		insloanhbox1 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox2 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox3 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox4 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox5 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox6 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox7 = wx.BoxSizer(wx.HORIZONTAL)
+		insloanhbox8 = wx.BoxSizer(wx.HORIZONTAL)
 
-		hbox21 = wx.BoxSizer(wx.HORIZONTAL)
-		st21 = wx.StaticText(self, label='Nafn'.decode('utf-8'))
-		st21.SetFont(font)
-		hbox21.Add(st21, flag=wx.RIGHT, border=8)
-		loanname = wx.TextCtrl(self)
-		hbox21.Add(loanname, proportion=1)
-		vbox.Add(hbox21, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		insloantext1 = wx.StaticText(self, label='Nafn:'.decode('utf-8'))
+		insloanname = wx.TextCtrl(self)
+		insloanhbox1.Add(insloantext1, flag=wx.RIGHT, border=8)
+		insloanhbox1.Add((58,1))
+		insloanhbox1.Add(insloanname, proportion=1)
 
-		hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-		st3 = wx.StaticText(self, label='Höfuðstóll'.decode('utf-8'))
-		st3.SetFont(font)
-		hbox3.Add(st3, flag=wx.RIGHT, border=8)
-		loanamount = wx.TextCtrl(self)
-		hbox3.Add(loanamount, proportion=1)
-		vbox.Add(hbox3, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		insloantext2 = wx.StaticText(self, label='Höfuðstóll:'.decode('utf-8'))
+		insloanamount = wx.TextCtrl(self)
+		insloanhbox2.Add(insloantext2, flag=wx.RIGHT, border=8)
+		insloanhbox2.Add((29,1))
+		insloanhbox2.Add(insloanamount, proportion=1)
 
-		hbox4 = wx.BoxSizer(wx.HORIZONTAL)
-		st4 = wx.StaticText(self, label='Vextir'.decode('utf-8'))
-		st4.SetFont(font)
-		hbox4.Add(st4, flag=wx.RIGHT, border=8)
-		loaninterest = wx.TextCtrl(self)
-		hbox4.Add(loaninterest, proportion=1)
-		vbox.Add(hbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		insloantext3 = wx.StaticText(self, label='Vextir:'.decode('utf-8'))
+		insloaninterest = wx.TextCtrl(self)
+		insloanhbox3.Add(insloantext3, flag=wx.RIGHT, border=8)
+		insloanhbox3.Add((56,1))
+		insloanhbox3.Add(insloaninterest, proportion=1)
 
-		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		st5 = wx.StaticText(self, label='Fjöldi greiðslna'.decode('utf-8'))
-		st5.SetFont(font)
-		hbox5.Add(st5, flag=wx.RIGHT, border=8)
-		loannop = wx.TextCtrl(self)
-		hbox5.Add(loannop, proportion=1)
-		vbox.Add(hbox5, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-		#png = wx.StaticBitmap(self, -1, wx.Bitmap("demo_line_chart.png", wx.BITMAP_TYPE_ANY))
-		#hbox2.Add(png, flag=wx.RIGHT, border=8)
-		
-		vbox.Add((-1, 10))
+		insloantext4 = wx.StaticText(self, label='Fjöldi greiðslna:'.decode('utf-8'))
+		insloannop = wx.TextCtrl(self)
+		insloanhbox4.Add(insloantext4, flag=wx.RIGHT, border=8)
+		insloanhbox4.Add((5,1))
+		insloanhbox4.Add(insloannop, proportion=1)
 
-		hbox4 = wx.BoxSizer(wx.HORIZONTAL)
- 		loaninfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
-		loaninfl.SetFont(font)
-		hbox4.Add(loaninfl)
-		vbox.Add(hbox4, flag=wx.LEFT, border=10)
+ 		insloaninfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
+		insloanhbox5.Add(insloaninfl)
 
-		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		addloanbtn = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
-		hbox5.Add(addloanbtn)
-		vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
+		insloansubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
-		addloanbtn.Bind(wx.EVT_BUTTON, lambda event: makeLoan(loannop, loaninfl, loanname, loanamount, loaninterest, loans) )
+		insloansubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insloannop, insloaninfl, insloanname, insloanamount, insloaninterest, loans) )
+		insloanhbox6.Add(insloansubmit)
 
+		insloanlisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
+		insloanlisti.InsertColumn(0, 'Nafn')
+		insloanlisti.InsertColumn(1, 'Höfuðstóll'.decode('utf-8'))
+		insloanlisti.InsertColumn(2, 'Vextir'.decode('utf-8'))
+		insloanlisti.InsertColumn(3, 'Verðtrygging'.decode('utf-8'))
+		insloanlisti.InsertColumn(4, 'Greiðslu fjöldi'.decode('utf-8'))
+		insloanlisti.SetColumnWidth(0, 160)
+		insloanlisti.SetColumnWidth(1, 153)
+		insloanlisti.SetColumnWidth(2, 75)
+		insloanlisti.SetColumnWidth(3, 90)
+		insloanlisti.SetColumnWidth(4, 100)
+		insloanhbox7.Add(insloanlisti, 1, wx.EXPAND | wx.ALL, 3)
+
+		insloananswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á bæta við'.decode('utf-8'))
+		insloanhbox8.Add(insloananswer)
+
+		vbox.Add(insloanhbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insloanhbox2, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insloanhbox3, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insloanhbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insloanhbox5, flag=wx.LEFT, border=10)
+		vbox.Add(insloanhbox6, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insloanhbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+		vbox.Add((-1, 10))
+		vbox.Add(insloanhbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+
+		#temporary drasl, þarf að henda
 		hbox6 = wx.BoxSizer(wx.HORIZONTAL)
 		st6 = wx.StaticText(self, label='Núverandi Lán:'.decode('utf-8'))
-		st6.SetFont(font)
 		hbox6.Add(st6, flag=wx.RIGHT, border=8)
 		loans = wx.ComboBox(self, style = wx.CB_READONLY)
 		hbox6.Add(loans)
 		vbox.Add(hbox6, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
-
-		hbox7 = wx.BoxSizer(wx.HORIZONTAL)
-		listi = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
-		listi.InsertColumn(0, 'Nafn')
-		listi.InsertColumn(1, 'Höfuðstóll'.decode('utf-8'))
-		listi.InsertColumn(2, 'Vextir'.decode('utf-8'))
-		listi.InsertColumn(3, 'Verðtrygging'.decode('utf-8'))
-		listi.InsertColumn(4, 'Greiðslu fjöldi'.decode('utf-8'))
-		listi.SetColumnWidth(0, 160)
-		listi.SetColumnWidth(1, 153)
-		listi.SetColumnWidth(2, 75)
-		listi.SetColumnWidth(3, 90)
-		listi.SetColumnWidth(4, 100)
-		hbox7.Add(listi, 1, wx.EXPAND | wx.ALL, 3)
-		vbox.Add(hbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
 		self.SetSizer(vbox)
 
@@ -99,14 +93,86 @@ class PageTwo(wx.Panel):
     def __init__(self, parent):
 		wx.Panel.__init__(self, parent)
 
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
+		vbox = wx.BoxSizer(wx.VERTICAL)
+
+		insacchbox1 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox2 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox3 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox4 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox5 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox6 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox7 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox8 = wx.BoxSizer(wx.HORIZONTAL)
+
+		insacctext1 = wx.StaticText(self, label='Nafn:'.decode('utf-8'))
+		insaccname = wx.TextCtrl(self)
+		insacchbox1.Add(insacctext1, flag=wx.RIGHT, border=8)
+		insacchbox1.Add((58,1))
+		insacchbox1.Add(insaccname, proportion=1)
+
+		insacctext2 = wx.StaticText(self, label='Höfuðstóll:'.decode('utf-8'))
+		insaccamount = wx.TextCtrl(self)
+		insacchbox2.Add(insacctext2, flag=wx.RIGHT, border=8)
+		insacchbox2.Add((29,1))
+		insacchbox2.Add(insaccamount, proportion=1)
+
+		insacctext3 = wx.StaticText(self, label='Vextir:'.decode('utf-8'))
+		insaccinterest = wx.TextCtrl(self)
+		insacchbox3.Add(insacctext3, flag=wx.RIGHT, border=8)
+		insacchbox3.Add((56,1))
+		insacchbox3.Add(insaccinterest, proportion=1)
+
+		insacctext4 = wx.StaticText(self, label='Binditími:'.decode('utf-8'))
+		insaccreq = wx.TextCtrl(self)
+		insacchbox4.Add(insacctext4, flag=wx.RIGHT, border=8)
+		insacchbox4.Add((37,1))
+		insacchbox4.Add(insaccreq, proportion=1)
+
+ 		insaccinfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
+		insacchbox5.Add(insaccinfl)
+
+		insaccsubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
+		# Event listener for button
+		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insacreq, insaccinfl, insaccname, insaccamount, insaccinterest, loans) )
+		insacchbox6.Add(insaccsubmit)
+
+		insacclisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
+		insacclisti.InsertColumn(0, 'Nafn')
+		insacclisti.InsertColumn(1, 'Höfuðstóll'.decode('utf-8'))
+		insacclisti.InsertColumn(2, 'Vextir'.decode('utf-8'))
+		insacclisti.InsertColumn(3, 'Verðtrygging'.decode('utf-8'))
+		insacclisti.InsertColumn(4, 'Binditími'.decode('utf-8'))
+		insacclisti.SetColumnWidth(0, 160)
+		insacclisti.SetColumnWidth(1, 153)
+		insacclisti.SetColumnWidth(2, 75)
+		insacclisti.SetColumnWidth(3, 90)
+		insacclisti.SetColumnWidth(4, 100)
+		insacchbox7.Add(insacclisti, 1, wx.EXPAND | wx.ALL, 3)
+
+		insaccanswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á bæta við'.decode('utf-8'))
+		insacchbox8.Add(insaccanswer)
+
+		vbox.Add(insacchbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insacchbox2, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insacchbox3, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insacchbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insacchbox5, flag=wx.LEFT, border=10)
+		vbox.Add(insacchbox6, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add(insacchbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+		vbox.Add((-1, 10))
+		vbox.Add(insacchbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+
+		self.SetSizer(vbox)
+
+
+class PageThree(wx.Panel):
+    def __init__(self, parent):
+		wx.Panel.__init__(self, parent)
 
 		vbox = wx.BoxSizer(wx.VERTICAL)
 
 		hbox1 = wx.BoxSizer(wx.HORIZONTAL)
 		st1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
-		st1.SetFont(font)
 		hbox1.Add(st1, flag=wx.RIGHT, border=8)
 		payment = wx.TextCtrl(self)
 		hbox1.Add(payment, proportion=1)
@@ -114,7 +180,6 @@ class PageTwo(wx.Panel):
 
 		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
 		st12 = wx.StaticText(self, label='Hversu lengi:'.decode('utf-8'))
-		st12.SetFont(font)
 		hbox12.Add(st12, flag=wx.RIGHT, border=8)
 		time = wx.TextCtrl(self)
 		hbox12.Add(time, proportion=1)
@@ -122,7 +187,6 @@ class PageTwo(wx.Panel):
 
 		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
 		st13 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
-		st13.SetFont(font)
 		hbox13.Add(st13, flag=wx.RIGHT, border=8)
 		infltime = wx.ComboBox(self, style = wx.CB_READONLY, choices= ["Síðasta mánuð".decode('utf-8'),"Síðustu 2 mánuði".decode('utf-8'),"Síðasta hálfa árið".decode('utf-8'),"Síðasta árið".decode('utf-8'), "Síðustu 2 ár".decode('utf-8')])
 		infltime.SetSelection(1)
@@ -139,108 +203,14 @@ class PageTwo(wx.Panel):
 
 		self.SetSizer(vbox)
 
-class PageThree(wx.Panel):
-    def __init__(self, parent):
-		wx.Panel.__init__(self, parent)
-
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
-
-		vbox = wx.BoxSizer(wx.VERTICAL)
-
-		hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-		st2 = wx.StaticText(self, label='Reikningar:'.decode('utf-8'))
-		st2.SetFont(font)
-		hbox2.Add(st2, flag=wx.RIGHT, border=8)
-		vbox.Add(hbox2, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		hbox21 = wx.BoxSizer(wx.HORIZONTAL)
-		st21 = wx.StaticText(self, label='Nafn'.decode('utf-8'))
-		st21.SetFont(font)
-		hbox21.Add(st21, flag=wx.RIGHT, border=8)
-		accountname = wx.TextCtrl(self)
-		hbox21.Add(accountname, proportion=1)
-		vbox.Add(hbox21, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-		st3 = wx.StaticText(self, label='Höfuðstóll'.decode('utf-8'))
-		st3.SetFont(font)
-		hbox3.Add(st3, flag=wx.RIGHT, border=8)
-		accountamount = wx.TextCtrl(self)
-		hbox3.Add(accountamount, proportion=1)
-		vbox.Add(hbox3, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		hbox4 = wx.BoxSizer(wx.HORIZONTAL)
-		st4 = wx.StaticText(self, label='Vextir'.decode('utf-8'))
-		st4.SetFont(font)
-		hbox4.Add(st4, flag=wx.RIGHT, border=8)
-		accountinterest = wx.TextCtrl(self)
-		hbox4.Add(accountinterest, proportion=1)
-		vbox.Add(hbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-
-		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		st5 = wx.StaticText(self, label='Bundin Tími'.decode('utf-8'))
-		st5.SetFont(font)
-		hbox5.Add(st5, flag=wx.RIGHT, border=8)
-		accountnop = wx.TextCtrl(self)
-		hbox5.Add(accountnop, proportion=1)
-		vbox.Add(hbox5, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-		#png = wx.StaticBitmap(self, -1, wx.Bitmap("demo_line_chart.png", wx.BITMAP_TYPE_ANY))
-		#hbox2.Add(png, flag=wx.RIGHT, border=8)
-		
-		vbox.Add((-1, 10))
-
-		hbox4 = wx.BoxSizer(wx.HORIZONTAL)
- 		accountinfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
-		accountinfl.SetFont(font)
-		hbox4.Add(accountinfl)
-		vbox.Add(hbox4, flag=wx.LEFT, border=10)
-
-		hbox5 = wx.BoxSizer(wx.HORIZONTAL)
-		addaccountbtn = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
-		hbox5.Add(addaccountbtn)
-		vbox.Add(hbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
-		# Event listener for button
-		addaccountbtn.Bind(wx.EVT_BUTTON, lambda event: makeaccount(accountnop, accountinfl, accountname, accountamount, accountinterest, accounts) )
-
-		hbox6 = wx.BoxSizer(wx.HORIZONTAL)
-		st6 = wx.StaticText(self, label='Núverandi Lán:'.decode('utf-8'))
-		st6.SetFont(font)
-		hbox6.Add(st6, flag=wx.RIGHT, border=8)
-		accounts = wx.ComboBox(self, style = wx.CB_READONLY)
-		hbox6.Add(accounts)
-		vbox.Add(hbox6, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
-
-		hbox7 = wx.BoxSizer(wx.HORIZONTAL)
-		listi = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
-		listi.InsertColumn(0, 'Nafn')
-		listi.InsertColumn(1, 'Höfuðstóll'.decode('utf-8'))
-		listi.InsertColumn(2, 'Vextir'.decode('utf-8'))
-		listi.InsertColumn(3, 'Verðtrygging'.decode('utf-8'))
-		listi.InsertColumn(4, 'Bundin tími'.decode('utf-8'))
-		listi.SetColumnWidth(0, 160)
-		listi.SetColumnWidth(1, 153)
-		listi.SetColumnWidth(2, 75)
-		listi.SetColumnWidth(3, 90)
-		listi.SetColumnWidth(4, 100)
-		hbox7.Add(listi, 1, wx.EXPAND | wx.ALL, 3)
-		vbox.Add(hbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
-
-		self.SetSizer(vbox)
-
-
 class PageFour(wx.Panel):
     def __init__(self, parent):
 		wx.Panel.__init__(self, parent)
-
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
 
 		vbox = wx.BoxSizer(wx.VERTICAL)
 
 		hbox1 = wx.BoxSizer(wx.HORIZONTAL)
 		st1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
-		st1.SetFont(font)
 		hbox1.Add(st1, flag=wx.RIGHT, border=8)
 		accpayment1 = wx.TextCtrl(self)
 		hbox1.Add(accpayment1, proportion=1)
@@ -248,7 +218,6 @@ class PageFour(wx.Panel):
 
 		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
 		st12 = wx.StaticText(self, label='Hvað viltu spara mikið:'.decode('utf-8'))
-		st12.SetFont(font)
 		hbox12.Add(st12, flag=wx.RIGHT, border=8)
 		accamount = wx.TextCtrl(self)
 		hbox12.Add(accamount, proportion=1)
@@ -256,7 +225,6 @@ class PageFour(wx.Panel):
 
 		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
 		st13 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
-		st13.SetFont(font)
 		hbox13.Add(st13, flag=wx.RIGHT, border=8)
 		accinfltime = wx.ComboBox(self, style = wx.CB_READONLY, choices= ["Síðasta mánuð".decode('utf-8'),"Síðustu 2 mánuði".decode('utf-8'),"Síðasta hálfa árið".decode('utf-8'),"Síðasta árið".decode('utf-8'), "Síðustu 2 ár".decode('utf-8')])
 		accinfltime.SetSelection(1)
@@ -277,14 +245,10 @@ class PageFive(wx.Panel):
     def __init__(self, parent):
 		wx.Panel.__init__(self, parent)
 
-		font = wx.SystemSettings_GetFont(wx.SYS_SYSTEM_FONT)
-		font.SetPointSize(9)
-
 		vbox = wx.BoxSizer(wx.VERTICAL)
 
 		hbox1 = wx.BoxSizer(wx.HORIZONTAL)
 		st1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
-		st1.SetFont(font)
 		hbox1.Add(st1, flag=wx.RIGHT, border=8)
 		accpayment2 = wx.TextCtrl(self)
 		hbox1.Add(accpayment2, proportion=1)
@@ -292,7 +256,6 @@ class PageFive(wx.Panel):
 
 		hbox12 = wx.BoxSizer(wx.HORIZONTAL)
 		st12 = wx.StaticText(self, label='Hvað viltu spara lengi:'.decode('utf-8'))
-		st12.SetFont(font)
 		hbox12.Add(st12, flag=wx.RIGHT, border=8)
 		acctime2 = wx.TextCtrl(self)
 		hbox12.Add(acctime2, proportion=1)
@@ -300,7 +263,6 @@ class PageFive(wx.Panel):
 
 		hbox13 = wx.BoxSizer(wx.HORIZONTAL)
 		st13 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
-		st13.SetFont(font)
 		hbox13.Add(st13, flag=wx.RIGHT, border=8)
 		accinfltime2 = wx.ComboBox(self, style = wx.CB_READONLY, choices= ["Síðasta mánuð".decode('utf-8'),"Síðustu 2 mánuði".decode('utf-8'),"Síðasta hálfa árið".decode('utf-8'),"Síðasta árið".decode('utf-8'), "Síðustu 2 ár".decode('utf-8')])
 		accinfltime2.SetSelection(1)
