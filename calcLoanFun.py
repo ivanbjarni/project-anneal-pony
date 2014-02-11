@@ -75,4 +75,3 @@ def median(li):
 
 loans=[Loan("Megalan", 10000, 0.12, False, 4), Loan("Lelegtlan", 100000, 0.01, True, 10)]
 
-print calcTimeToPayLoan(loans[0], 0.0, 10000)
