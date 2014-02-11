@@ -33,3 +33,12 @@ def getInflationCoefficient(months):
                 summa+=float(listi[i])
                 i+=1
         return summa/i
+
+def infltime(x):
+    return {
+        0 : 1,
+        1: 2,
+        2: 6,
+        3: 12,
+        4: 24,
+    }[x]
