@@ -13,7 +13,7 @@ loansName = []
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
-def calcBestWayToPayLoan(payment, time, inflt):
+def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
@@ -33,7 +33,7 @@ def calcBestWayToPayLoan(payment, time, inflt):
 			for a in keeploans:
 				loans.append(copy.deepcopy(a))
 			return
-		temp = calcTimeToPayLoan(l[0], infl, payment)
+		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel)
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)

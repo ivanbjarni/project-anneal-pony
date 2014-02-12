@@ -2,8 +2,19 @@
 # -*- coding: utf-8 -*-
 
 # gotoclass.py
+from numpy import arange, sin, pi
 from fjarmal import *
 import wx
+
+import matplotlib
+matplotlib.use('WXAgg')
+
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
+from matplotlib.backends.backend_wx import NavigationToolbar2Wx
+from matplotlib.figure import Figure
+
+#heldur utan um teiknipanel fyrri myndræna framsetningu
+drawingPanel = None
 
 class PageOne(wx.Panel):
     def __init__(self, parent):
@@ -154,6 +165,7 @@ class PageTwo(wx.Panel):
 		vbox.Add((-1, 10))
 		vbox.Add(insacchbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
+
 		self.SetSizer(vbox)
 
 
@@ -187,7 +199,7 @@ class PageThree(wx.Panel):
 		calcloanhbox3.Add(calcloaninfltime, proportion=1)
 
 		calcloansubmit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime ) )
+		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime, drawingPanel ) )
 		calcloanhbox4.Add(calcloansubmit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcloananswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
@@ -292,6 +304,26 @@ class PageFive(wx.Panel):
 
 		self.SetSizer(vbox)
 
+class PageSix(wx.Panel):
+	def __init__(self, parent):
+		wx.Panel.__init__(self, parent)
+
+		self.figure = Figure()
+		self.axes = self.figure.add_subplot(111)
+		self.canvas = FigureCanvas(self, -1, self.figure)
+		self.sizer = wx.BoxSizer(wx.VERTICAL)
+		self.sizer.Add(self.canvas, 1, wx.LEFT | wx.TOP | wx.GROW)
+		self.SetSizer(self.sizer)
+		self.Fit()
+
+	def draw(self, xNum, yNum):
+		self.axes.clear()
+		self.axes.set_xlabel('Mánuðir'.decode('utf-8'))
+		self.axes.set_ylabel('Höfuðstóll láns'.decode('utf-8'))
+		self.axes.plot(xNum, yNum)
+		self.canvas.draw()
+
+
 class MainFrame(wx.Frame):
     def __init__(self):
 		wx.Frame.__init__(self, None, title="Moneyspender 3000", size=(640, 500))
@@ -304,21 +336,19 @@ class MainFrame(wx.Frame):
 		page3 = PageThree(nb)
 		page4 = PageFour(nb)
 		page5 = PageFive(nb)
+		global drawingPanel 
+		drawingPanel = PageSix(nb)
 
 		nb.AddPage(page1, "Bæta við lánum".decode('utf-8'))
 		nb.AddPage(page2, "Bæta við reikningum".decode('utf-8'))
 		nb.AddPage(page3, "Reikna Lán".decode('utf-8'))
 		nb.AddPage(page4, "Reikna Sparnað 1".decode('utf-8'))
 		nb.AddPage(page5, "Reikna Sparnað 2".decode('utf-8'))
+		nb.AddPage(drawingPanel, "Sjá myndrænt".decode('utf-8'))
 
 		sizer = wx.BoxSizer()
 		sizer.Add(nb, 1, wx.EXPAND)
 		mainPanel.SetSizer(sizer)
-
-#if __name__ == '__main__':
-#    app = wx.App()
-#    MainFrame().Show()
-#    app.MainLoop()
 
 def initGui():
 	app = wx.App()
