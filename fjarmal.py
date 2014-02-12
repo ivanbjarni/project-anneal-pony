@@ -11,7 +11,6 @@ import copy
 
 loans = []
 # fylki til að halada utan um lán
-loansName = []
 
 #listi af Reikningum (accounts)
 accounts = []
@@ -90,6 +89,7 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
 def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
+	count = 0
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
@@ -123,6 +123,7 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
 	for a in loans:
 		keeploans.append(copy.deepcopy(a))
 	while(time>0):
+		count += 1
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
 			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
@@ -132,7 +133,7 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
 				loans.append(copy.deepcopy(a))
 			answer.SetLabel(s)
 			return
-		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, len(loans))
+		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, count)
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)
@@ -145,7 +146,6 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
 		s += ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
 	loans[:] = []
 	for a in keeploans:
-		print a.name
 		loans.append(copy.deepcopy(a))
 	answer.SetLabel(s)
 
@@ -164,7 +164,6 @@ def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):
 		answer.SetLabel(s)
 		return
 	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
-	loansName.append(loan.name)
 	loans.append(loan)
 	index = loanlist.GetItemCount()
 	nop.SetValue("")
@@ -191,7 +190,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 		s="Villa, fylla þarf í alla reiti. Tölur þar sem við á. ".decode("utf-8")
 		answer.SetLabel(s)
 		return
-	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj, -1, -1)
+	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj)
 	account = Account(accType, acc_balance)
 	accounts.append(account)
 	index = accountlist.GetItemCount()

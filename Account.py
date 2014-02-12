@@ -24,7 +24,7 @@ class Account(object):
 
 
 def calcAccProfit(account):
-    return (account.accType.interests / 1200.0) * account.balance - account.balance
+    return (account.acctype.interests + 1) *  account.balance - account.balance
 
 #def calcAccProfit(account):
 #    profit = (account.accountT().getInterests()/1200.0)*account.getBalance()-account.getBalance()
@@ -39,12 +39,12 @@ def howMuch(interests, time, amount):
         time -= 1
     return total
 
-#hversu langan tíma það tekur að ná x upphæð á reikningi með y vextií% á mánuði þegar z 
+#hversu langan tíma það tekur að ná wantam upphæð á reikningi með interests vexti á mánuði þegar haveam 
 #upphæð er lögð fyrir á mánuði
 def howLong(interests, wantam, haveam):
     total = 0.0
     months = 1
-    vextir = interests/1200.0
+    vextir = interests
     while(wantam > total):
         total += haveam
         total += total * vextir
@@ -59,7 +59,7 @@ def bestAccount(amount, time, inflcoeff, accounts):
     maxamount = []
     for item in accounts:
         total = 0.0
-        if(item.acctype.reqtime <= time and item.acctype.minimum <= amount):
+        if(item.acctype.reqtime <= time):
             vextir = item.acctype.interests
             if(item.acctype.indexadj):
                 vextir += inflcoeff
@@ -82,7 +82,7 @@ def bestAccountType(amount, time, inflcoeff, acctype):
     maxamount = []
     for item in acctype:
         total = 0.0
-        if(item.reqtime <= time and item.minimum <= amount):
+        if(item.reqtime <= time ):
             vextir = item.interests
             if(item.indexadj):
                 vextir += inflcoeff
