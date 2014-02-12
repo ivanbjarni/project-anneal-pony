@@ -40,16 +40,21 @@ def calcBestLoan(loans, inflation):
 def calcTimeToPayLoan(loan, inflation, payment):
 	temp = loan
 	time = 0
-	while(temp.balance > payment):
-		if(temp.infl):
-			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + inflation + temp.interest)
-			temp.numberOfP -= 1
-		else:
-			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + temp.interest)
-			temp.numberOfP -= 1
+	if ( temp.infl ):
+		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + inflation + temp.interest)
+	else:
+		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
+	while(temp.balance > monthlyP):
+		temp.balance -= monthlyP
 		time = time + 1
-	leftover = payment - temp.balance
-	time = temp.balance/payment + time
+		temp.numberOfP -= 1
+		if(temp.infl):
+			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + inflation + temp.interest)
+		else:
+			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
+	leftover = monthlyP - temp.balance
+	time = temp.balance/monthlyP + time
+	print str(time) 
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 
