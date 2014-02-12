@@ -52,7 +52,7 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 
 
 #Býr til lán og bætir því í núverandi lán boxið
-def makeLoan(nop, infl, nm, amount, interest, answer,loanlist):	
+def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):	
 	global loans
 	name = nm.GetValue()
 	interests = validateStringToNumber(interest.GetValue())
@@ -80,16 +80,30 @@ def makeLoan(nop, infl, nm, amount, interest, answer,loanlist):
 	#loanlist.InsertItem(item)
 	print "Bætti Láni inn".decode("utf-8")
 
-def makeAccount(name, amount, interests, reqtime, indexadj):
-	name = name.GetValue()
-	interests = validateStringToNumber(interests.GetValue())
-	reqtime = validateStringToNumber(reqtime.GetValue())
+def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist):
+	acc_name = name.GetValue()
+	acc_balance = validateStringToNumber(balance.GetValue())
+	acc_interests = validateStringToNumber(interests.GetValue())
+	acc_reqtime = validateStringToNumber(reqtime.GetValue())
+	acc_indexadj = indexadj.GetValue()
 	if( interests == -1 or reqtime == -1):
-		print 'villa'
+		print "villa"
+		answer.SetLabel("Villa bætti láni ekki inn".decode("utf-8"))
 		return
-	accType = AccountType(name, reqtime, interests, indexadj, -1, -1)
-	account = Account(accType, amount)
+	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj, -1, -1)
+	account = Account(accType, acc_balance)
 	accounts.append(account)
+	index = accountlist.GetItemCount()
+	name.SetValue("")
+	balance.SetValue("")
+	interests.SetValue("")
+	reqtime.SetValue("")
+	accountlist.InsertStringItem(index, account.acctype.name)
+	accountlist.SetStringItem(index, 1, str(account.balance))
+	accountlist.SetStringItem(index, 2, str(account.acctype.interests))
+	accountlist.SetStringItem(index, 3, str(account.acctype.indexadj))
+	accountlist.SetStringItem(index, 4, str(account.acctype.reqtime))
+	answer.SetLabel("Bætti reikningi við".decode("utf-8"))
 	print "Bætti við reikning".decode("utf-8")
 
 #Athuga hvort strengur er tala og

@@ -136,7 +136,7 @@ class PageTwo(wx.Panel):
 
 		insaccsubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
-		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeAccount( insaccname, insaccamount, insaccinterest, insaccreq, insaccinfl ) )
+		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeAccount( insaccname, insaccamount, insaccinterest, insaccreq, insaccinfl, insaccanswer, insacclisti ) )
 			#insacreq, insaccinfl, insaccname, insaccamount, insaccinterest, loans) )
 		insacchbox6.Add(insaccsubmit)
 
@@ -317,11 +317,14 @@ class PageSix(wx.Panel):
 		self.SetSizer(self.sizer)
 		self.Fit()
 
-	def draw(self, xNum, yNum):
+	def draw(self, xList, yList):
 		self.axes.clear()
+#		self.axes.set_xlabel(xlabel)
+#		self.axes.set_ylabel(ylabel)
 		self.axes.set_xlabel('Mánuðir'.decode('utf-8'))
-		self.axes.set_ylabel('Höfuðstóll láns'.decode('utf-8'))
-		self.axes.plot(xNum, yNum)
+		self.axes.set_ylabel('Höfuðstóll'.decode('utf-8'))
+		self.axes.plot(xList, yList)
+		self.axes.set_xlim(left=1)
 		self.canvas.draw()
 
 

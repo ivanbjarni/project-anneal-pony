@@ -13,30 +13,30 @@ class AccountType(object):
         self.nextid = nextid #hvert á að fara þegar hamarki er nad
         
     #skilar nafni reiknings(tegund)
-    def getName(self):
-        return self.name
+#    def getName(self):
+#        return self.name
     
     #skilar hamarksupphaed reiknings
-    def maxAmount(self):
-        return self.maximum
+#    def maxAmount(self):
+#        return self.maximum
     
     #skilar lagmarksupphaed reiknings
-    def minAmount(self):
-        return self.minimum
+#    def minAmount(self):
+#        return self.minimum
     
     #skilar lagmarksbinditima reiknings
-    def reqTime(self):
-        print 'what'
-        return self.reqtime
+#    def reqTime(self):
+#        print 'what'
+#        return self.reqtime
     
     #skilar vöxtum reiknings
-    def getInterests(self):
-        print 'ok'
-        return self.interests
+#    def getInterests(self):
+#        print 'ok'
+#        return self.interests
     
     #skilar true ef reikningur er verðtryggður, false annars
-    def isIndexAdj(self):
-        return self.indexadj == 1
+#    def isIndexAdj(self):
+#        return self.indexadj == 1
 #        if(self.indexadj == 1):
 #            return True
 #        else:
@@ -61,9 +61,9 @@ def readAccountTypes():
     return accountslisti
 
 #testforrit
-def tryit():
-    x = readAccountTypes()
-    for item in x:
-        item.getInfo()
+#def tryit():
+#    x = readAccountTypes()
+#    for item in x:
+#        item.getInfo()
 
     
