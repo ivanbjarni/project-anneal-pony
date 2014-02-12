@@ -33,10 +33,9 @@ def calcAccProfit(account):
 #hversu mikið þú getur safnað með því að leggja eitthvað ákveðið inn á rkn í ákveðinn tíma
 def howMuch(interests, time, amount):
     total = 0.0
-    vextir = interests/1200.0
     while(time>0):
         total += amount
-        total += total*vextir
+        total += total * interests
         time -= 1
     return total
 
