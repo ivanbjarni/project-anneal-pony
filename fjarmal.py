@@ -47,21 +47,25 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
-def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
+def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
-	payment = validateStringToNumber(payment.GetValue())
-	time = validateStringToNumber(time.GetValue())
+	payment = validateStringToNumber(paymentbox.GetValue())
+	time = validateStringToNumber(timebox.GetValue())
 	s = ""
 	if( time == False or payment == False ):
 		s=""
 		print "Villa"
 		s+="Villa"+"\n"
-		if( time == False):
-			s+="Fylla þarf út í tíma reitin".decode("utf-8")+"\n"
-		if(payment == False):
-			s+="Fylla þarf út í mánaðarleg greiðsla reitin".decode("utf-8")+"\n"
+		if(timebox.GetValue()==""):
+			s+="Fylla þarf út í tíma reitinn".decode("utf-8")+"\n"
+		elif( time == False):
+			s+="Vinsamlegast sláðu inn tölu í tíma reitinn".decode("utf-8")+"\n"
+		if(paymentbox.GetValue()==""):
+			s+="Fylla þarf út í mánaðarleg greiðsla reitinn".decode("utf-8")+"\n"
+		elif(payment == False):
+			s+="Vinsamlegast sláðu inn tölu í mánaðarleg greiðsla reitinn".decode("utf-8")+"\n"
 		answer.SetLabel(s)
 		return
 	global loans
@@ -131,7 +135,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 	acc_interests = validateStringToNumber(interests.GetValue())
 	acc_reqtime = validateStringToNumber(reqtime.GetValue())
 	acc_indexadj = indexadj.GetValue()
-	if( interests == False or reqtime == False or balance==False ):
+	if( acc_interests == False or acc_reqtime == False or acc_balance==False ):
 		print "villa"
 		answer.SetLabel("Villa bætti reikningi ekki inn".decode("utf-8"))
 		return
