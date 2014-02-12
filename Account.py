@@ -1,26 +1,34 @@
 # -*- coding: cp1252 -*-
-import AccountType
-class Account:
-    def __init__(self, acctype, balance):
-        self.acctype = acctype #tegund reiknings
+from AccountType import *
+
+class Account(object):
+    def __init__(self, accType, balance):
+#        self.name = name #nafn
+        self.acctype = accType #tegund reiknings        
         self.balance = balance #innistaeda reiknings
+#        self.interests = interests
+#        self.isIndexAdj = isIndAdj
+#        self.reqtime = reqtime
         
-    def accountT(self):
-        return self.acctype
+#    def accountT(self):
+#       return self.acctype
 
-    def setBalance(self, x):
-        self.balance = x
+#    def setBalance(self, x):
+#        self.balance = x
     
-    def getBalance(self):
-        return self.x
+#    def getBalance(self):
+#        return self.balance
 
-    def addBalance(self, x):
-        self.balance = self.amount + x
+#    def addBalance(self, x):
+#        self.balance += x
 
 
 def calcAccProfit(account):
-    profit = (account.accountT().getInterests()/1200.0)*account.getBalance()-account.getBalance()
-    return profit
+    return (account.accType.interests / 1200.0) * account.balance - account.balance
+
+#def calcAccProfit(account):
+#    profit = (account.accountT().getInterests()/1200.0)*account.getBalance()-account.getBalance()
+#    return profit
 
 #hversu mikið þú getur safnað með því að leggja eitthvað ákveðið inn á rkn í ákveðinn tíma
 def howMuch(interests, time, amount):
@@ -40,11 +48,11 @@ def howLong(interests, wantam, haveam):
     vextir = interests/1200.0
     while(wantam > total):
         total += haveam
-        total += total*vextir
+        total += total * vextir
         months += 1
     return months
 
-    
+
 #Velur besta reikning fyrir:
 #amount er upphaed sem hægt er að spara á mánuði, time er tíminn sem mun líða í mánuðum,inflcoeff er verðbólgustuðull
 #acctype er listi af tegundum reikninga. Fallið skilar tegund reiknings sem best er að nota
@@ -52,29 +60,51 @@ def bestAccount(amount, time, inflcoeff, acctype):
     maxamount = []
     for item in acctype:
         total = 0.0
-        if(item.reqTime()<=time and item.minAmount()<=amount):
-            vextir = item.getInterests()
-            if(item.isIndexAdj()):
+        if(item.reqtime <= time and item.minimum <= amount):
+            vextir = item.interests
+            if(item.indexadj):
                 vextir += inflcoeff
-            vextirpermonth = time*(1.0/12.0)*(vextir/1200.0)
-            for i in range(time,0,-1):
+            vextirpermonth = time * (1.0 / 12.0) * (vextir / 1200.0)
+            for i in range(time, 0, -1):
                 total += amount
-                profit = vextirpermonth*total
+                profit = vextirpermonth * total
                 total += profit
             maxamount.append(total)
         else:
             maxamount.append(total)
     p = max(maxamount)
-    return [p,acctype[maxamount.index(p)]]
+    return [p, acctype[maxamount.index(p)]]
+
+#Velur besta reikning fyrir:
+#amount er upphaed sem hægt er að spara á mánuði, time er tíminn sem mun líða í mánuðum,inflcoeff er verðbólgustuðull
+#acctype er listi af tegundum reikninga. Fallið skilar tegund reiknings sem best er að nota
+#def bestAccount(amount, time, inflcoeff, acctype):
+#    maxamount = []
+#    for item in acctype:
+#        total = 0.0
+#        if(item.reqTime()<=time and item.minAmount()<=amount):
+#            vextir = item.getInterests()
+#            if(item.isIndexAdj()):
+#                vextir += inflcoeff
+#            vextirpermonth = time*(1.0/12.0)*(vextir/1200.0)
+#            for i in range(time,0,-1):
+#                total += amount
+#                profit = vextirpermonth*total
+#                total += profit
+#            maxamount.append(total)
+#        else:
+#            maxamount.append(total)
+#    p = max(maxamount)
+#    return [p,acctype[maxamount.index(p)]]
 #Testforrit:
 
-def tryit2():
-    x = bestAccount(100000.0,2,2.0,AccountType.readAccountTypes())
-    print x[0]
-    x[1].getInfo()
-def tryit3():
-    print howLong(4.0,10000.0,2000.0)
-    
-def tryit4():
-    print howMuch(4.0,3,10000.0)
-tryit2()
+#def tryit2():
+#    x = bestAccount(100000.0,2,2.0,AccountType.readAccountTypes())
+#    print x[0]
+#    x[1].getInfo()
+#def tryit3():
+#    print howLong(4.0,10000.0,2000.0)
+#    
+#def tryit4():
+#    print howMuch(4.0,3,10000.0)
+#tryit2()
