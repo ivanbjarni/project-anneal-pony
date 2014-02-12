@@ -4,11 +4,16 @@
 from wxgui3 import *
 from calcLoanFun import *
 from inflation import *
+from AccountType import *
+from Account import *
 import copy
 
 loans = []
 # fylki til að halada utan um lán
 loansName = []
+
+#listi af Reikningum (accounts)
+accounts = []
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
@@ -62,6 +67,17 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	loansComboBox.SetItems(loansName)
 	print "Bætti Láni inn".decode("utf-8")
 
+def makeAccount(name, amount, interests, reqtime, indexadj):
+	name = name.GetValue()
+	interests = validateStringToNumber(interests.GetValue())
+	reqtime = validateStringToNumber(reqtime.GetValue())
+	if( interests == -1 or reqtime == -1):
+		print 'villa'
+		return
+	accType = AccountType(name, reqtime, interests, indexadj, -1, -1)
+	account = Account(accType, amount)
+	accounts.append(account)
+	print "Bætti við reikning".decode("utf-8")
 
 #Athuga hvort strengur er tala og
 #skilar tölunni ef strengurinn er tala en annars -1

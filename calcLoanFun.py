@@ -44,10 +44,10 @@ def calcBestLoan(loans, inflation):
 def calcTimeToPayLoan(loan, inflation, payment, drawingPanel):
 	temp = loan
 	time = 0
-	balanceList = []
+	balanceList = [] #hafa 'i huga, sko[a 'asa']
 	timeList = []
 	while(temp.balance > payment):
-		timeList.append(time)
+		timeList.append(time + 1)
 		balanceList.append(temp.balance)
 		if(temp.infl):
 			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + inflation + temp.interest)

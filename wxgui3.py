@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # gotoclass.py
-from numpy import arange, sin, pi
+#from numpy import arange, sin, pi
 from fjarmal import *
 import wx
 
@@ -10,7 +10,7 @@ import matplotlib
 matplotlib.use('WXAgg')
 
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
-from matplotlib.backends.backend_wx import NavigationToolbar2Wx
+#from matplotlib.backends.backend_wx import NavigationToolbar2Wx
 from matplotlib.figure import Figure
 
 #heldur utan um teiknipanel fyrri myndræna framsetningu
@@ -144,7 +144,8 @@ class PageTwo(wx.Panel):
 
 		insaccsubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
-		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insacreq, insaccinfl, insaccname, insaccamount, insaccinterest, loans) )
+		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeAccount( insaccname, insaccamount, insaccinterest, insaccreq, insaccinfl ) )
+			#insacreq, insaccinfl, insaccname, insaccamount, insaccinterest, loans) )
 		insacchbox6.Add(insaccsubmit)
 
 		insacclisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)

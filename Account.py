@@ -1,21 +1,26 @@
 # -*- coding: cp1252 -*-
-import AccountType
-class Account:
+from AccountType import *
+
+class Account(object):
     def __init__(self, acctype, balance):
-        self.acctype = acctype #tegund reiknings
+#        self.name = name #nafn
+        self.acctype = acctype #tegund reiknings        
         self.balance = balance #innistaeda reiknings
+#        self.interests = interests
+#        self.isIndexAdj = isIndAdj
+#        self.reqtime = reqtime
         
-    def accountT(self):
-        return self.acctype
+#    def accountT(self):
+#       return self.acctype
 
     def setBalance(self, x):
         self.balance = x
     
     def getBalance(self):
-        return self.x
+        return self.balance
 
     def addBalance(self, x):
-        self.balance = self.amount + x
+        self.balance += x
 
 
 def calcAccProfit(account):
@@ -68,13 +73,13 @@ def bestAccount(amount, time, inflcoeff, acctype):
     return [p,acctype[maxamount.index(p)]]
 #Testforrit:
 
-def tryit2():
-    x = bestAccount(100000.0,2,2.0,AccountType.readAccountTypes())
-    print x[0]
-    x[1].getInfo()
-def tryit3():
-    print howLong(4.0,10000.0,2000.0)
-    
-def tryit4():
-    print howMuch(4.0,3,10000.0)
-tryit2()
+#def tryit2():
+#    x = bestAccount(100000.0,2,2.0,AccountType.readAccountTypes())
+#    print x[0]
+#    x[1].getInfo()
+#def tryit3():
+#    print howLong(4.0,10000.0,2000.0)
+#    
+#def tryit4():
+#    print howMuch(4.0,3,10000.0)
+#tryit2()
