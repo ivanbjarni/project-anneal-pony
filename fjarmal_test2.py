@@ -69,6 +69,18 @@ def makeRandomLoans():
 	return l
 
 class TestcalcLoanFun(unittest.TestCase):
+	# Athugar hvort calcProfitPerTime se rett reiknad
+	def test_calcProfitPerTime_correct(self):
+		l = makeRandomLoans()
+		for i in range(0, len(l)):
+			if(l[i].infl):
+				inflation = makeRandomInflation()
+			else:
+				inflation = 0
+			payment = makeRandomPayment()
+			self.assertEqual(calcProfitPerTime(l[i], payment, inflation), payment * (inflation + l[i].interest))
+
+
 	# Athugar hvort calcProfitPerTime se ad skila jakvaedri tolu tegar tad a ad skila jakvaedri tolu
 	def test_calcProfitPerTime_negative(self):
 		l = makeRandomLoans()
@@ -79,10 +91,10 @@ class TestcalcLoanFun(unittest.TestCase):
 
 	# athugar hvort calcbestloan skili -1 ef balance og number of payments left eru baedi 0 í öllum lánum
 	def test_calcBestLoan_noLoan(self):
-		self.assertTrue(calcBestLoan([Loan("",0,0.2,False,0)], 0.3), -1, "Villa tegar tad er enginn hofudstoll a laninu i calcProfitPerTime fallinu")
+		self.assertEqual(calcBestLoan([Loan("",0,0.2,False,0)], 0.3), -1, "Villa tegar tad er enginn hofudstoll a laninu i calcProfitPerTime fallinu")
 
 	# Athugar hvort calcBestLoan se ad skila besta laninu
-	def test_calcBestLoan_bestLoan(self):
+	def test_calcBestLoan_correct(self):
 		loans = makeRandomLoansWithBestLoan()
 		l = loans[0]
 		index = loans[1]
@@ -94,8 +106,7 @@ class TestcalcLoanFun(unittest.TestCase):
 		for i in range(0, len(loans)):
 			payment = makeRandomPayment()
 			inflation = makeRandomInflation()
-			calcTimeToPayLoan()
-
+			self.assertTrue(calcTimeToPayLoan(loans[i], inflation, payment, None, 0)>=0)
 
 
 

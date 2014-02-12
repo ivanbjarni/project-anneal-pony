@@ -11,7 +11,6 @@ import copy
 
 loans = []
 # fylki til að halada utan um lán
-loansName = []
 
 #listi af Reikningum (accounts)
 accounts = []
@@ -113,7 +112,6 @@ def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):
 		answer.SetLabel(s)
 		return
 	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
-	loansName.append(loan.name)
 	loans.append(loan)
 	index = loanlist.GetItemCount()
 	nop.SetValue("")

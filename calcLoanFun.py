@@ -94,11 +94,3 @@ def calcLoan(balance, interest, payment, inflation, time):
 		balance = balance*(1+interest+inflation) 
 		return balance
 
-# returns the median of a list li
-def median(li):
-	s = 0
-	c = 0
-	for i in li:
-		s += i
-	return s/c
-
