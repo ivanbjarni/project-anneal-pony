@@ -16,16 +16,22 @@ loansName = []
 #listi af Reikningum (accounts)
 accounts = []
 
+
+def calcBestWayToPayacc1( calcacc1payment, calcacc1time, calcacc1infltime, calcacc1answer ) :
+	
+
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
-def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
+def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
 	payment = validateStringToNumber(payment.GetValue())
 	time = validateStringToNumber(time.GetValue())
+	s = ""
 	if( time == -1 or payment == -1 ):
-		print "villa"
+		answer.SetLabel("villa")
+		print "villa"+"\n"
 		return
 	global loans
 	keeploans = []
@@ -35,8 +41,10 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
 			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
+			s += "Þú ert orðinn skuldlaus!!".decode("utf-8")+"\n"
 			for a in keeploans:
 				loans.append(copy.deepcopy(a))
+			answer.SetLabel(s)
 			return
 		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel)
 		time -= temp[1]
@@ -46,9 +54,12 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 		if(time < 0):
 			temp[1] += time
 		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")
+		s += ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")+"\n"
 		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
+		s += ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
 	for a in keeploans:
 		loans.append(copy.deepcopy(a))
+	answer.SetLabel(s)
 
 
 #Býr til lán og bætir því í núverandi lán boxið
@@ -105,6 +116,8 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 	accountlist.SetStringItem(index, 4, str(account.acctype.reqtime))
 	answer.SetLabel("Bætti reikningi við".decode("utf-8"))
 	print "Bætti við reikning".decode("utf-8")
+
+
 
 #Athuga hvort strengur er tala og
 #skilar tölunni ef strengurinn er tala en annars -1

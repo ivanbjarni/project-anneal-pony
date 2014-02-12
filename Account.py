@@ -55,8 +55,31 @@ def howLong(interests, wantam, haveam):
 
 #Velur besta reikning fyrir:
 #amount er upphaed sem hægt er að spara á mánuði, time er tíminn sem mun líða í mánuðum,inflcoeff er verðbólgustuðull
+#accounts er listi af reikningum. Fallið skilar reikning sem best er að nota
+def bestAccount(amount, time, inflcoeff, accounts):
+    maxamount = []
+    for item in accounts:
+        total = 0.0
+        if(item.acctype.reqtime <= time and item.acctype.minimum <= amount):
+            vextir = item.acctype.interests
+            if(item.acctype.indexadj):
+                vextir += inflcoeff
+            vextirpermonth = time * (1.0 / 12.0) * (vextir / 1200.0)
+            for i in range(time, 0, -1):
+                total += amount
+                profit = vextirpermonth * total
+                total += profit
+            maxamount.append(total)
+        else:
+            maxamount.append(total)
+    p = max(maxamount)
+    return [p, accounts[maxamount.index(p)]]
+
+
+#Velur besta reikningstýpu fyrir:
+#amount er upphaed sem hægt er að spara á mánuði, time er tíminn sem mun líða í mánuðum,inflcoeff er verðbólgustuðull
 #acctype er listi af tegundum reikninga. Fallið skilar tegund reiknings sem best er að nota
-def bestAccount(amount, time, inflcoeff, acctype):
+def bestAccountType(amount, time, inflcoeff, acctype):
     maxamount = []
     for item in acctype:
         total = 0.0

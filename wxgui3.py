@@ -200,7 +200,7 @@ class PageThree(wx.Panel):
 		calcloanhbox3.Add(calcloaninfltime, proportion=1)
 
 		calcloansubmit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime, drawingPanel ) )
+		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime, drawingPanel, calcloananswer ) )
 		calcloanhbox4.Add(calcloansubmit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcloananswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
@@ -211,7 +211,7 @@ class PageThree(wx.Panel):
 		vbox.Add(calcloanhbox3, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		vbox.Add((-1, 10))
 		vbox.Add(calcloanhbox4, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
-		vbox.Add(calcloanhbox5, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=10)
+		vbox.Add(calcloanhbox5, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
 		self.SetSizer(vbox)
 
