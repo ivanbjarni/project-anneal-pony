@@ -11,6 +11,9 @@ import random
 from random import randint
 #from fjarmal import *
 
+#keep track of how many loans to draw
+loanCount = 0
+
 class Loan: 
 	def __init__(self, name, balance, interest, infl, numberOfPayments): 
 		self.name = name 
@@ -40,19 +43,24 @@ def calcBestLoan(loans, inflation):
 			index = i
 	if (Max==-100):
 		return -1
-	return [loans[index],index]
+	return [loans[index], index]
 
 # returns [leftover, time] the time it takes to pay the loan with a extra payment and the money you have left
-def calcTimeToPayLoan(loan, inflation, payment, drawingPanel):
+def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
+	global loanCount
 	temp = loan
 	time = 0
+	loanCount += 1
+	clearDrawing = False
 	if ( temp.infl ):
 		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + inflation + temp.interest)
 	else:
 		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
-	balanceList = [] #hafa i huga, skoda asa
-	timeList = []
+	balanceList = [temp.balance] #hafa i huga, skoda asa
+	timeList = [0]
 	while(temp.balance > monthlyP):
+#		timeList.append(time + 1)
+#		balanceList.append(temp.balance)
 		temp.balance -= monthlyP
 		time = time + 1
 		temp.numberOfP -= 1
@@ -64,6 +72,11 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel):
 			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
 	leftover = monthlyP - temp.balance
 	time = temp.balance/monthlyP + time
+	timeList.append(time)
+	balanceList.append(0)
+	if(loanCount == countLoans):
+		loanCount = 0
+		clearDrawing = True
 	if(drawingPanel != None):
 		drawingPanel.draw(timeList, balanceList)
 	return [leftover, time]
