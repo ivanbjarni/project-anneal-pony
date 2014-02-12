@@ -64,7 +64,8 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel):
 			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
 	leftover = monthlyP - temp.balance
 	time = temp.balance/monthlyP + time
-	drawingPanel.draw(timeList, balanceList)
+	if(drawingPanel != None):
+		drawingPanel.draw(timeList, balanceList)
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 
