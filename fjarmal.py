@@ -4,6 +4,7 @@
 from wxgui3 import *
 from calcLoanFun import *
 from inflation import *
+import wx
 import copy
 
 loans = []
@@ -46,7 +47,7 @@ def calcBestWayToPayLoan(payment, time, inflt):
 
 
 #Býr til lán og bætir því í núverandi lán boxið
-def makeLoan(nop, infl, name, amount, interests, loansComboBox):	
+def makeLoan(nop, infl, name, amount, interests, loansComboBox,loanlist):	
 	global loans
 	name = name.GetValue()
 	interests = validateStringToNumber(interests.GetValue())
@@ -60,6 +61,13 @@ def makeLoan(nop, infl, name, amount, interests, loansComboBox):
 	loansName.append(loan.name)
 	loans.append(loan)
 	loansComboBox.SetItems(loansName)
+	index = loanlist.GetItemCount()
+	loanlist.InsertStringItem(index, loan.name)
+	loanlist.SetStringItem(index, 1, str(loan.balance))
+	loanlist.SetStringItem(index, 2, str(loan.interest))
+	loanlist.SetStringItem(index, 3, str(loan.infl))
+	loanlist.SetStringItem(index, 4, str(loan.numberOfP))
+	#loanlist.InsertItem(item)
 	print "Bætti Láni inn".decode("utf-8")
 
 

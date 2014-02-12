@@ -49,7 +49,7 @@ class PageOne(wx.Panel):
 
 		insloansubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
-		insloansubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insloannop, insloaninfl, insloanname, insloanamount, insloaninterest, loans) )
+		insloansubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insloannop, insloaninfl, insloanname, insloanamount, insloaninterest, loans,insloanlisti) )
 		insloanhbox6.Add(insloansubmit)
 
 		insloanlisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
@@ -77,14 +77,6 @@ class PageOne(wx.Panel):
 		vbox.Add(insloanhbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 		vbox.Add((-1, 10))
 		vbox.Add(insloanhbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
-
-		#temporary drasl, þarf að henda
-		hbox6 = wx.BoxSizer(wx.HORIZONTAL)
-		st6 = wx.StaticText(self, label='Núverandi Lán:'.decode('utf-8'))
-		hbox6.Add(st6, flag=wx.RIGHT, border=8)
-		loans = wx.ComboBox(self, style = wx.CB_READONLY)
-		hbox6.Add(loans)
-		vbox.Add(hbox6, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
 		self.SetSizer(vbox)
 
@@ -240,7 +232,7 @@ class PageFour(wx.Panel):
 		calcacc1hbox3.Add(calcacc1infltime, proportion=1)
 
 		calcacc1submit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcacc1payment, calcacc1time, calcacc1infltime ) )
+		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc1( calcacc1payment, calcacc1time, calcacc1infltime ) )
 		calcacc1hbox4.Add(calcacc1submit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcacc1answer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
