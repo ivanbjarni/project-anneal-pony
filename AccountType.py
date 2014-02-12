@@ -9,8 +9,8 @@ class AccountType(object):
         self.reqtime = reqtime #lagmarksbinditimi
         self.interests = interests #vextir%
         self.indexadj = indexadj #er reikningurinn verğtryggğur?
-        self.idnum = idnum #auğkennisnúmer
-        self.nextid = nextid #hvert á ağ fara şegar hamarki er nad
+#        self.idnum = idnum #auğkennisnúmer
+#        self.nextid = nextid #hvert á ağ fara şegar hamarki er nad
         
     #skilar nafni reiknings(tegund)
 #    def getName(self):
