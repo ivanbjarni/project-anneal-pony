@@ -139,7 +139,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 		print "villa"
 		answer.SetLabel("Villa bætti reikningi ekki inn".decode("utf-8"))
 		return
-	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj, -1, -1)
+	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj)
 	account = Account(accType, acc_balance)
 	accounts.append(account)
 	index = accountlist.GetItemCount()

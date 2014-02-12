@@ -320,7 +320,7 @@ class PageSix(wx.Panel):
 	def draw(self, xList, yList, clear):
 		if(clear):
 			self.axes.clear()
-		print clear
+#		print clear
 #		self.axes.clear()
 #		self.axes.set_xlabel(xlabel)
 #		self.axes.set_ylabel(ylabel)
