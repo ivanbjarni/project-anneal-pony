@@ -17,8 +17,27 @@ loansName = []
 accounts = []
 
 
-def calcBestWayToPayacc1( calcacc1payment, calcacc1time, calcacc1infltime, calcacc1answer ) :
-	
+def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
+	payment = validateStringToNumber(paymentbox.GetValue())
+	time = validateStringToNumber(timebox.GetValue())
+	infltim = infltime(infltimebox.GetCurrentSelection())
+	infl = getInflationCoefficient(infltim)/100
+
+	if( time == -1 or payment == -1 ):
+		answer.SetLabel("villa")
+		print "villa"+"\n"
+		return
+	global accounts
+	keepaccounts = []
+	for a in accounts:
+		keepaccounts.append(copy.deepcopy(a))
+
+	[am,acc] = bestAccount(payment, time, infl, accounts)
+	s+=acc.acctype.name
+
+	for a in keeploans:
+		loans.append(copy.deepcopy(a))
+	answer.SetLabel(s)
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox

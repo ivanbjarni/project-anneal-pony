@@ -245,7 +245,7 @@ class PageFour(wx.Panel):
 		calcacc1hbox3.Add(calcacc1infltime, proportion=1)
 
 		calcacc1submit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc1( calcacc1payment, calcacc1time, calcacc1infltime ) )
+		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc1( calcacc1payment, calcacc1amount, calcacc1infltime, calcacc1answer ) )
 		calcacc1hbox4.Add(calcacc1submit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcacc1answer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
@@ -290,7 +290,7 @@ class PageFive(wx.Panel):
 		calcacc2hbox3.Add(calcacc2infltime, proportion=1)
 
 		calcacc2submit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcacc2submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( payment, time, infltime ) )
+		calcacc2submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc2( calcacc2payment, calcacc2time, calcacc2infltime, calcacc2answer ) )
 		calcacc2hbox4.Add(calcacc2submit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcacc2answer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
