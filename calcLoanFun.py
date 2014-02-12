@@ -7,6 +7,8 @@
 # Eftir: x er lan 
 
 from wxgui3 import *
+import random
+from random import randint
 #from fjarmal import *
 
 #keep track of how many loans to draw
@@ -29,7 +31,7 @@ def calcProfitPerTime(loan, payment, inflation):
 # returns the best loan to put your payment on
 def calcBestLoan(loans, inflation):
 	temp = 0
-	Max = 0
+	Max = -100
 	index = 0
 	for i in range(0, len(loans)):
 		if(loans[i].infl):
@@ -39,7 +41,7 @@ def calcBestLoan(loans, inflation):
 		if (loans[i].interest + temp>Max and loans[i].numberOfP > 0):
 			Max = loans[i].interest + temp
 			index = i
-	if (Max==0):
+	if (Max==-100):
 		return -1
 	return [loans[index], index]
 
@@ -75,7 +77,8 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
 	if(loanCount == countLoans):
 		loanCount = 0
 		clearDrawing = True
-	drawingPanel.draw(timeList, balanceList, clearDrawing)
+	if(drawingPanel != None):
+		drawingPanel.draw(timeList, balanceList)
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 
@@ -91,10 +94,3 @@ def calcLoan(balance, interest, payment, inflation, time):
 		balance = balance*(1+interest+inflation) 
 		return balance
 
-# returns the median of a list li
-def median(li):
-	s = 0
-	c = 0
-	for i in li:
-		s += i
-	return s/c
