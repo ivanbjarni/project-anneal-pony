@@ -23,9 +23,15 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 	infltim = infltime(infltimebox.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
 
-	if( time == -1 or payment == -1 ):
-		answer.SetLabel("villa")
-		print "villa"+"\n"
+	if( time == False or payment == False ):
+		s=""
+		print "Villa"
+		s+="Villa"+"\n"
+		if( time == False):
+			s+="Fylla þarf út í tíma reitin".decode("utf-8")+"\n"
+		if(payment == False):
+			s+="Fylla þarf út í mánaðarleg greiðsla reitin".decode("utf-8")+"\n"
+		answer.SetLabel(s)
 		return
 	global accounts
 	keepaccounts = []
@@ -48,9 +54,15 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 	payment = validateStringToNumber(payment.GetValue())
 	time = validateStringToNumber(time.GetValue())
 	s = ""
-	if( time == -1 or payment == -1 ):
-		answer.SetLabel("villa")
-		print "villa"+"\n"
+	if( time == False or payment == False ):
+		s=""
+		print "Villa"
+		s+="Villa"+"\n"
+		if( time == False):
+			s+="Fylla þarf út í tíma reitin".decode("utf-8")+"\n"
+		if(payment == False):
+			s+="Fylla þarf út í mánaðarleg greiðsla reitin".decode("utf-8")+"\n"
+		answer.SetLabel(s)
 		return
 	global loans
 	keeploans = []
@@ -89,9 +101,12 @@ def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):
 	numberOfP = validateStringToNumber(nop.GetValue())
 	infl = infl.GetValue()
 	balance = validateStringToNumber(amount.GetValue())
-	if(interests==-1 or numberOfP==-1 or infl==-1 or balance==-1 ):
+	if(interests==False or numberOfP==False or balance==False ):
 		print "villa"
-		answer.SetLabel("Villa bætti láni ekki inn".decode("utf-8"))
+		s="Villa \n"
+		if(interests==False):
+			s += ""	
+		answer.SetLabel(s)
 		return
 	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
 	loansName.append(loan.name)
@@ -116,9 +131,9 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 	acc_interests = validateStringToNumber(interests.GetValue())
 	acc_reqtime = validateStringToNumber(reqtime.GetValue())
 	acc_indexadj = indexadj.GetValue()
-	if( interests == -1 or reqtime == -1):
+	if( interests == False or reqtime == False or balance==False ):
 		print "villa"
-		answer.SetLabel("Villa bætti láni ekki inn".decode("utf-8"))
+		answer.SetLabel("Villa bætti reikningi ekki inn".decode("utf-8"))
 		return
 	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj, -1, -1)
 	account = Account(accType, acc_balance)
@@ -144,7 +159,7 @@ def validateStringToNumber(string):
 	try:
 		return float(string) if '.' in string else int(string)
 	except ValueError:
-		return -1;
+		return False;
 
 if __name__ == '__main__':
     initGui()
