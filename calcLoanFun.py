@@ -44,7 +44,7 @@ def calcBestLoan(loans, inflation):
 	return [loans[index], index]
 
 # returns [leftover, time] the time it takes to pay the loan with a extra payment and the money you have left
-def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, loansLength):
+def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
 	global loanCount
 	temp = loan
 	time = 0
@@ -72,10 +72,8 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, loansLength):
 	time = temp.balance/monthlyP + time
 	timeList.append(time)
 	balanceList.append(0)
-	print loanCount
-	print loansLength+1
-	if(loanCount == loansLength+1):
-		loanCount = 1
+	if(loanCount == countLoans):
+		loanCount = 0
 		clearDrawing = True
 	drawingPanel.draw(timeList, balanceList, clearDrawing)
 	return [leftover, time]

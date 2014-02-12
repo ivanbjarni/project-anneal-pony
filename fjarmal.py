@@ -48,6 +48,7 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
 def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
+	count = 0
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
@@ -69,6 +70,7 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 	for a in loans:
 		keeploans.append(copy.deepcopy(a))
 	while(time>0):
+		count += 1
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
 			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
@@ -78,7 +80,7 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 				loans.append(copy.deepcopy(a))
 			answer.SetLabel(s)
 			return
-		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, len(loans))
+		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, count)
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)
@@ -91,7 +93,6 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 		s += ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
 	loans[:] = []
 	for a in keeploans:
-		print a.name
 		loans.append(copy.deepcopy(a))
 	answer.SetLabel(s)
 
