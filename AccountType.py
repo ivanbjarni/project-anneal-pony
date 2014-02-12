@@ -1,7 +1,7 @@
 # -*- coding: cp1252 -*-
 #class sem heldur utan um mismunandi accounts, sem lesnir eru úr skrá.
 class AccountType(object):
-    def __init__(self, name, reqtime, interests, indexadj, idnum,nextid):
+    def __init__(self, name, reqtime, interests, indexadj, idnum, nextid):
         #set values for attributes
         self.name = name #nafn
 #       self.minimum = minimum #lagmarksupphaed

@@ -317,14 +317,17 @@ class PageSix(wx.Panel):
 		self.SetSizer(self.sizer)
 		self.Fit()
 
-	def draw(self, xList, yList):
-		self.axes.clear()
+	def draw(self, xList, yList, clear):
+		if(clear):
+			self.axes.clear()
+#		print clear
+#		self.axes.clear()
 #		self.axes.set_xlabel(xlabel)
 #		self.axes.set_ylabel(ylabel)
 		self.axes.set_xlabel('Mánuðir'.decode('utf-8'))
 		self.axes.set_ylabel('Höfuðstóll'.decode('utf-8'))
 		self.axes.plot(xList, yList)
-		self.axes.set_xlim(left=1)
+#		self.axes.set_xlim(left=1)
 		self.canvas.draw()
 
 

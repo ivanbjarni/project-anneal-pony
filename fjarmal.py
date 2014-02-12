@@ -11,7 +11,6 @@ import copy
 
 loans = []
 # fylki til að halada utan um lán
-loansName = []
 
 #listi af Reikningum (accounts)
 accounts = []
@@ -48,6 +47,7 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
 def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
+	count = 0
 	profit = []
 	infltim = infltime(inflt.GetCurrentSelection())
 	infl = getInflationCoefficient(infltim)/100
@@ -69,15 +69,17 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 	for a in loans:
 		keeploans.append(copy.deepcopy(a))
 	while(time>0):
+		count += 1
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
 			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
 			s += "Þú ert orðinn skuldlaus!!".decode("utf-8")+"\n"
+			loans[:] = []
 			for a in keeploans:
 				loans.append(copy.deepcopy(a))
 			answer.SetLabel(s)
 			return
-		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel)
+		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, count)
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)
@@ -88,6 +90,7 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel, answer):
 		s += ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")+"\n"
 		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
 		s += ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
+	loans[:] = []
 	for a in keeploans:
 		loans.append(copy.deepcopy(a))
 	answer.SetLabel(s)
@@ -109,7 +112,6 @@ def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):
 		answer.SetLabel(s)
 		return
 	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
-	loansName.append(loan.name)
 	loans.append(loan)
 	index = loanlist.GetItemCount()
 	nop.SetValue("")
@@ -135,7 +137,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 		print "villa"
 		answer.SetLabel("Villa bætti reikningi ekki inn".decode("utf-8"))
 		return
-	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj, -1, -1)
+	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj)
 	account = Account(accType, acc_balance)
 	accounts.append(account)
 	index = accountlist.GetItemCount()
