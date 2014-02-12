@@ -35,10 +35,11 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 		l = calcBestLoan(loans, infl)
 		if(l==-1):
 			print "Þú ert orðinn skuldlaus!!".decode("utf-8")
+			loans[:] = []
 			for a in keeploans:
 				loans.append(copy.deepcopy(a))
 			return
-		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel)
+		temp = calcTimeToPayLoan(l[0], infl, payment, drawingPanel, len(loans))
 		time -= temp[1]
 		p = calcProfitPerTime(l[0], payment, infl)
 		profit.append(p)
@@ -47,7 +48,9 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 			temp[1] += time
 		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af "+str(l[0].name)).decode("utf-8")
 		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
+	loans[:] = []
 	for a in keeploans:
+		print a.name
 		loans.append(copy.deepcopy(a))
 
 
