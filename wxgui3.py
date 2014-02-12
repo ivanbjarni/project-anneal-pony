@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # gotoclass.py
-from numpy import arange, sin, pi
+#from numpy import arange, sin, pi
 from fjarmal import *
 import wx
 
@@ -60,7 +60,7 @@ class PageOne(wx.Panel):
 
 		insloansubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
-		insloansubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insloannop, insloaninfl, insloanname, insloanamount, insloaninterest, loans,insloanlisti) )
+		insloansubmit.Bind(wx.EVT_BUTTON, lambda event: makeLoan(insloannop, insloaninfl, insloanname, insloanamount, insloaninterest, insloananswer, insloanlisti) )
 		insloanhbox6.Add(insloansubmit)
 
 		insloanlisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)

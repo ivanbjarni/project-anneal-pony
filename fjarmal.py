@@ -47,26 +47,31 @@ def calcBestWayToPayLoan(payment, time, inflt, drawingPanel):
 
 
 #Býr til lán og bætir því í núverandi lán boxið
-def makeLoan(nop, infl, name, amount, interests, loansComboBox,loanlist):	
+def makeLoan(nop, infl, nm, amount, interest, answer,loanlist):	
 	global loans
-	name = name.GetValue()
-	interests = validateStringToNumber(interests.GetValue())
+	name = nm.GetValue()
+	interests = validateStringToNumber(interest.GetValue())
 	numberOfP = validateStringToNumber(nop.GetValue())
 	infl = infl.GetValue()
 	balance = validateStringToNumber(amount.GetValue())
 	if(interests==-1 or numberOfP==-1 or infl==-1 or balance==-1 ):
 		print "villa"
+		answer.SetLabel("Villa bætti láni ekki inn".decode("utf-8"))
 		return
 	loan = Loan(name, balance, interests/100.0, infl, numberOfP)
 	loansName.append(loan.name)
 	loans.append(loan)
-	loansComboBox.SetItems(loansName)
 	index = loanlist.GetItemCount()
+	nop.SetValue("")
+	nm.SetValue("")
+	amount.SetValue("")
+	interest.SetValue("")
 	loanlist.InsertStringItem(index, loan.name)
 	loanlist.SetStringItem(index, 1, str(loan.balance))
-	loanlist.SetStringItem(index, 2, str(loan.interest))
+	loanlist.SetStringItem(index, 2, str(loan.interest*100))
 	loanlist.SetStringItem(index, 3, str(loan.infl))
 	loanlist.SetStringItem(index, 4, str(loan.numberOfP))
+	answer.SetLabel("Bætti Láni inn".decode("utf-8"))
 	#loanlist.InsertItem(item)
 	print "Bætti Láni inn".decode("utf-8")
 
