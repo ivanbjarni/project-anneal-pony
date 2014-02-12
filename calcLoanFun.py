@@ -5,6 +5,10 @@
 # 		 infl segir til um hvort lanid se verdtryggt eda ekki 
 # 		 nr er fjoldi greidsla sem eftir eru 
 # Eftir: x er lan 
+
+from wxgui3 import *
+#from fjarmal import *
+
 class Loan: 
 	def __init__(self, name, balance, interest, infl, numberOfPayments): 
 		self.name = name 
@@ -37,10 +41,14 @@ def calcBestLoan(loans, inflation):
 	return [loans[index],index]
 
 # returns [leftover, time] the time it takes to pay the loan with a extra payment and the money you have left
-def calcTimeToPayLoan(loan, inflation, payment):
+def calcTimeToPayLoan(loan, inflation, payment, drawingPanel):
 	temp = loan
 	time = 0
+	balanceList = []
+	timeList = []
 	while(temp.balance > payment):
+		timeList.append(time)
+		balanceList.append(temp.balance)
 		if(temp.infl):
 			temp.balance -= (temp.balance/temp.numberOfP - payment)*(1 + inflation + temp.interest)
 			temp.numberOfP -= 1
@@ -50,6 +58,9 @@ def calcTimeToPayLoan(loan, inflation, payment):
 		time = time + 1
 	leftover = payment - temp.balance
 	time = temp.balance/payment + time
+#	timeList.append(time)
+#	balanceList.append(0)
+	drawingPanel.draw(timeList, balanceList)
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 
@@ -73,6 +84,6 @@ def median(li):
 		s += i
 	return s/c
 
-loans=[Loan("Megalan", 10000, 0.12, False, 4), Loan("Lelegtlan", 100000, 0.01, True, 10)]
+#loans=[Loan("Megalan", 10000, 0.12, False, 4), Loan("Lelegtlan", 100000, 0.01, True, 10)]
 
-print calcTimeToPayLoan(loans[0], 0.0, 10000)
+#print calcTimeToPayLoan(loans[0], 0.0, 10000)
