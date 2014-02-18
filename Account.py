@@ -2,9 +2,9 @@
 from AccountType import *
 
 class Account(object):
-    def __init__(self, accType, balance):
+    def __init__(self, acctype, balance):
 #        self.name = name #nafn
-        self.acctype = accType #tegund reiknings        
+        self.acctype = acctype #tegund reiknings        
         self.balance = balance #innistaeda reiknings
 #        self.interests = interests
 #        self.isIndexAdj = isIndAdj
@@ -26,6 +26,20 @@ class Account(object):
 def calcAccProfit(account):
     return (account.acctype.interests + 1) *  account.balance - account.balance
 
+def calcAvgAccProfit(interests, wantam, haveam, balance):
+    total = balance
+    vextir = interests
+    interestList = []
+    while(wantam > total):
+        total += haveam
+        total += total * vextir
+        interestList.append(total * vextir)
+    k = 0
+    for i in interestList:
+        k += i
+    return k/len(interestList)
+
+
 #def calcAccProfit(account):
 #    profit = (account.accountT().getInterests()/1200.0)*account.getBalance()-account.getBalance()
 #    return profit
@@ -40,12 +54,13 @@ def howMuch(interests, time, amount):
     return total
 
 #hversu langan tíma það tekur að ná wantam upphæð á reikningi með interests vexti á mánuði þegar haveam 
-#upphæð er lögð fyrir á mánuði
-def howLong(interests, wantam, haveam):
-    total = 0.0
+#upphæð er lögð fyrir á mánuði, balance er staða reiknings í upphafi
+def howLong(interests, wantam, haveam, balance):
+    total = balance
     months = 1
     vextir = interests
     while(wantam > total):
+#        print total * vextir
         total += haveam
         total += total * vextir
         months += 1

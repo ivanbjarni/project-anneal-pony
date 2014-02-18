@@ -78,7 +78,7 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
 		loanCount = 0
 		clearDrawing = True
 	if(drawingPanel != None):
-		drawingPanel.draw(timeList, balanceList)
+		drawingPanel.draw(timeList, balanceList, clearDrawing)
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 

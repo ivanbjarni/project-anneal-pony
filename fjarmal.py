@@ -43,7 +43,43 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, answer ) :
 
 		answer.SetLabel(s)
 		return
-	s+="Þetta fall er ekki tilbúið".decode("utf-8")+"\n"
+	if not accounts:
+		print "Villa"
+		s+="Villa"+"\n"
+		print "Engir reikningar eru til".decode("utf-8")+"\n" 
+		s+="Engir reikningar eru til".decode("utf-8")+"\n"
+		return
+#	acctypes = []
+#	savingsTimes = []
+	profit = 0
+	index = 0
+	savingsTime = 0
+	reqMessage = ""
+	for i in range(0, len(accounts)):
+		tempProfit = 0
+		tempSavingsTime = 0
+#		acctypes.append(accounts[i].acctype)
+#		savingsTimes.append(howLong(accounts[i].acctype.interests, amount, payment, accounts[i].balance))
+		tempSavingsTime = howLong(accounts[i].acctype.interests, amount, payment, accounts[i].balance)
+		tempProfit = int(calcAvgAccProfit(accounts[i].acctype.interests, amount, payment, accounts[i].balance))
+		if( tempProfit > profit):
+			profit = tempProfit
+			savingsTime = tempSavingsTime
+			index = i
+			if(accounts[i].acctype.reqtime > tempSavingsTime):
+				reqMessage = ("Reikningurinn er þó bundinn í " + accounts[i].acctype.reqtime + " mánuði").decode("utf-8")
+
+	#calcBestAccount
+	#for i in range(0, len(acctypes)):
+
+	
+#	profit = int(calcAvgAccProfit(accounts[0].acctype.interests, amount, payment, accounts[0].balance))
+	print ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[0].acctype.name + "\n"
+	s += ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[0].acctype.name + "\n"
+	print ("Mánaðarlegur meðaltalshagnaður af því er " + str(profit) + "kr.").decode("utf-8") + "\n"
+	s += ("Mánaðarlegur meðaltalshagnaður af því er " + str(profit) + "kr.").decode("utf-8") + "\n"
+
+	s += "Þetta fall er ekki tilbúið".decode("utf-8")+"\n"
 	answer.SetLabel(s)
 
 def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
@@ -190,7 +226,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 		s="Villa, fylla þarf í alla reiti. Tölur þar sem við á. ".decode("utf-8")
 		answer.SetLabel(s)
 		return
-	accType = AccountType(acc_name, acc_reqtime, acc_interests, acc_indexadj)
+	accType = AccountType(acc_name, acc_reqtime, float(acc_interests)/100, acc_indexadj, -1, -1)
 	account = Account(accType, acc_balance)
 	accounts.append(account)
 	index = accountlist.GetItemCount()
