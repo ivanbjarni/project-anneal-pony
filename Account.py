@@ -86,6 +86,9 @@ def bestAccount(amount, time, inflcoeff, accounts):
             maxamount.append(total)
         else:
             maxamount.append(total)
+    if(not maxamount):
+        p=-1
+        return [p,None]
     p = max(maxamount)
     return [p, accounts[maxamount.index(p)]]
 

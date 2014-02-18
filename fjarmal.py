@@ -109,17 +109,22 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, answer ) :
 
 		answer.SetLabel(s)
 		return
-	s+="Þetta fall er ekki tilbúið".decode("utf-8")+"\n"
-	"""global accounts
+	global accounts
 	keepaccounts = []
 	for a in accounts:
 		keepaccounts.append(copy.deepcopy(a))
 
 	[am,acc] = bestAccount(payment, time, infl, accounts)
-	s+=acc.acctype.name
+	if(am==0):
+		s+= "Enginn reikningur uppfyllir þessar kröfur. ".decode("utf-8") 
+	elif(am==-1):
+		s+= "Þú átt enga reikninga. Við mælum með að þú stofnir slíkan.".decode("utf-8") 
+	else:
+		s+="Best er að leggja inn á ".decode("utf-8") + acc.acctype.name +" mánaðarlegur hagnaður er þá ".decode("utf-8") + str(am/time-payment) + "\n"
+		s+= "Heildar sparnaður er þá ".decode("utf-8")  + str(am-payment*time)
 
-	for a in keeploans:
-		loans.append(copy.deepcopy(a))"""
+	for a in keepaccounts:
+		accounts.append(copy.deepcopy(a))
 	answer.SetLabel(s)
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
@@ -176,10 +181,10 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, answer):
 		loans[l[1]].numberOfP=0
 		if(time < 0):
 			temp[1] += time
-		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af ").decode("utf-8")+l[0].name+"\n"
-		s += ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði/ár af ").decode("utf-8")+l[0].name+"\n"
-		print ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
-		s += ("Mánaðarlegur/árlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
+		print ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði af ").decode("utf-8")+l[0].name+"\n"
+		s += ("Borgaðu "+str(payment)+" kr. í "+str(temp[1])+" mánuði af ").decode("utf-8")+l[0].name+"\n"
+		print ("Mánaðarlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")
+		s += ("Mánaðarlegur hagnaður af því er "+str(p)+"kr.").decode("utf-8")+"\n \n"
 	loans[:] = []
 	for a in keeploans:
 		loans.append(copy.deepcopy(a))
