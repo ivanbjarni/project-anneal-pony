@@ -36,12 +36,12 @@ def makeMonths():
 #Fyrir: from<=too ef default=false
 #Eftir: inflation er verðbólgan frá from til too
 def calcInflation(froma, to, default):
-    if(default):
+    if(default or froma<to):
         return getInflationCoefficient(12)
     listi = readInflation('visitala.txt')
     summ = 0
     count = 0
-    for i in range(froma, to + 1):
+    for i in range(to, froma + 1):
         summ += float(listi[i])
         count += 1
     return summ/count

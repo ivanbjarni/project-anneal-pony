@@ -225,7 +225,7 @@ class PageThree(wx.Panel):
 		calcloanhbox3.Add(calcloaninfltime2, proportion=1)
 
 		calcloansubmit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime, drawingPanel, False, calcloananswer ) )
+		calcloansubmit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayLoan( calcloanpayment, calcloantime, calcloaninfltime1, calcloaninfltime2, drawingPanel, False, calcloananswer ) )
 		calcloanhbox4.Add(calcloansubmit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcloananswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
@@ -233,7 +233,7 @@ class PageThree(wx.Panel):
 
 		loanInfo.append(calcloanpayment)
 		loanInfo.append(calcloantime)
-		loanInfo.append(calcloaninfltime)
+		#loanInfo.append(calcloaninfltime)
 		loanInfo.append(calcloananswer)
 
 		vbox.Add(calcloanhbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
@@ -283,7 +283,7 @@ class PageFour(wx.Panel):
 		calcacc1hbox3.Add(calcacc1infltime2, proportion=1)
 
 		calcacc1submit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc1( calcacc1payment, calcacc1amount, calcacc1infltime, drawingPanel, calcacc1answer ) )
+		calcacc1submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc1( calcacc1payment, calcacc1amount, calcacc1infltime1, calcacc1infltime2, drawingPanel, calcacc1answer ) )
 		calcacc1hbox4.Add(calcacc1submit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcacc1answer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
@@ -336,7 +336,7 @@ class PageFive(wx.Panel):
 		calcacc2hbox3.Add(calcacc2infltime2, proportion=1)
 
 		calcacc2submit = wx.Button(self, label='Reikna', size=(70, 30))
-		calcacc2submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc2( calcacc2payment, calcacc2time, calcacc2infltime, drawingPanel, calcacc2answer ) )
+		calcacc2submit.Bind(wx.EVT_BUTTON, lambda event: calcBestWayToPayacc2( calcacc2payment, calcacc2time, calcacc2infltime1, calcacc2infltime2, drawingPanel, calcacc2answer ) )
 		calcacc2hbox4.Add(calcacc2submit, flag=wx.LEFT|wx.BOTTOM, border=5)
 
 		calcacc2answer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á reikna'.decode('utf-8'))
