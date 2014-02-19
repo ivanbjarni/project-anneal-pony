@@ -70,15 +70,15 @@ def calcBestWayToPayacc1( paymentbox, amountbox, inflt1, inflt2, drawingPanel, a
 		tempSavingsTime = howLong(accounts[i].acctype.interests, amount, payment, accounts[i].balance)
 		tempProfit = int(calcAvgAccProfit(accounts[i].acctype.interests, amount, payment, accounts[i].balance))
 		if (tempProfit == -1):
-			print ("Þú átt nú þegar " + amount + " kr.").decode("utf-8")
-			s += ("Þú átt nú þegar " + amount + " kr.").decode("utf-8")
+			print ("Þú átt nú þegar " + str(amount) + " kr.").decode("utf-8")
+			s += ("Þú átt nú þegar " + str(amount) + " kr.").decode("utf-8")
 			return
 		if( tempProfit > profit ):
 			profit = tempProfit
 			savingsTime = tempSavingsTime
 			index = i
 			if(accounts[i].acctype.reqtime > tempSavingsTime):
-				reqMessage = ("Reikningurinn er þó bundinn í " + accounts[i].acctype.reqtime + " mánuði").decode("utf-8")
+				reqMessage = ("Reikningurinn er þó bundinn í " + str(accounts[i].acctype.reqtime) + " mánuði").decode("utf-8")
 
 	[am, acc] = bestAccount(payment, savingsTime, infl, accounts, drawingPanel)
 #	print 'am: ' + str(am)
