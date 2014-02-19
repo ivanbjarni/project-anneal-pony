@@ -56,7 +56,7 @@ def readAccountTypes():
     listi = f.read().splitlines()
     for item in listi:
         temp = item.split(",")
-        acc = AccountType(temp[0],int(temp[1]),int(temp[2]),int(temp[3]),float(temp[4]),int(temp[5]),int(temp[6]),int(temp[7]))
+        acc = AccountType(temp[0],int(temp[3]),float(temp[4]),int(temp[5]),int(temp[6]),int(temp[7]))
         accountslisti.append(acc)
     return accountslisti
 
