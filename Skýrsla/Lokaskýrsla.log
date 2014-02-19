@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.15)  19 FEB 2014 17:07
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.15)  19 FEB 2014 20:31
 entering extended mode
 **Lokaskýrsla.tex
 
@@ -600,35 +600,71 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
+! Undefined control sequence.
+l.109 Fjármálum, fokki og kóða \n
+                                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.110 fengum við nóg af.		 \n
+                               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.111 Heima hjá Ívani sóða	 \n
+                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.112 hentumst á bólakaf.		 \n
+                                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
 
 (C:\Users\Notandi\Documents\GitHub\project-anneal-pony\Skýrsla\Lokaskýrsla.au
 x)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
 Package rerunfilecheck Info: File `Lokaskýrsla.out' has not changed.
-(rerunfilecheck)             Checksum: 2A858C7F22CCC35D4600ADFACD196BD3;358.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
+(rerunfilecheck)             Checksum: 0F07AB5AEE28831CD43BACD86F5C77B5;405.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
  ) 
 Here is how much of TeX's memory you used:
- 6712 strings out of 494045
- 93233 string characters out of 3145962
+ 6714 strings out of 494045
+ 93253 string characters out of 3145962
  177491 words of memory out of 3000000
- 9901 multiletter control sequences out of 15000+200000
+ 9902 multiletter control sequences out of 15000+200000
  11851 words of font info for 34 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 33i,6n,28p,1349b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,6n,28p,1362b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Notandi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
 0\ecbx1440.pk> <C:\Users\Notandi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\ecbx1728.pk> <C:\Users\Notandi\AppData\Local\MiKTeX\2.9\fonts\pk\
 ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\Notandi\AppData\Local\MiKTeX\2
 .9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Notandi\AppData\Lo
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2074.pk>
-Output written on Lokaskýrsla.pdf (6 pages, 82365 bytes).
+Output written on Lokaskýrsla.pdf (6 pages, 84646 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

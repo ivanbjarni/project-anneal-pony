@@ -1,79 +1,94 @@
-\documentclass[a4paper, 12 pt]{article}
+\documentclass[a4paper,10pt]{article}
 
-% pakkar fyrir töflur; array er notað í "math-mode"; arydshln fyrir brotalínur í töflum
-\usepackage{array,tabularx}%,arydshln}  
-% íslenskt letur, orðaskiptingar ...
-\usepackage[utf8]{inputenc}
 \usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
-% númera jöfnur, töflur, myndir, ...
+\usepackage{graphicx}				
+\usepackage{wrapfig}				
+%\usepackage{color}				
+\usepackage{soul}				
+\usepackage{amsmath}
 \usepackage{enumerate}
-% fyrir krækjur
-\usepackage[colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
-% ýmis tákn, leturgerðir, ... ATH amsmath fyrir \text{} skipunina
-\usepackage{amsmath,amssymb,euscript,pifont}   
-% til að setja inn *.eps myndir ef við notum dvi og ps skjöl...
-\usepackage{epsfig}    % \epsfig{...}
-% ... en ef við notum pdf beint, þá er þetta pakkinn sem við þurfum
-\usepackage{graphicx}  % \includegraphics[...]{...}
-% litamöguleikar fyrir texta
-\usepackage{color}
-% til þess að myndir og töflur standi þar sem þær eiga að standa!
-\usepackage{here}
-%fyrir kóða
-%\usepackage{listings}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors???
+\usepackage{pgfgantt}
+\usepackage{xcolor,colortbl}
 
-\setlength{\textwidth}{6.8in}
-\setlength{\textheight}{9.5in}
-\setlength{\headheight}{0in}
-\setlength{\headsep}{0in}
-\setlength{\topskip}{0in}
-\setlength{\topmargin}{-0.5cm}
-\setlength{\oddsidemargin}{-0.25in}
-\setlength{\evensidemargin}{-0.25in}
-% dregur fyrstu línu í hverri málsgrein inn - nota 0cm fyrir engan inndrátt fyrir allar málsgreinar en \noindent í upphafi málsgreinar til að hafa engan inndrátt í þeirri málsgrein einni:
-\setlength{\parindent}{0cm}
-% viljum hafa eitt línubil milli efnisgreina
-\setlength{\parskip}{\baselineskip}
-% 1.5 í línubil
-\renewcommand{\baselinestretch}{1.5}
+% Spássíur
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
 
-%hafa þetta fyrir ónúmeraðar blaðsíður
-%\pagestyle{empty}
+\linespread{1.1} % Línubil
 
+%----------------------------------------------------
+%-----------------------GALDRAR----------------------
+%----------------------------------------------------
 
-\title{HBV401G Þróun Hugbúnaðar\\ 
-	Lokaskýrsla \\
-	Hópur 1	
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} %comments
+\definecolor{myorange}{rgb}{1,0.8,0.75} %Linenumbers
+
+\lstloadlanguages{C++} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{
+		language=C++, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\scriptsize\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\color{MyDarkGreen},
+        %\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Eitthvað sem eyðilaggði kommentin.
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        %morekeywords={},
+        %
+        % Put Perl function parameters here
+        %morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        %morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
 }
 
-\author{\\Sævar Ingi Sigurjónsson \\
-	sis133@hi.is\\
-	kt. 140291-2779\\
-	\\
-	Vilhelm Friðriksson\\
-	vif5@hi.is\\
-	kt. 200591-3139\\
-	\\	
-	Ágúst Heiðar Hannesson\\
-	ahh19@hi.is\\
-	kt. bujakaza\\
-	\\
-	Ívan Bjarni Jonsson\\
-	ibj9@hi.is\\
-	kt. blezzzar\\
-	\\
-	Árni Víðir Jóhannesson\\
-	badbab.is\\
-	kt. fixing it\\
-}
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\javascript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[label=#1]{#1.cpp}
+\end{itemize}
 
+
+}
+%----------------------------------------------------
+%-----------------------GALDRAR ENDA-----------------
+%----------------------------------------------------
+
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\definecolor{LightBlue}{rgb}{0,0.3,1.0}
+\definecolor{LightCol}{rgb}{0.5,0.5,0.5}
+
+\newcommand{\inndr}{\setlength\itemindent{25pt}\item }
+\newcommand{\svar}[1]{\\ \emph{Svar:} \underline{\underline{$#1$}}}
 
 \begin{document}
 
-\maketitle
+%-----Forsíðan-----
+\input{title_page.tex}
+%-----/Forsíðan-----
 \pagebreak
-
+\linespread{1.5}
 \section{Inngangur}
 Skýrsla þessi lýsir í stuttu máli hvernig hópur 1 vann að hópaverkefni 1 í Þróun hugbúnaðar.  Á fjórum vikum átti hópurinn að hanna og búa til lítið fjármálaforrit sem aðstoðar notandann við að nota sparnaðinn sinn á sem hagstæðastan hátt, þ.e. hvar mesti gróðinn liggi, að borga niður lán eða leggja inn á sparnaðarreikning, ásamt minni fítusum.  Hópurinn samanstendur eingöngu af annars árs hugbúnaðarverkfræðinemum og allir því vel að sér í forritun.  Upphaflega áttu iðnaðarverkfræðingar að vera í öllum hópum en þeir voru ekki nógu margir og því vorum við fimm saman. Notast var við forritunarmálið Python sem enginn í hópnum hafði almennilega reynslu af.  Því má segja að tilgangur verkefnisins hafi verið þríþættur, þ.e. að læra að vinna á Python, læra að vinna í hóp við gerð hugbúnaðs og nota viðurkennda aðferðafræði til þess og að lokum að bæta fjármalalæsi hópsmeðlima.
 
@@ -98,22 +113,72 @@ Að þessu sinni þurftum við að færa þrjár notendasögur yfir í næstu í
 \subsection{Et tu, Github?}
 Eins og áður kom fram í skýrslunni voru ýmsar óvæntar tafir tengdar hugbúnaði.  Þar má nefna að uppsetningu á viðmótspakka og pakkana til þess að geta teiknað, en það gekk ekki jafn auðveldlega hjá öllum.  Github reyndist þó okkar versti óvinur á tíðum.  Þrátt fyrir reynslu tveggja meðlima af github vinnu gekk brösulega að koma því í gang hjá öllum í fyrstu viku.  Á einni tölvunni tók meira að segja nokkra klukkutíma að fá það til að virka.  Í ítrun tvö tók github kast og henti öllum af aðalgreininni.  Því gat enginn séð hvað næsti maður var að gera með push og pull skipununum.  Að sjálfsögðu var brugðist strax við og barist við að koma öllum á aðalgreinina en vegna reynsluleysis tók það líklega meiri tíma en þurfti.  Að öðru leyti rikti almennt ánægja með github.  Við nýttum okkur það þó á sem einfaldastan hátt, allir unnu saman á aðalgreininni og var mikið samráð um hvenær og hverju átti að pusha.
 
+\subsection{Einingaprófanir}
+\begin{center}
+    \begin{tabular}{| l | p{6cm} | l | l |}
+    \hline
+    \rowcolor{LightBlue!65}
+     \textcolor{White}{Auðkenni} & \textcolor{White}{Markmið} & \textcolor{White}{Staða} & \textcolor{White}{Lýsing} \\ 
+     \hline
+     \hline
+    \rowcolor{LightCol!30}
+    VC01 & Athuga hvort calcProfitPerTime  reikni rétt & Staðið & \\ \hline
+    VC02 & Athuga hvort calcProfitPerTime  skili réttu gildi & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VC03 & Athuga hvort calcbestloan  skili réttu villugildi & Staðið & \\ \hline
+    VC04 & Athuga hvort calcbestloan  skili réttu láni & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VC05 & Athuga hvort calcTimeToPayLoan  skili jákvæðu gildi & Staðið & \\ \hline
+    VC06 & Athuga hvort howMuch  skili jákvæðu gildi & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VC07 & Athuga hvort howMuch  skili rétt reiknuðu gildi & Staðið & \\ \hline
+    VC08 & Athuga hvort howLong  skili réttu gildi 1& Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VC09 & Athuga hvort bestAccount  skili réttu gildi 1 & Staðið & \\ \hline
+    VC10 & Athuga hvort bestAccountType  skili réttu gildi & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VC11 & Athuga hvort calcAccProfit  skili réttu gildi 2& Staðið & \\ \hline
+   
+    \end{tabular}
+\end{center}
+
+
 \section{Vika Fjögur - Ítrun Þrjú}
-Seinasta ítrun verkefnisins var notuð í að ljúka notendasögunum sem við þurftum að seinka úr fyrri ítruninni og þar klára smíði forritsins.  Ekki var mikil forritun eftir og réðust Ívan, Árni og Sævar í það að klára notendasögurnar.  Forritið var svo tekið í kerfispróf sem lýst er betur seinna í skýrslunni.  Þegar forritið var klárt þurfti að undirbúa fyrirlestur.  Ívan og Ágúst tóku það að sér að búa til 4 glærur fyrir þennan fimm mínútna fyrirlestur.  Vilhelm tók að sér skýrslugerðina að mestu með hjálp frá Ágústi þegar kom að prófununum.  Í lok ítrunarinnar var excel skjalið svo uppfært og verkefninu skilað með stolti og pöndugleði.  Takk fyrir æðislega stund strákar, ég elska ykkur :D :D :D
+Seinasta vikan fyrir skil var notuð til að 
+
+\subsection{Kerfisprófanir}
+\begin{center}
+    \begin{tabular}{| l | p{6cm} | l | l |}
+    \hline
+    \rowcolor{LightBlue!65}
+     \textcolor{White}{Auðkenni} & \textcolor{White}{Markmið} & \textcolor{White}{Staða} & \textcolor{White}{Lýsing} \\ 
+     \hline
+     \hline
+    \rowcolor{LightCol!30}
+    VP01 & Fylla út í upplýsingar um lán & Staðið & \\ \hline
+    VP02 & Ýta á Bæta við takka í Bæta við lánum & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP03 & Fylla út í upplýsingar um reikninga & Staðið & \\ \hline
+    VP04 & Ýta á Bæta við takka í Bæta við lánum & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP05 & Fylla út í upplýsingar í Reikna lán & Staðið & \\ \hline
+    VP06 & Velja Verðbólgu tímabil í Reikna lán & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP07 & Ýta á Reikna takka í Reikna Lán & Staðið & \\ \hline
+    VP08 & Fylla út í upplýsingar í Reikna Sparnað 1& Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP09 & Velja Verðbólgu tímabil í Reikna Sparnað 1 & Staðið & \\ \hline
+    VP10 & Ýta á Reikna takka í Reikna Sparnað 1 & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP11 & Fylla út í upplýsingar í Reikna Sparnað 2& Staðið & \\ \hline
+    VP12 & Velja Verðbólgu tímabil í Reikna Sparnað 2 & Staðið & \\ \hline
+    \rowcolor{LightCol!30}
+    VP13 & Ýta á Reikna takka í Reikna Sparnað 2 & Staðið & \\ \hline
+    VP14 & Sjá myndræna breytingu & Staðið & \\ \hline    
+    \end{tabular}
+\end{center}
 
 
-\section{Niðurlag}
-Fyrsta verkefnið í þróun hugbúnaðar lokið og ríkti almenn ánægja í hópnum með það.  Deila má um hvort fjármálalæsi hópmeðlima hafi aukist en hæfni og reynsla af forritunarvinnu í hóp jókst gífurlega.  Að reka okkur svona illa á varðandi skipulagsleysi eins og gerðist í byrjun verkefnisins hafði jákvæð áhrif á vinnuna sem fylgdi eftir og bíðum við spenntir eftir næsta hópverkefni, reynslunni ríkari.  
-Árni var augljóslega hæfasti einstaklingurinn.
 
-Fjármálum, fokki og kóða 
-fengum við nóg af.		 
-Heima hjá Ívani sóða	 
-hentumst á bólakaf.		 
 
-		
-			
-			
-			
-		
 \end{document}
