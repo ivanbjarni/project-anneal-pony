@@ -22,11 +22,10 @@ def insfields( self, insaccname, insaccinterest, insaccreq, insaccinfl, list ):
 	insaccreq.SetValue( str(list[index].reqtime) )
 	insaccinfl.SetValue( list[index].indexadj )
 
-def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answer ) :
+def calcBestWayToPayacc1( paymentbox, amountbox, inflt1, inflt2, drawingPanel, answer ) :
 	payment = validateStringToNumber(paymentbox.GetValue())
 	amount = validateStringToNumber(amountbox.GetValue())
-	infltim = infltime(infltimebox.GetCurrentSelection())
-	infl = getInflationCoefficient(infltim)/100
+	infl = calcInflation(inflt1.GetCurrentSelection(),inflt2.GetCurrentSelection(),False)/100
 	s=""
 	if( amount is False or payment is False ):
 		print "Villa"
@@ -61,6 +60,8 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answ
 	index = 0
 	savingsTime = 0
 	reqMessage = ""
+	if(inflt1.GetCurrentSelection()<inflt2.GetCurrentSelection()):
+		s+="Verðbólgu tímabil ógilt, notað var síðasta árið \n \n".decode("utf-8")
 	for i in range(0, len(accounts)):
 		tempProfit = 0
 		tempSavingsTime = 0
@@ -94,11 +95,10 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answ
 #	s += "Þetta fall er ekki tilbúið".decode("utf-8")+"\n"
 	answer.SetLabel(s)
 
-def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, drawingPanel, answer ) :
+def calcBestWayToPayacc2( paymentbox, timebox, inflt1, inflt2, drawingPanel, answer ) :
 	payment = validateStringToNumber(paymentbox.GetValue())
 	time = validateStringToNumber(timebox.GetValue())
-	infltim = infltime(infltimebox.GetCurrentSelection())
-	infl = getInflationCoefficient(infltim)/100
+	infl = calcInflation(inflt1.GetCurrentSelection(),inflt2.GetCurrentSelection(),False)/100
 	s=""
 	if( time is False or payment is False ):
 		print "Villa"
@@ -127,6 +127,8 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, drawingPanel, answer
 		keepaccounts.append(copy.deepcopy(a))
 
 	[am,acc] = bestAccount(payment, time, infl, accounts, drawingPanel)
+	if(inflt1.GetCurrentSelection()<inflt2.GetCurrentSelection()):
+			s+="Verðbólgu tímabil ógilt, notað var síðasta árið \n \n".decode("utf-8")
 	if(am==0):
 		s+= "Enginn reikningur uppfyllir þessar kröfur. ".decode("utf-8") 
 	elif(am==-1):
@@ -141,11 +143,10 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, drawingPanel, answer
 
 # Reikna bestu leið til að borga lán, og skrifa það í console
 # tekur inn 2 textabox og eitt combobox
-def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, plotAll, answer):
+def calcBestWayToPayLoan(paymentbox, timebox, inflt1,inflt2, drawingPanel, plotAll, answer):
 	count = 0
 	profit = []
-	infltim = infltime(inflt.GetCurrentSelection())
-	infl = getInflationCoefficient(infltim)/100
+	infl = calcInflation(inflt1.GetCurrentSelection(),inflt2.GetCurrentSelection(),False)/100
 	payment = validateStringToNumber(paymentbox.GetValue())
 	time = validateStringToNumber(timebox.GetValue())
 	s = ""
@@ -171,6 +172,8 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, plotAll, answ
 
 		answer.SetLabel(s)
 		return
+	if(inflt1.GetCurrentSelection()<inflt2.GetCurrentSelection()):
+		s+="Verðbólgu tímabil ógilt, notað var síðasta árið \n \n".decode("utf-8")	
 	global loans
 	keeploans = []
 	for a in loans:
