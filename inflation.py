@@ -19,6 +19,34 @@ def readInflation(files):
                 rightlisti.insert(0,item)
                 
         return rightlisti
+print readInflation('visitala.txt')
+
+#Notkun: man = makeMonths()
+#Fyrir: ekkert
+#Eftir: man=[januar 2014, desember 2013,...,januar 1990]
+def makeMonths():
+    man = []
+    manudir = ["desember", "nóvember", "október","september", "ágúst", "júlí", "júní", "mai", "apríl", "mars", "febrúar","janúar"]
+    print "bla"
+    man.append(manudir[0] + str(2014))
+    for i in range(2013, 1989, -1):
+        for item in manudir:
+            man.append(item + str(i))
+    return man
+
+#Notkun: inflation = calcInflation(f,t,d)
+#Fyrir: from<=too ef default=false
+#Eftir: inflation er verðbólgan frá from til too
+def calcInflation(froma, to, default):
+    if(default):
+        return getInflationCoefficient(12)
+    listi = readInflation('visitala.txt')
+    summ = 0
+    count = 0
+    for i in range(froma, to + 1):
+        summ += float(listi[i])
+        count += 1
+    return summ/count
 
 
 #Notkun:x = getInflationCoefficient(months)
