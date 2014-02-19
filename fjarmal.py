@@ -15,6 +15,12 @@ loans = []
 #listi af Reikningum (accounts)
 accounts = []
 
+def insfields( self, insaccname, insaccinterest, insaccreq, insaccinfl, list ):
+	index = self.GetCurrentSelection()
+	insaccname.SetValue( list[index].name )
+	insaccinterest.SetValue( str(list[index].interests) )
+	insaccreq.SetValue( str(list[index].reqtime) )
+	insaccinfl.SetValue( list[index].indexadj )
 
 def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answer ) :
 	payment = validateStringToNumber(paymentbox.GetValue())
@@ -26,7 +32,7 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answ
 		print "Villa"
 		s+="Villa"+"\n"
 		
-		if(paymentbox.GetValue()==""):
+		if(paymentbox.GetValue() is ""):
 			s+="Fylla þarf út í mánaðarleg greiðsla reitinn.".decode("utf-8")+"\n"
 		elif(payment is False):
 			s+="Vinsamlegast sláðu inn tölu í mánaðarleg greiðsla reitinn.".decode("utf-8")+"\n"
@@ -34,7 +40,7 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answ
 			s+="Þú getur ekki borgað neikvæða upphæð á mánuði.".decode("utf-8")+"\n"
 
 
-		if(amountbox.GetValue()==""):
+		if(amountbox.GetValue() is ""):
 			s+="Fylla þarf út í sparnaðar reitinn.".decode("utf-8")+"\n"
 		elif( amount is False):
 			s+="Vinsamlegast sláðu inn tölu í sparnaðar reitinn.".decode("utf-8")+"\n"
@@ -105,7 +111,7 @@ def calcBestWayToPayacc2( paymentbox, timebox, infltimebox, drawingPanel, answer
 			s+="Þú getur ekki borgað neikvæða upphæð á mánuði.".decode("utf-8")+"\n"
 
 
-		if(timebox.GetValue()==""):
+		if(timebox.GetValue() is ""):
 			s+="Fylla þarf út í tíma reitinn.".decode("utf-8")+"\n"
 		elif( time is False):
 			s+="Vinsamlegast sláðu inn tölu í tíma reitinn.".decode("utf-8")+"\n"
@@ -147,7 +153,7 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, plotAll, answ
 		print "Villa"
 		s+="Villa"+"\n"
 
-		if(paymentbox.GetValue()==""):
+		if(paymentbox.GetValue() is""):
 			s+="Fylla þarf út í mánaðarleg greiðsla reitinn.".decode("utf-8")+"\n"
 		elif(payment is False):
 			s+="Vinsamlegast sláðu inn tölu í mánaðarleg greiðsla reitinn.".decode("utf-8")+"\n"
@@ -155,7 +161,7 @@ def calcBestWayToPayLoan(paymentbox, timebox, inflt, drawingPanel, plotAll, answ
 			s+="Þú getur ekki borgað neikvæða upphæð á mánuði.".decode("utf-8")+"\n"
 
 
-		if(timebox.GetValue()==""):
+		if(timebox.GetValue() is ""):
 			s+="Fylla þarf út í tíma reitinn.".decode("utf-8")+"\n"
 		elif( time is False):
 			s+="Vinsamlegast sláðu inn tölu í tíma reitinn.".decode("utf-8")+"\n"
@@ -204,7 +210,7 @@ def makeLoan(nop, infl, nm, amount, interest, answer, loanlist):
 	numberOfP = validateStringToNumber(nop.GetValue())
 	infl = infl.GetValue()
 	balance = validateStringToNumber(amount.GetValue())
-	if(interests==False or numberOfP==False or balance==False ):
+	if(interests is False or numberOfP is False or balance is False ):
 		print "villa"
 		s="Villa, fylla þarf í alla reiti. Tölur þar sem við á. ".decode("utf-8")
 		answer.SetLabel(s)
@@ -231,7 +237,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 	acc_interests = validateStringToNumber(interests.GetValue())
 	acc_reqtime = validateStringToNumber(reqtime.GetValue())
 	acc_indexadj = indexadj.GetValue()
-	if( acc_interests == False or acc_reqtime == False or acc_balance==False ):
+	if( acc_interests is False or acc_reqtime is False or acc_balance is False ):
 		print "villa"
 		s="Villa, fylla þarf í alla reiti. Tölur þar sem við á. ".decode("utf-8")
 		answer.SetLabel(s)

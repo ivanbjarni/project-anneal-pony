@@ -35,25 +35,25 @@ class PageOne(wx.Panel):
 		insloantext1 = wx.StaticText(self, label='Nafn:'.decode('utf-8'))
 		insloanname = wx.TextCtrl(self)
 		insloanhbox1.Add(insloantext1, flag=wx.RIGHT, border=8)
-		insloanhbox1.Add((58,1))
+		insloanhbox1.Add((80,1))
 		insloanhbox1.Add(insloanname, proportion=1)
 
-		insloantext2 = wx.StaticText(self, label='Höfuðstóll:'.decode('utf-8'))
+		insloantext2 = wx.StaticText(self, label='Höfuðstóll(kr.):'.decode('utf-8'))
 		insloanamount = wx.TextCtrl(self)
 		insloanhbox2.Add(insloantext2, flag=wx.RIGHT, border=8)
 		insloanhbox2.Add((29,1))
 		insloanhbox2.Add(insloanamount, proportion=1)
 
-		insloantext3 = wx.StaticText(self, label='Vextir:'.decode('utf-8'))
+		insloantext3 = wx.StaticText(self, label='Vextir(%):'.decode('utf-8'))
 		insloaninterest = wx.TextCtrl(self)
 		insloanhbox3.Add(insloantext3, flag=wx.RIGHT, border=8)
-		insloanhbox3.Add((56,1))
+		insloanhbox3.Add((59,1))
 		insloanhbox3.Add(insloaninterest, proportion=1)
 
 		insloantext4 = wx.StaticText(self, label='Fjöldi greiðslna:'.decode('utf-8'))
 		insloannop = wx.TextCtrl(self)
 		insloanhbox4.Add(insloantext4, flag=wx.RIGHT, border=8)
-		insloanhbox4.Add((5,1))
+		insloanhbox4.Add((26,1))
 		insloanhbox4.Add(insloannop, proportion=1)
 
  		insloaninfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
@@ -65,7 +65,7 @@ class PageOne(wx.Panel):
 		insloanhbox6.Add(insloansubmit)
 
 		insloanlisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
-		insloanlisti.InsertColumn(0, 'Nafn')
+		insloanlisti.InsertColumn(0, 'Nafn:')
 		insloanlisti.InsertColumn(1, 'Höfuðstóll'.decode('utf-8'))
 		insloanlisti.InsertColumn(2, 'Vextir'.decode('utf-8'))
 		insloanlisti.InsertColumn(3, 'Verðtrygging'.decode('utf-8'))
@@ -86,6 +86,7 @@ class PageOne(wx.Panel):
 		vbox.Add(insloanhbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		vbox.Add(insloanhbox5, flag=wx.LEFT, border=10)
 		vbox.Add(insloanhbox6, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
+		vbox.Add((-1, 10))
 		vbox.Add(insloanhbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 		vbox.Add((-1, 10))
 		vbox.Add(insloanhbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
@@ -107,39 +108,50 @@ class PageTwo(wx.Panel):
 		insacchbox6 = wx.BoxSizer(wx.HORIZONTAL)
 		insacchbox7 = wx.BoxSizer(wx.HORIZONTAL)
 		insacchbox8 = wx.BoxSizer(wx.HORIZONTAL)
+		insacchbox9 = wx.BoxSizer(wx.HORIZONTAL)
 
 		insacctext1 = wx.StaticText(self, label='Nafn:'.decode('utf-8'))
 		insaccname = wx.TextCtrl(self)
 		insacchbox1.Add(insacctext1, flag=wx.RIGHT, border=8)
-		insacchbox1.Add((58,1))
+		insacchbox1.Add((80,1))
 		insacchbox1.Add(insaccname, proportion=1)
 
-		insacctext2 = wx.StaticText(self, label='Höfuðstóll:'.decode('utf-8'))
+		insacctext2 = wx.StaticText(self, label='Höfuðstóll(kr.):'.decode('utf-8'))
 		insaccamount = wx.TextCtrl(self)
 		insacchbox2.Add(insacctext2, flag=wx.RIGHT, border=8)
 		insacchbox2.Add((29,1))
 		insacchbox2.Add(insaccamount, proportion=1)
 
-		insacctext3 = wx.StaticText(self, label='Vextir:'.decode('utf-8'))
+		insacctext3 = wx.StaticText(self, label='Vextir(%):'.decode('utf-8'))
 		insaccinterest = wx.TextCtrl(self)
 		insacchbox3.Add(insacctext3, flag=wx.RIGHT, border=8)
-		insacchbox3.Add((56,1))
+		insacchbox3.Add((59,1))
 		insacchbox3.Add(insaccinterest, proportion=1)
 
-		insacctext4 = wx.StaticText(self, label='Binditími:'.decode('utf-8'))
+		insacctext4 = wx.StaticText(self, label='Binditími(mán.):'.decode('utf-8'))
 		insaccreq = wx.TextCtrl(self)
 		insacchbox4.Add(insacctext4, flag=wx.RIGHT, border=8)
-		insacchbox4.Add((37,1))
+		insacchbox4.Add((23,1))
 		insacchbox4.Add(insaccreq, proportion=1)
 
  		insaccinfl = wx.CheckBox(self, label='Verðtrygging'.decode('utf-8'))
 		insacchbox5.Add(insaccinfl)
 
+		insacctext5 = wx.StaticText(self, label='Sniðmát: '.decode('utf-8'))
+		acctypelist = readAccountTypes()
+		accnamelist = []
+		for a in acctypelist:
+			accnamelist.append(a.name)
+		insaccpresets = wx.ComboBox(self, style = wx.CB_READONLY, choices= accnamelist)
+		insaccpresets.Bind(wx.EVT_COMBOBOX, lambda event: insfields(insaccpresets, insaccname, insaccinterest, insaccreq, insaccinfl, acctypelist) )
+		insacchbox6.Add(insacctext5)
+		insacchbox6.Add(insaccpresets)
+
 		insaccsubmit = wx.Button(self, label='Bæta við'.decode('utf-8'), size=(70, 30))
 		# Event listener for button
 		insaccsubmit.Bind(wx.EVT_BUTTON, lambda event: makeAccount( insaccname, insaccamount, insaccinterest, insaccreq, insaccinfl, insaccanswer, insacclisti ) )
 			#insacreq, insaccinfl, insaccname, insaccamount, insaccinterest, loans) )
-		insacchbox6.Add(insaccsubmit)
+		insacchbox7.Add(insaccsubmit)
 
 		insacclisti = wx.ListCtrl(self, -1, style=wx.LC_REPORT)
 		insacclisti.InsertColumn(0, 'Nafn')
@@ -152,10 +164,10 @@ class PageTwo(wx.Panel):
 		insacclisti.SetColumnWidth(2, 75)
 		insacclisti.SetColumnWidth(3, 90)
 		insacclisti.SetColumnWidth(4, 100)
-		insacchbox7.Add(insacclisti, 1, wx.EXPAND | wx.ALL, 3)
+		insacchbox8.Add(insacclisti, 1, wx.EXPAND | wx.ALL, 3)
 
 		insaccanswer = wx.StaticText(self, label='Fylltu út í reitina og ýttu á bæta við'.decode('utf-8'))
-		insacchbox8.Add(insaccanswer)
+		insacchbox9.Add(insaccanswer)
 
 		vbox.Add(insacchbox1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		vbox.Add(insacchbox2, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
@@ -163,9 +175,11 @@ class PageTwo(wx.Panel):
 		vbox.Add(insacchbox4, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 		vbox.Add(insacchbox5, flag=wx.LEFT, border=10)
 		vbox.Add(insacchbox6, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
-		vbox.Add(insacchbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+		vbox.Add((-1, 10))
+		vbox.Add(insacchbox9, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 		vbox.Add((-1, 10))
 		vbox.Add(insacchbox7, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
+		vbox.Add(insacchbox8, flag=wx.ALIGN_LEFT|wx.LEFT, border=10)
 
 
 		self.SetSizer(vbox)
@@ -185,15 +199,15 @@ class PageThree(wx.Panel):
 		calcloanhbox4 = wx.BoxSizer(wx.HORIZONTAL)
 		calcloanhbox5 = wx.BoxSizer(wx.HORIZONTAL)
 
-		calcloantext1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
+		calcloantext1 = wx.StaticText(self, label='Mánaðarleg greiðsla(kr.):'.decode('utf-8'))
 		calcloanpayment = wx.TextCtrl(self)
 		calcloanhbox1.Add(calcloantext1, flag=wx.RIGHT, border=8)
 		calcloanhbox1.Add(calcloanpayment, proportion=1)
 		
-		calcloantext2 = wx.StaticText(self, label='Hversu lengi:'.decode('utf-8'))
+		calcloantext2 = wx.StaticText(self, label='Hversu lengi(mán.):'.decode('utf-8'))
 		calcloantime = wx.TextCtrl(self)
 		calcloanhbox2.Add(calcloantext2, flag=wx.RIGHT, border=8)
-		calcloanhbox2.Add((40,1))
+		calcloanhbox2.Add((27,1))
 		calcloanhbox2.Add(calcloantime, proportion=1)
 
 		calcloantext3 = wx.StaticText(self, label='Verðbólgu tímabil:'.decode('utf-8'))
@@ -235,13 +249,13 @@ class PageFour(wx.Panel):
 		calcacc1hbox4 = wx.BoxSizer(wx.HORIZONTAL)
 		calcacc1hbox5 = wx.BoxSizer(wx.HORIZONTAL)
 
-		calcacc1text1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
+		calcacc1text1 = wx.StaticText(self, label='Mánaðarleg greiðsla(kr.):'.decode('utf-8'))
 		calcacc1payment = wx.TextCtrl(self)
 		calcacc1hbox1.Add(calcacc1text1, flag=wx.RIGHT, border=8)
 		calcacc1hbox1.Add((11,1))
 		calcacc1hbox1.Add(calcacc1payment, proportion=1)
 
-		calcacc1text2 = wx.StaticText(self, label='Hvað viltu spara mikið:'.decode('utf-8'))
+		calcacc1text2 = wx.StaticText(self, label='Hvað viltu spara mikið(kr.):'.decode('utf-8'))
 		calcacc1amount = wx.TextCtrl(self)
 		calcacc1hbox2.Add(calcacc1text2, flag=wx.RIGHT, border=8)
 		calcacc1hbox2.Add(calcacc1amount, proportion=1)
@@ -280,13 +294,13 @@ class PageFive(wx.Panel):
 		calcacc2hbox4 = wx.BoxSizer(wx.HORIZONTAL)
 		calcacc2hbox5 = wx.BoxSizer(wx.HORIZONTAL)
 
-		calcacc2text1 = wx.StaticText(self, label='Mánaðarleg greiðsla:'.decode('utf-8'))
+		calcacc2text1 = wx.StaticText(self, label='Mánaðarleg greiðsla(kr.):'.decode('utf-8'))
 		calcacc2payment = wx.TextCtrl(self)
 		calcacc2hbox1.Add(calcacc2text1, flag=wx.RIGHT, border=8)
-		calcacc2hbox1.Add((7,1))
+		calcacc2hbox1.Add((21,1))
 		calcacc2hbox1.Add(calcacc2payment, proportion=1)
 
-		calcacc2text2 = wx.StaticText(self, label='Hvað viltu spara lengi:'.decode('utf-8'))
+		calcacc2text2 = wx.StaticText(self, label='Hvað viltu spara lengi(mán.):'.decode('utf-8'))
 		calcacc2time = wx.TextCtrl(self)
 		calcacc2hbox2.Add(calcacc2text2, flag=wx.RIGHT, border=8)
 		calcacc2hbox2.Add(calcacc2time, proportion=1)
