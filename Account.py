@@ -28,7 +28,7 @@ def calcAccProfit(account):
 
 def calcAvgAccProfit(interests, wantam, haveam, balance):
     total = balance
-    vextir = interests/1200
+    vextir = interests
     interestList = []
     while(wantam > total):
         total += haveam
@@ -61,12 +61,15 @@ def howMuch(interests, time, amount):
 def howLong(interests, wantam, haveam, balance):
     total = balance
     months = 0
-    vextir = interests/1200
-    while(wantam > total):
+    vextir = interests
+    print vextir
+    while(wantam > (total - balance)):
 #        print total * vextir
         total += haveam
-        total += total * vextir
+        total *= 1 + vextir
         months += 1
+        print total
+        print months
     return months
 
 
@@ -85,7 +88,8 @@ def bestAccount(amount, time, inflcoeff, accounts, drawingPanel):
             vextir = item.acctype.interests
             if(item.acctype.indexadj):
                 vextir += inflcoeff
-            vextirpermonth = time * (1.0 / 12.0) * (vextir / 1200.0)
+            vextirpermonth = vextir
+            print vextirpermonth
             for i in range(time, 0, -1):
                 total += amount
                 profit = vextirpermonth * total

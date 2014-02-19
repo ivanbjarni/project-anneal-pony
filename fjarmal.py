@@ -54,8 +54,6 @@ def calcBestWayToPayacc1( paymentbox, amountbox, inflt1, inflt2, drawingPanel, a
 		print "Engir reikningar eru til".decode("utf-8")+"\n" 
 		s+="Engir reikningar eru til".decode("utf-8")+"\n"
 		return
-#	acctypes = []
-#	savingsTimes = []
 	profit = 0
 	index = 0
 	savingsTime = 0
@@ -65,13 +63,11 @@ def calcBestWayToPayacc1( paymentbox, amountbox, inflt1, inflt2, drawingPanel, a
 	for i in range(0, len(accounts)):
 		tempProfit = 0
 		tempSavingsTime = 0
-#		acctypes.append(accounts[i].acctype)
-#		savingsTimes.append(howLong(accounts[i].acctype.interests, amount, payment, accounts[i].balance))
 		tempSavingsTime = howLong(accounts[i].acctype.interests, amount, payment, accounts[i].balance)
 		tempProfit = int(calcAvgAccProfit(accounts[i].acctype.interests, amount, payment, accounts[i].balance))
 		if (tempProfit == -1):
-			print ("Þú átt nú þegar " + amount + " kr.").decode("utf-8")
-			s += ("Þú átt nú þegar " + amount + " kr.").decode("utf-8")
+			print "Þú átt nú þegar ".decode("utf-8") + str(amount) + " kr.".decode("utf-8")
+			s += "Þú átt nú þegar ".decode("utf-8") + str(amount) + " kr.".decode("utf-8")
 			return
 		if( tempProfit > profit ):
 			profit = tempProfit
@@ -79,20 +75,15 @@ def calcBestWayToPayacc1( paymentbox, amountbox, inflt1, inflt2, drawingPanel, a
 			index = i
 			if(accounts[i].acctype.reqtime > tempSavingsTime):
 				reqMessage = ("Reikningurinn er þó bundinn í " + accounts[i].acctype.reqtime + " mánuði").decode("utf-8")
-
+		
 	[am, acc] = bestAccount(payment, savingsTime, infl, accounts, drawingPanel)
-#	print 'am: ' + str(am)
-#	print 'acc: ' + str(acc.balance)
+
+	print 'am: ' + str(am)
 
 	s+= ("Best er að leggja inn á ").decode("utf-8") + acc.acctype.name + (" í " + str(savingsTime) + " mánuði.").decode("utf-8") + "\n"
 	s+= ("Mánaðarlegur hagnaður er þá ").decode("utf-8") + str(am/savingsTime-payment) + "\n"
 	s+= "Heildar sparnaður er þá ".decode("utf-8")  + str(am-payment*savingsTime)
 	s+= reqMessage
-#	print ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[index].acctype.name + "\n"
-#	s += ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[index].acctype.name + "\n"
-#	print ("Mánaðarlegur meðaltalshagnaður af því er " + str(profit) + "kr.").decode("utf-8") + "\n"
-#	s += ("Mánaðarlegur meðaltalshagnaður af því er " + str(profit) + "kr.").decode("utf-8") + "\n"
-#	s += "Þetta fall er ekki tilbúið".decode("utf-8")+"\n"
 	answer.SetLabel(s)
 
 def calcBestWayToPayacc2( paymentbox, timebox, inflt1, inflt2, drawingPanel, answer ) :
@@ -246,7 +237,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 		s="Villa, fylla þarf í alla reiti. Tölur þar sem við á. ".decode("utf-8")
 		answer.SetLabel(s)
 		return
-	accType = AccountType(acc_name, acc_reqtime, float(acc_interests)/100, acc_indexadj, -1, -1)
+	accType = AccountType(acc_name, acc_reqtime, float(acc_interests)/100.0, acc_indexadj, -1, -1)
 	account = Account(accType, acc_balance)
 	accounts.append(account)
 	index = accountlist.GetItemCount()
@@ -256,7 +247,7 @@ def makeAccount(name, balance, interests, reqtime, indexadj, answer, accountlist
 	reqtime.SetValue("")
 	accountlist.InsertStringItem(index, account.acctype.name)
 	accountlist.SetStringItem(index, 1, str(account.balance))
-	accountlist.SetStringItem(index, 2, str(account.acctype.interests))
+	accountlist.SetStringItem(index, 2, str(account.acctype.interests*100))
 	accountlist.SetStringItem(index, 3, str(account.acctype.indexadj))
 	accountlist.SetStringItem(index, 4, str(account.acctype.reqtime))
 	answer.SetLabel("Bætti reikningi við".decode("utf-8"))
