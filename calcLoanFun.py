@@ -8,11 +8,16 @@
 
 from wxgui3 import *
 import random
+import math
 from random import randint
 #from fjarmal import *
 
 #keep track of how many loans to draw
 loanCount = 0
+loanTime = 0
+oldTimePlot = 0
+balanceList = []
+timeList = []
 
 class Loan: 
 	def __init__(self, name, balance, interest, infl, numberOfPayments): 
@@ -46,8 +51,15 @@ def calcBestLoan(loans, inflation):
 	return [loans[index], index]
 
 # returns [leftover, time] the time it takes to pay the loan with a extra payment and the money you have left
-def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
+def calcTimeToPayLoan(loan, inflation, payment, timePlot, drawingPanel, plotAll, countLoans):
 	global loanCount
+	global loanTime
+	global balanceList
+	global timeList
+	global oldTimePlot
+	if(countLoans == 1):
+		balanceList[:] = []
+		timeList[:] = []
 	temp = loan
 	time = 0
 	loanCount += 1
@@ -56,29 +68,45 @@ def calcTimeToPayLoan(loan, inflation, payment, drawingPanel, countLoans):
 		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + inflation + temp.interest)
 	else:
 		monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
-	balanceList = [temp.balance] #hafa i huga, skoda asa
-	timeList = [0]
+	try:
+		balanceList[loanTime] = temp.balance
+		timeList[loanTime] = 1
+	except:
+		balanceList.append(temp.balance)
+		timeList.append(1)
+	loanTime += 1
 	while(temp.balance > monthlyP):
-#		timeList.append(time + 1)
-#		balanceList.append(temp.balance)
 		temp.balance -= monthlyP
 		time = time + 1
 		temp.numberOfP -= 1
-		timeList.append(time)
-		balanceList.append(temp.balance)
+		try:
+			timeList[loanTime] = time+1
+			balanceList[loanTime] = temp.balance
+		except:
+			timeList.append(time+1)
+			balanceList.append(temp.balance)
+		loanTime += 1
 		if(temp.infl):
 			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + inflation + temp.interest)
 		else:
 			monthlyP = (temp.balance/temp.numberOfP + payment)*(1 + temp.interest)
 	leftover = monthlyP - temp.balance
 	time = temp.balance/monthlyP + time
-	timeList.append(time)
-	balanceList.append(0)
-	if(loanCount == countLoans):
+	if(countLoans == 1):
 		loanCount = 0
+		loanTime = 0
+		oldTimePlot = 0
 		clearDrawing = True
+		#timePlot = int(time)
+	if(timePlot > time):
+		timePlot = int(time) + oldTimePlot
+	else:
+		timePlot = int(math.ceil(timePlot)) + oldTimePlot
+#	timePlot = int(math.ceil(timePlot)) + oldTimePlot
 	if(drawingPanel != None):
-		drawingPanel.draw(timeList, balanceList, clearDrawing)
+		drawingPanel.drawLoans(plotAll, oldTimePlot, timePlot, timeList, balanceList, clearDrawing)
+	oldTimePlot = timePlot
+	loanTime = oldTimePlot
 	return [leftover, time]
 
 # Notkun: x = calcLoan(b, int, p, inf, t) 
