@@ -86,6 +86,7 @@ def calcBestWayToPayacc1( paymentbox, amountbox, infltimebox, drawingPanel, answ
 	s+= ("Best er að leggja inn á ").decode("utf-8") + acc.acctype.name + (" í " + str(savingsTime) + " mánuði.").decode("utf-8") + "\n"
 	s+= ("Mánaðarlegur hagnaður er þá ").decode("utf-8") + str(am/savingsTime-payment) + "\n"
 	s+= "Heildar sparnaður er þá ".decode("utf-8")  + str(am-payment*savingsTime)
+	s+= reqMessage
 #	print ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[index].acctype.name + "\n"
 #	s += ("Borgaðu " + str(payment) + " í " + str(savingsTime) + " mánuði inn á ").decode("utf-8") + accounts[index].acctype.name + "\n"
 #	print ("Mánaðarlegur meðaltalshagnaður af því er " + str(profit) + "kr.").decode("utf-8") + "\n"
