@@ -28,7 +28,7 @@ def calcAccProfit(account):
 
 def calcAvgAccProfit(interests, wantam, haveam, balance):
     total = balance
-    vextir = interests
+    vextir = interests/1200
     interestList = []
     while(wantam > total):
         total += haveam
@@ -37,7 +37,10 @@ def calcAvgAccProfit(interests, wantam, haveam, balance):
     k = 0
     for i in interestList:
         k += i
-    return k/len(interestList)
+    try:
+        return k/len(interestList)
+    except:
+        return -1
 
 
 #def calcAccProfit(account):
@@ -57,8 +60,8 @@ def howMuch(interests, time, amount):
 #upphæð er lögð fyrir á mánuði, balance er staða reiknings í upphafi
 def howLong(interests, wantam, haveam, balance):
     total = balance
-    months = 1
-    vextir = interests
+    months = 0
+    vextir = interests/1200
     while(wantam > total):
 #        print total * vextir
         total += haveam
@@ -70,8 +73,12 @@ def howLong(interests, wantam, haveam, balance):
 #Velur besta reikning fyrir:
 #amount er upphaed sem hægt er að spara á mánuði, time er tíminn sem mun líða í mánuðum,inflcoeff er verðbólgustuðull
 #accounts er listi af reikningum. Fallið skilar reikning sem best er að nota
-def bestAccount(amount, time, inflcoeff, accounts):
+def bestAccount(amount, time, inflcoeff, accounts, drawingPanel):
     maxamount = []
+    tempTotals = []
+    totals = []
+    times = []
+    count = 0
     for item in accounts:
         total = 0.0
         if(item.acctype.reqtime <= time):
@@ -83,13 +90,21 @@ def bestAccount(amount, time, inflcoeff, accounts):
                 total += amount
                 profit = vextirpermonth * total
                 total += profit
+                tempTotals.append(total)
             maxamount.append(total)
         else:
             maxamount.append(total)
+        count += 1
     if(not maxamount):
         p=-1
         return [p,None]
     p = max(maxamount)
+    i = time
+    for j in range(count * time-1, count*time-time-1, -1):
+        times.append(i)
+        totals.append(tempTotals[j] + accounts[maxamount.index(p)].balance)
+        i -= 1
+    drawingPanel.drawAccounts(times, totals)
     return [p, accounts[maxamount.index(p)]]
 
 
