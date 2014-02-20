@@ -14,6 +14,7 @@
 \usepackage[usenames,dvipsnames]{color} % Required for custom colors???
 \usepackage{pgfgantt}
 \usepackage{xcolor,colortbl}
+\usepackage{setspace}
 
 % Spássíur
 \topmargin=-0.45in
@@ -23,7 +24,7 @@
 \textheight=9.0in
 \headsep=0.25in
 
-\linespread{1.1} % Línubil
+
 
 %----------------------------------------------------
 %-----------------------GALDRAR----------------------
@@ -88,30 +89,45 @@
 \input{title_page.tex}
 %-----/Forsíðan-----
 \pagebreak
-\linespread{1.5}
+\begin{center}
+
+
+\hspace{0.3cm}\\
+\noindent Fjármálum, fokki og kóða\\ 
+fengum við nóg af.		\\
+Heima hjá Ívani sóða	 \\
+hentumst á bólakaf.	\\
+Héldum að öllu lokið væri\\
+fögnuðum með glas í hönd\\
+komumst þá að villu vorri\\
+vökum fram á nótt.\\	
+Grátum.
+\end{center}
+\pagebreak
+\onehalfspacing
 \section{Inngangur}
 Skýrsla þessi lýsir í stuttu máli hvernig hópur 1 vann að hópaverkefni 1 í Þróun hugbúnaðar.  Á fjórum vikum átti hópurinn að hanna og búa til lítið fjármálaforrit sem aðstoðar notandann við að nota sparnaðinn sinn á sem hagstæðastan hátt, þ.e. hvar mesti gróðinn liggi, að borga niður lán eða leggja inn á sparnaðarreikning, ásamt minni fítusum.  Hópurinn samanstendur eingöngu af annars árs hugbúnaðarverkfræðinemum og allir því vel að sér í forritun.  Upphaflega áttu iðnaðarverkfræðingar að vera í öllum hópum en þeir voru ekki nógu margir og því vorum við fimm saman. Notast var við forritunarmálið Python sem enginn í hópnum hafði almennilega reynslu af.  Því má segja að tilgangur verkefnisins hafi verið þríþættur, þ.e. að læra að vinna á Python, læra að vinna í hóp við gerð hugbúnaðs og nota viðurkennda aðferðafræði til þess og að lokum að bæta fjármalalæsi hópsmeðlima.
 
 
 
 \section{Vika Eitt}
-Fyrsta vikan fór að mestu í rannsóknarvinnu til að skilja alla virkni forritsins.  Skila átti skilgreiningu verkefnis, kröfulýsingu í formi notendasagna og verkáætlun.  Við gerðum strax mistök með skilgreiningu verkefnisins.  Hugmyndin var að nemendur skrifuðu sína eigin lýsingu eins og þeir skildu verkefnið svo kennari gæti séð hvort einhverjir hópar væru á villigötum og gæti þá leiðbeint þeim í rétta átt.  Við aftur á móti endurskrifuðum lýsinguna sem við fengum frá kennara.  Það kom þó ekki að sök þar sem skildum ágætlega út á hvað forritið gekk.  Ágætlega gekk að vinna að notendasögunum og að ákveða forgangsröð þeirra.  Hins vegar voru allar tímaáætlanir gróflega misreiknaðar.  Hver notendasaga fékk ágiskun um hve lengan tíma tæki að klára hana og voru okkar ágiskanir byggðar á því hversu lengi tæki að forrita ef forritarinn vissi nákvæmlega hvað hann ætti að gera og gæti bara sest niður og byrjað.  Allar tímaáætlanir voru þvi lagaðar í viku tvö.  
-Að öðru leyti fór vikan í rannsóknarvinnu fyrir verkefnið, reikniaðferðir skoðaðar og hugmyndir settar fram um útlit og virkni.  Lýðræðisleg kosning með rússneskum áhrifum var notuð til að velja Wxpython fyrir viðmótssmíði.  Notendasögurnar og verkáætlunin var unnin í Google Doc skjali svo allir höfðu auðveldan aðgang að því og ákveðið var að nota Github til að vinna að forrituninni saman.  Að lokum var skipt notendasögum niður á hópsmeðlimi svo þeir gætu byrjað að undirbúa sig fyrir að forrita lausn þeirra.
+Fyrsta vikan fór að mestu í rannsóknarvinnu til að skilja alla virkni forritsins.  Skila átti skilgreiningu á verkefni, kröfulýsingu í formi notendasagna og verkáætlun.  Við gerðum strax mistök með skilgreiningu verkefnisins.  Hugmyndin var að nemendur skrifuðu sína eigin lýsingu eins og þeir skildu verkefnið svo kennari gæti séð hvort einhverjir hópar væru á villigötum og gæti þá leiðbeint þeim í rétta átt.  Við aftur á móti endurskrifuðum lýsinguna sem við fengum frá kennara.  Það kom þó ekki að sök þar sem skildum ágætlega út á hvað forritið gekk.  Ágætlega gekk að vinna að notendasögunum og að ákveða forgangsröð þeirra.  Hins vegar voru allar tímaáætlanir gróflega misreiknaðar.  Hver notendasaga fékk ágiskun um hve lengan tíma tæki að klára hana og voru okkar ágiskanir byggðar á því hversu lengi tæki að forrita ef forritarinn vissi nákvæmlega hvað hann ætti að gera og gæti bara sest niður og byrjað.  Allar tímaáætlanir voru þvi lagaðar í viku tvö.  
+Að öðru leyti fór vikan í rannsóknarvinnu fyrir verkefnið, reikniaðferðir skoðaðar og hugmyndir settar fram um útlit og virkni.  Lýðræðisleg kosning með rússnesku ívafi var notuð til að velja Wxpython fyrir viðmótssmíði.  Notendasögurnar og verkáætlunin var unnin í Google Doc skjali svo allir höfðu auðveldan aðgang að því og ákveðið var að nota Github til að vinna að forrituninni saman.  Að lokum var skipt notendasögum niður á hópsmeðlimi svo þeir gætu byrjað að undirbúa sig fyrir að forrita lausn þeirra.
 
 \section{Vika Tvö - Ítrun Eitt}
-Í lok viku tvö átti að skila verkþáttum hverrar notendasögu ásamt fyrstu útgáfu af kerfinu.  Einnig átti að skila excel skjali sem líktist "vinnutöflu" á bls. 116-117 í kennslubókinni.  Tilgangur kúrsins og reynsluleysi hópmeðlima í að forrita með öðrum kom snemma í ljós þessa vikuna.  Í vikunni áður hafði hver og einn fengið notendasögu(r) til að skoða og forrita.  Það olli því að allt í einu varð til hellingur af kóða sem átti eftir að tengja saman.  Enginn vissi hvað næsti maður var búinn með og hvað hann væri að gera og til að toppa ástandið voru athugasemdir í kóða voru ýmist á ensku eða íslensku.  Það ótrúlegasta við þetta ástand sem myndaðist er að mest öll forritun fór fram heima hjá Ívani en samt var hún unnin eins og einstaklingsverkefni.  Einnig kom í ljós að allar ágiskanir um tímann sem hver notendasaga myndi taka voru langt frá því að standast og uppfærðum við þvi verkþáttaskjalið.  Upprunalegar ágiskanir fyrir hverja notendasögru voru tvöfaldaðar og jafnvel þrefaldaðar.  Einnig bættum við við verkþætti sem við kölluðum skipulag við flestar notendasögurnar sem stendur fyrir tímann sem fer í að ákveða hvernig eigi að vinna söguna, hver tekur hvaða verkþátt að sér t.d.  
-Að lokum var haldinn smá fundur þar sem við fórum yfir þann kóða sem var tilbúinn og það sem átti eftir að gera af fyrstu ítrun.  Excel skjalið var útbúið þannig að þægilegt væri að sjá verkefnin og þá verkþætti sem væru í vinnslu eða tilbúnir.  Nýtt sheet var búið til í excel skjalinu þar sem nöfn allra .py skráa kom fram og stutt lýsing á henni.  Þegar notendasögunum í vinnslu fyrir ítrun eitt fækkaði gátu menn svo byrjað að vinna saman að þeim sem tóku meiri tíma.
+Í lok viku tvö átti að skila verkþáttum hverrar notendasögu ásamt fyrstu útgáfu af kerfinu.  Einnig átti að skila excel skjali sem líktist "vinnutöflu" á bls. 116-117 í kennslubókinni.  Tilgangur kúrsins og reynsluleysi hópmeðlima í að forrita með öðrum kom snemma í ljós þessa vikuna.  Í vikunni áður hafði hver og einn fengið notendasögu(r) til að skoða og forrita.  Það olli því að allt í einu varð til hellingur af kóða sem átti eftir að tengja saman.  Enginn vissi hvað næsti maður var búinn með og hvað hann væri að gera og til að toppa ástandið voru athugasemdir í kóða voru ýmist á ensku eða íslensku.  Það ótrúlegasta við þetta ástand sem myndaðist er að mest öll forritun fór fram heima hjá Ívani en samt var hún unnin eins og einstaklingsverkefni.  Einnig kom í ljós að allar ágiskanir um tímann sem hver notendasaga myndi taka voru langt frá því að standast og uppfærðum við því verkþáttaskjalið.  Upprunalegar ágiskanir fyrir hverja notendasögru voru tvöfaldaðar og jafnvel þrefaldaðar.  Einnig bættum við við verkþætti sem við kölluðum skipulag við flestar notendasögurnar sem stendur fyrir tímann sem fer í að ákveða hvernig eigi að vinna söguna, t.d. hver tekur hvaða verkþátt að sér og þess háttar.
+Að lokum var haldinn smá fundur þar sem við fórum yfir þann kóða sem var tilbúinn og það sem átti eftir að gera af fyrstu ítrun.  Excel skjalið var útbúið þannig að þægilegt væri að sjá verkefnin og þá verkþætti sem væru í vinnslu eða tilbúnir.  Nýtt sheet var búið til í excel skjalinu þar sem nöfn allra .py skráa kom fram og stutt lýsing á þeim.  Þegar notendasögunum í vinnslu fyrir ítrun eitt fækkaði gátu menn svo byrjað að vinna saman að þeim sem tóku meiri tíma.
 Skiptum við verkum þannig að Ívan og Sævar sáu að mestu um að að forrita viðmótið.  Sævar færði sig svo yfir í að skoða hvernig best yrði að láta forritið gera gröf.  Árni, Ágúst og Vilhelm tóku það að sér að byrja að forrita helstu reikniföllin.  Það var þó að sjálfsögðu eftir að hafa skoðað excel skjalið sem útskýrði bankareikninga vel, og skipulagt hvernig ætti að forrita föllin.  Eftir neyðarfundinn skipti Vilhelm þó yfir í að setja upp áðurnefnt excel skjal til að halda betur um vinnuna sem var í gangi.  
 Með herkjum náðum við því að klára allt sem við höfðum ætlað okkur að gera fyrir skil. 
 
 
 \section{Vika Þrjú - Ítrun Tvö}
 Í lok þessarar ítrunar ætluðum við okkur að vera búnir með mest alla forritun ásamt einingaprófun á helstu föllum.  Einnig ætluðum við okkur að vera búnir með viðmótið en leyfðum okkur þó smá slaka við að fá fulla virkni.  Að lokum tókum við allar notendasögurnar ásamt verkþáttum og settum upp á myndrænan hátt og löguðum Burn-Down grafið í excelskjalinu okkar, en í fyrstu átti það við um allt verkið í heild sinni en ekki hverja ítrun.   
-Enginn í hópnum hafði áður framkvæmt einingaprófanir svo rannsóknarvinna hófst.  Við töldum ekki þörf á að prófa öll föll þar sem allt sem notandi slær inn er sannreynt áður en inntakið er sent sem viðfang í föll sem vinna með það.  Var það okkar mat að kerfisprófun væri hentugri i það.  Unittest pakkinn var því frekar notaður til að prófa lítil reikniföll og athuga hvort þau virkuðu sem skyldi.  Allt virtist að mestu leyti að vera i lagi.  Við rákumst þó á galla í tveimur föllum en þeirra inntök stemmdu ekki við það sem þau fengu.  Gleymdist hafði að breyta þeim eftir að ákvörðun var tekin um breytingar á virkni forritsins.  Í þessari ítrun voru flestir með puttana í öllu.  Ívan sá að mestu um forritun viðmótsins með hjálp frá öðrum þó.  Sævar sá að mestu einn um kóðann sem býr til gröfin en Gústi hjálpaði einnig til við það.  Vilhelm og Árni tóku að sér gerð allra einingaprófana en allir meðlimir hópsins lásu sér samt til um þau.  Uppsetning notendasagnanna fór svo fyrir brjóstið á Ágústi svo hann tók það að sér að setja þær upp á myndrænni hátt.  Í lokítrunnarinnar uppfærði Vilhelm excel skjalið, bæði partinn með verkskipulaginu og einnig samantektina á öllum kóðanum.  
+Enginn í hópnum hafði áður framkvæmt einingaprófanir svo rannsóknarvinna hófst.  Við töldum ekki þörf á að prófa öll föll þar sem allt sem notandi slær inn er sannreynt áður en inntakið er sent sem viðfang í föll sem vinna með það.  Var það okkar mat að kerfisprófun væri hentugri í það.  Unittest pakkinn var því frekar notaður til að prófa lítil reikniföll og athuga hvort þau virkuðu sem skyldi.  Allt virtist að mestu leyti að vera i lagi.  Við rákumst þó á galla í tveimur föllum en þeirra inntök stemmdu ekki við það sem þau fengu.  Gleymdist hafði að breyta þeim eftir að ákvörðun var tekin um breytingar á virkni forritsins.  Í þessari ítrun voru flestir með puttana í öllu.  Ívan sá að mestu um forritun viðmótsins en þó með hjálp frá öðrum.  Sævar sá að mestu einn um kóðann sem býr til gröfin en Gústi hjálpaði einnig til við það.  Vilhelm og Árni tóku að sér gerð allra einingaprófana en allir meðlimir hópsins lásu sér samt til um þau.  Uppsetning notendasagnanna fór svo fyrir brjóstið á Ágústi svo hann tók það að sér að setja þær upp á myndrænni hátt.  Í lok ítrunnarinnar uppfærði Vilhelm excel skjalið, bæði partinn með verkskipulaginu og einnig samantektina á öllum kóðanum.  
 Að þessu sinni þurftum við að færa þrjár notendasögur yfir í næstu ítrun.  Bæði vegna þess að þær tóku meiri tíma en við reiknuðum með en einnig fór meiri tími og orka í að læra og framkvæma einingaprófanirnar.
 
 \subsection{Et tu, Github?}
-Eins og áður kom fram í skýrslunni voru ýmsar óvæntar tafir tengdar hugbúnaði.  Þar má nefna að uppsetningu á viðmótspakka og pakkana til þess að geta teiknað, en það gekk ekki jafn auðveldlega hjá öllum.  Github reyndist þó okkar versti óvinur á tíðum.  Þrátt fyrir reynslu tveggja meðlima af github vinnu gekk brösulega að koma því í gang hjá öllum í fyrstu viku.  Á einni tölvunni tók meira að segja nokkra klukkutíma að fá það til að virka.  Í ítrun tvö tók github kast og henti öllum af aðalgreininni.  Því gat enginn séð hvað næsti maður var að gera með push og pull skipununum.  Að sjálfsögðu var brugðist strax við og barist við að koma öllum á aðalgreinina en vegna reynsluleysis tók það líklega meiri tíma en þurfti.  Að öðru leyti rikti almennt ánægja með github.  Við nýttum okkur það þó á sem einfaldastan hátt, allir unnu saman á aðalgreininni og var mikið samráð um hvenær og hverju átti að pusha.
+Eins og áður kom fram í skýrslunni voru ýmsar óvæntar tafir tengdar hugbúnaði.  Þar má nefna að uppsetningu á viðmótspakka og pakkana til þess að geta teiknað, en það gekk ekki jafn auðveldlega hjá öllum.  Github reyndist þó okkar versti óvinur á tíðum.  Þrátt fyrir reynslu tveggja meðlima af github vinnu gekk brösulega að koma því í gang hjá öllum í fyrstu viku.  Á einni tölvunni tók meira að segja nokkra klukkutíma að fá það til að virka.  Í ítrun tvö tók github kast og henti öllum af aðalgreininni.  Því gat enginn séð hvað næsti maður var að gera með push og pull skipununum.  Að sjálfsögðu var brugðist strax við og barist við að koma öllum á aðalgreinina en vegna reynsluleysis tók það líklega meiri tíma en þurfti.  Að öðru leyti ríkti almennt ánægja með Github.  Við nýttum okkur það þó á sem einfaldastan hátt, allir unnu saman á aðalgreininni og var mikið samráð um hvenær og hverju átti að pusha.
 
 \subsection{Einingaprófanir}
 \begin{center}
@@ -144,7 +160,7 @@ Eins og áður kom fram í skýrslunni voru ýmsar óvæntar tafir tengdar hugb�
 
 
 \section{Vika Fjögur - Ítrun Þrjú}
-Seinasta vikan fyrir skil var notuð til að 
+Seinasta ítrun verkefnisins var notuð í að ljúka notendasögunum sem við þurftum að seinka úr fyrri ítruninni og þar með klára smíði forritsins.  Ekki var mikil forritun eftir og réðust Ívan, Árni og Sævar í það að klára notendasögurnar.  Forritið var svo tekið í kerfispróf sem sjá má á töflunni hér fyrir neðan.  Þegar forritið var klárt þurfti að undirbúa fyrirlestur.  Ívan og Ágúst tóku það að sér að búa til 4 glærur fyrir þennan fimm mínútna fyrirlestur.  Vilhelm tók að sér skýrslugerðina að mestu með hjálp frá Ágústi þegar kom að prófununum og yfirferð.  Í lok ítrunarinnar var excel skjalið svo uppfært og verkefninu skilað með stolti og pöndugleði.
 
 \subsection{Kerfisprófanir}
 \begin{center}
@@ -178,6 +194,10 @@ Seinasta vikan fyrir skil var notuð til að
     \end{tabular}
 \end{center}
 
+\newpage
+
+\section{Niðurlag}
+Fyrsta verkefnið í þróun hugbúnaðar lokið og ríkti almenn ánægja í hópnum með það.  Deila má um hvort fjármálalæsi hópmeðlima hafi aukist mjög en hæfni og reynsla af forritunarvinnu í hóp jókst gífurlega.  Að reka okkur svona illa á varðandi skipulagsleysi eins og gerðist í byrjun verkefnisins hafði jákvæð áhrif á vinnuna sem fylgdi eftir og bíðum við spenntir eftir næsta hópverkefni, reynslunni ríkari.  
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.28)  19 FEB 2014 20:38
+This is XeTeX, Version 3.1415926-2.4-0.9998 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2013.12.28)  19 FEB 2014 22:00
 entering extended mode
 **title_page.tex
 (C:\git\project-anneal-pony\Skýrsla\Gusti\title_page.tex
@@ -20,7 +20,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.30 \begin{titlepage}
+l.34 \begin{titlepage}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -33,13 +33,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.34 \center
+l.38 \center
              % Center everything on the page
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 34--34
+Overfull \hbox (20.0pt too wide) in paragraph at lines 38--38
 [] 
  []
 
@@ -50,7 +50,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.39 \begin{figure}
+l.43 \begin{figure}
                    [h!]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -61,7 +61,7 @@ Missing character: There is no h in font nullfont!
 Missing character: There is no ! in font nullfont!
 Missing character: There is no ] in font nullfont!
 ! Undefined control sequence.
-l.41 \includegraphics
+l.45 \includegraphics
                      [width=40mm]{hi.png}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -94,7 +94,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.42 \end{figure}
+l.46 \end{figure}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -105,7 +105,7 @@ Requested font "cmcsc10" at 10.0pt
 ! Undefined control sequence.
 <recently read> \LARGE 
                        
-l.44 \textsc{\LARGE Háskóli Íslands}
+l.48 \textsc{\LARGE Háskóli Íslands}
                                        \\[1.5cm] % Name of your university/c...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -117,19 +117,19 @@ Missing character: There is no á in font cmcsc10!
 Missing character: There is no ó in font cmcsc10!
 Missing character: There is no Í in font cmcsc10!
 
-Overfull \hbox (27.2276pt too wide) in paragraph at lines 44--44
+Overfull \hbox (27.2276pt too wide) in paragraph at lines 48--48
  []\OT1/cmr/m/sc/10 Hskli 
  []
 
 
-Overfull \hbox (32.79988pt too wide) in paragraph at lines 44--44
+Overfull \hbox (32.79988pt too wide) in paragraph at lines 48--48
  \OT1/cmr/m/sc/10 slands 
  []
 
 ! Undefined control sequence.
 <recently read> \Large 
                        
-l.45 \textsc{\Large HBV401G Þróun hugbúnaðar}
+l.49 \textsc{\Large HBV401G Þróun hugbúnaðar}
                                                  \\[0.5cm] % Major heading s...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -142,29 +142,29 @@ Missing character: There is no ó in font cmcsc10!
 Missing character: There is no ú in font cmcsc10!
 Missing character: There is no ð in font cmcsc10!
 
-Overfull \hbox (49.08286pt too wide) in paragraph at lines 45--45
+Overfull \hbox (49.08286pt too wide) in paragraph at lines 49--49
  []\OT1/cmr/m/sc/10 HBV401G 
  []
 
 
-Overfull \hbox (18.28883pt too wide) in paragraph at lines 45--45
+Overfull \hbox (18.28883pt too wide) in paragraph at lines 49--49
  \OT1/cmr/m/sc/10 run 
  []
 
 
-Overfull \hbox (28.25543pt too wide) in paragraph at lines 45--45
+Overfull \hbox (28.25543pt too wide) in paragraph at lines 49--49
  \OT1/cmr/m/sc/10 hugb- 
  []
 
 
-Overfull \hbox (24.42215pt too wide) in paragraph at lines 45--45
+Overfull \hbox (24.42215pt too wide) in paragraph at lines 49--49
  \OT1/cmr/m/sc/10 naar 
  []
 
 ! Undefined control sequence.
 <recently read> \large 
                        
-l.46 \textsc{\large Vor 2014}
+l.50 \textsc{\large Vor 2014}
                              \\[0.5cm] % Minor heading such as course title
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -173,18 +173,18 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.22487pt too wide) in paragraph at lines 46--46
+Overfull \hbox (20.22487pt too wide) in paragraph at lines 50--50
  []\OT1/cmr/m/sc/10 Vor 
  []
 
 
-Overfull \hbox (22.1109pt too wide) in paragraph at lines 46--46
+Overfull \hbox (22.1109pt too wide) in paragraph at lines 50--50
  \OT1/cmr/m/sc/10 2014 
  []
 
 ! Undefined control sequence.
-l.53 { \huge
-             \bfseries Hópverkefni 1}\\[0.4cm] % Title of your document
+l.57 { \huge
+             \bfseries MoneySpender 3000}\\[0.4cm] % Title of your document ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -193,19 +193,18 @@ and I'll forget about whatever was undefined.
 
 Requested font "cmbx10" at 10.0pt
  -> cmbx10
-Missing character: There is no ó in font cmbx10!
 
-Overfull \hbox (54.94418pt too wide) in paragraph at lines 53--53
- []\OT1/cmr/bx/n/10 Hpverkefni 
+Overfull \hbox (75.54825pt too wide) in paragraph at lines 57--57
+ []\OT1/cmr/bx/n/10 MoneySpender 
  []
 
 
-Overfull \hbox (5.74997pt too wide) in paragraph at lines 53--53
- \OT1/cmr/bx/n/10 1 
+Overfull \hbox (22.99988pt too wide) in paragraph at lines 57--57
+ \OT1/cmr/bx/n/10 3000 
  []
 
 ! Undefined control sequence.
-l.61 \begin{flushleft} \large
+l.65 \begin{flushleft} \large
                              
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -382,16 +381,11 @@ Missing character: There is no 6 in font nullfont!
 Missing character: There is no 4 in font nullfont!
 Missing character: There is no 9 in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 70.
+(Font)              <7> on input line 74.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 70.
-
-Overfull \hbox (3276.74998pt too wide) in paragraph at lines 60--71
- []$[]$ 
- []
-
+(Font)              <5> on input line 74.
 ! Undefined control sequence.
-l.73 \begin{flushright} \large
+l.77 \begin{flushright} \large
                               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -420,13 +414,18 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no n in font nullfont!
 
-Overfull \hbox (3276.74998pt too wide) in paragraph at lines 72--77
+Overfull \hbox (3276.74998pt too wide) in paragraph at lines 64--93
  []$[]$ 
  []
 
+
+Overfull \hbox (3276.74998pt too wide) in paragraph at lines 64--93
+ []$ 
+ []
+
 ! Undefined control sequence.
-l.87 {\large
-             19. febrúar 2014}\\[3cm] % Date, change the \today to a set da...
+l.103 {\large
+              19. febrúar 2014}\\[3cm] % Date, change the \today to a set d...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -454,8 +453,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \end{titlepage}
-                    
+l.115 \end{titlepage}
+                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
